@@ -1,0 +1,163 @@
+#containerKB {
+	z-index: 5;
+	position: absolute;
+	top: 627px;
+	width: 1280px;
+	max-height: 467px;
+	background: url(../images/KB/kb_top_shadow.png) no-repeat top left;
+	clear:both;
+}
+#un_keyboard {
+	background: url(../images/KB/keyboard_bckgrnd.jpg) no-repeat bottom left;
+}
+#un_keyboard {
+	height: 386px;
+	padding-top: 46px;
+}
+
+#un_keyboard div.row {
+	padding-bottom: 16px;
+	height: 84px;
+}
+#un_keyboard div#row1 {
+	padding-left: 25px;
+}
+#un_keyboard #row1 #one {
+	margin-left: 40px;
+}
+#un_keyboard div#row2 {
+	padding-left: 50px;
+}
+#un_keyboard #row2 #four {
+	margin-left: 76px;
+}
+#un_keyboard div#row3 {
+	padding-left: 95px;
+}
+#un_keyboard #row3 #seven {
+	margin-left: 112px;
+}
+#un_keyboard div#row4 {
+	padding-left: 25px;
+}
+#un_keyboard #row4 #zero {
+	margin-left: 119px;
+}
+#un_keyboard div#row5  {
+	padding-left: 35px;
+}
+#un_keyboard div.row > span {
+	display: inline-block;
+	margin: 0 6px 0 7px;
+	padding: 0 5px;
+	width: 68px;
+	height: 68px;
+	color: #111;
+	text-align: center;
+	font-size: 20px;
+	line-height: 68px;
+	background: #666 url(../images/KB/standard_btn.png) no-repeat top left;
+}
+
+#un_keyboard span#shift, #un_keyboard span#abc {
+	width: 189px;
+	height: 67px;
+	background: #D5D5D5 url(../images/KB/large_btn.png) no-repeat top left;
+}
+#un_keyboard #space {
+	width: 537px;
+	height: 67px;
+	background: #D5D5D5 url(../images/KB/space_btn.png) no-repeat top left;
+}
+#un_keyboard div.row > span.vkey_pressed {
+	color: #666; 
+	box-shadow: 4px 4px 4px #888 inset;
+	background: #DDD;
+	background-image: none !important;
+}
+
+
+#un_keyboard #delete {
+	height: 67px;
+	width: 133px;
+	margin-left: 3px;
+	padding-right: 8px;
+	text-align: right;
+	background: transparent url(../images/KB/backspace.png) no-repeat top left;
+}
+#un_keyboard #delete.vkey_pressed {
+	background-image: url(../images/KB/backspace.png) !important;
+	background-color: transparent !important;
+	box-shadow: none;
+}
+.vkey.hideNonDigit {
+	visibility: hidden;
+}
+#un_keyboard span.symbol, #un_keyboard span.number {}
+#un_keyboard div.row span.off {display:none}
+
+
+/* INPUT FIELDS AND FORM */ 
+
+#un_fields_controller { 
+	width: 150px;
+	height: 280px; 
+	padding: 30px 0 0 29px;
+	background: #E9E9E9; 
+	border-radius: 10px;
+}
+.un_form_field { 
+	width: 760px;
+	padding: 10px; 
+	margin-left: 50px;
+	margin-bottom: 10px;
+	border-radius: 10px 0 0 10px; 
+}
+.un_form_field.selected { 
+	background: #E9E9E9; 
+}
+.un_form_field_label { 
+	display: inline-block;
+	width: 280px; 
+	text-align: right; 
+	padding-right: 10px;
+	font-size: 20px;
+	color: #999;
+}
+.un_form_field.selected .un_form_field_label{
+	color: #333;
+}
+.un_form_field input[type="text"] { 
+	width: 460px;
+	padding: 10px;
+	border: 2px solid #CCC;
+	font-size: 15px;
+}
+.un_form_field.error input[type="text"] { 
+	border-color: #900
+}
+.un_form_field .errorMsg {
+	margin: 5px 0 0 280px;
+	color: #900;
+}
+.un_form_field textarea { 
+	overflow:hidden;
+	resize:none;
+	width: 460px;
+	height: 250px;
+	padding: 10px;
+	border: 1px solid #CCC;
+	font-size: 15px;
+}
+.un_form_field.uTextarea .un_form_field_label {
+	vertical-align: top;
+}
+#uConfirmEmailForm.uBtnLightGray { 
+	color: #999;
+	opacity: .6;
+}
+
+#uHideVkbIcn { 
+	padding: 12px;
+	vertical-align: middle;
+}

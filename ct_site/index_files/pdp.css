@@ -1,0 +1,303 @@
+#pdpDesc {
+	width: 980px;
+	height: 750px;
+	background-color: #fff;
+	padding: 25px;
+	margin: 20px 0;
+	border-radius: 10px;
+	border: 1px solid #E3E3E3;
+	box-shadow: 0 3px 2px -1px #B8B8B8;
+	position: relative;
+}
+
+.uReviews {
+	overflow: hidden;
+	height: 670px;
+	width: 930px;
+} 
+
+#pdpAction {
+	width: 220px;
+	height: 770px;
+	position: relative;
+}
+
+.pdpimages { width:320px;}
+.pdpdescription { width:560px;}
+
+.uFloatTop {
+	position: absolute;
+	top: 20px;
+}
+
+.uFloatBottom {
+	position: absolute;
+	bottom: 0px;
+}
+
+#pdpAction .big_red {
+	text-indent: 0px;
+	height: 80px;
+	width: 220px;
+	padding: 27px 0 0 6px;
+	font-size: 1.4em;
+}
+
+#pdpAction .big_red.disabled {
+	opacity: 0.3;
+}
+
+body[lang="fr"] #pdpAction .big_red {
+	font-size: 1.2em;
+}
+
+#pdpAction .big_red:nth-of-type(n+2), #pdpAction .uBtnLightGrayPdp:nth-of-type(n+2) {
+	margin-top:10px;
+}
+
+body[lang="fr"] #pdpAction .uBtnLightGrayPdp {
+	font-size: 1.7em;
+}
+
+#pdpEmail {
+	background: url('../images/mail.png'), -moz-linear-gradient(#fdfdfd, #d1d1d1);
+	background-repeat: no-repeat, no-repeat;  
+	background-position:25px 50%, right;  
+}
+
+#pdpPrint, #uComparePrint {
+	background: url('../images/printer.png'), -moz-linear-gradient(#fdfdfd, #d1d1d1);
+	background-repeat: no-repeat, no-repeat;  
+	background-position:25px 50%, right;  
+}
+
+#pdpResult {
+	background: url('../images/results.png'), -moz-linear-gradient(#fdfdfd, #d1d1d1);
+	background-repeat: no-repeat, no-repeat;  
+	background-position:25px 50%, right;  
+	background-size: 50px 30px, 100%;
+	text-indent: 0px;
+	padding-left: 97px;
+	padding-top: 4px;
+	line-height: 30px;
+}
+
+body[lang=fr] #pdpResult {
+	padding-top: 18px;
+}
+
+#uComparePrint {
+	background-size:40px, 100%;  
+	background-position:15px 50%, right;
+	text-indent: 50px;
+	width:180px;
+	font-size: 1.7em;
+	padding:20px;
+}
+
+#pdpSize {
+	height: 70px;
+	padding: 10px;
+	text-shadow: 0 1px 1px #FFFFFF;
+	font-size:1.2em;
+	border-radius: 2px;
+	border: 1px solid #7c7c7c;
+	background-image: -moz-linear-gradient(#fafafa, #d1d1d1);
+	margin: 20px 0px;
+}
+
+#pdpNo {
+	color: #a5a5a5;
+	margin-top:10px;
+	text-shadow: 0 1px 1px #FFFFFF;
+	font-size: 0.8em;
+}
+
+#pdpFeat {
+	color: #6a6a6a;
+	font-size: 0.8em;
+	margin-bottom: 20px;
+}
+
+#pdpFeat li {
+	margin-left: 15px;
+	list-style-type: none;
+	list-style-image: none;
+}
+
+.insetShadow {
+	border-radius: 10px;
+	border-top: 1px solid #fff;
+	padding: 15px 20px;
+}
+
+.pdpStyle {
+	color: #656565;
+	font-size:0.9em;
+}
+
+.pdpStyleNumber {
+	border-radius: 10px;
+	border: 1px solid #E3E3E3;
+	box-shadow: 0 3px 2px -1px #B8B8B8;
+	background-image: -moz-linear-gradient(#eeeced, #ffffff);
+	height: 530px;
+	position: absolute; 
+	right: 30px; 
+	bottom:30px;
+	width: 560px;
+}
+
+#pdpImage {
+	margin: 50px 0 40px 0;
+}
+
+.pdpMaker img {
+	max-width: 200px;
+}
+
+.pdpName {
+    font-size: 11pt;
+    margin-bottom: 10px;
+}
+
+#pdpSalePrice {
+	color: #c4191a;
+	margin-bottom:10px;
+	font-size: 1.4em;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+#pdpSaleRegPrice {
+	color: #636363;
+	margin-bottom:10px;
+}
+
+#pdpRegPrice{
+	color: #636363;
+	font-size: 1.6em;
+}
+
+#pdpMaker img {
+	max-width: 150px;
+}
+
+#pdpActionArrow {
+	position: absolute;
+	top: 0px; 
+	left: -48px;
+	display:none;
+}
+
+#uStyleSize, #uReviewOuter {
+	position: relative; 
+	overflow: hidden; 
+	height: 620px; 
+	width: 760px; 
+}
+
+.uPdpSpec {
+	border: 1px solid #000000;
+	margin: 0 20px 10px 0;
+	padding: 15px;
+	width: 420px;
+}
+.uPdpSpec {
+	color: #636363;
+}
+.uWarranty {
+  background-image: url("../images/warranty.jpg");
+  background-position: 689px 0px;
+  background-repeat: no-repeat;
+  background-size: 200px auto;
+  height: 700px;
+  width: 900px;
+}
+
+#pdpFinancing {
+	font-size: 1.4em !important;
+	padding:14px 30px 20px !important;
+}
+
+.uSizePdpValue {
+	background-color: #ffffff;
+	border: 1px solid #bcbcbc;
+	border-radius: 3px;
+	width: 240px;
+	box-shadow: 0 -1px 1px #FFFFFF inset;
+	height:90px;
+	background-image:  -moz-linear-gradient(#ffffff, #e1e1e1);
+	padding: 35px 42px 35px 35px;
+	margin: 0px 20px 20px 0px;
+	font-size: 1.2em;
+	text-shadow:1px 1px 0 #fff;
+	float: left;
+	color: #636363;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.uSizePdpValue:nth-of-type(3n+3) {
+	margin: 0px 0px 20px 0px;
+}
+
+.uSizePdpValue.selected {
+	box-shadow: inset 0px 10px 20px #b5b5b5;
+	background-image: url('../images/tick_r.png'),  -moz-linear-gradient(#e1e1e1, #ffffff);
+	background-repeat: no-repeat;
+	background-position: 93% 50%, right;  
+	color: #c82a18;
+}
+
+#URecoSize {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 490px;9
+}
+
+.uAnyReview {
+	margin: 83px 160px;
+}
+.uReviewSummary {
+	width: 250px;
+	margin: 15px;
+	padding-right: 1px solid #ccc;
+}
+.uReviewContent {
+	width: 500px;
+	padding: 10px;
+}
+.uReviewContainer{
+	border: 1px solid #ccc;
+	border-bottom: none;
+	width: 790px;
+}
+#uReviewOuter .uReviewContainer:last-child {
+	border: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+#uReviewOuter {
+	width: 790px; 
+} 
+#uReviewPaginator{
+	margin: 200px 10px 0 0 !important;
+}
+.uRatingNormalLabel {
+	width: 130px;
+	font-size: 0.8em;
+	padding-top: 3px;
+}
+.uRatingNormalImage{
+	width: 80px;
+}
+.uReviewTitleDate {
+	padding-bottom: 10px;
+}
+
+sup { font-size: 0.5em;}
+body[lang=en] .uFinancing { background: url("../images/en/driving_easy.png") no-repeat scroll 25px 50%}
+body[lang=fr] .uFinancing { background: url("../images/fr/driving_easy.png") no-repeat scroll 25px 50%}
+body[lang] .uFinancing {background-size: 150px; background-position: 0% 0%;}
+.uFinancing .searchLabel { font-size: 2em;}

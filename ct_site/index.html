@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html environment="dev"><!--  manifest="test.cache" --><head>
+		<title>Canadian Tire Kiosk</title>
+		<link type="text/css" rel="stylesheet" href="index_files/main.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="index_files/plp.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="index_files/search.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="index_files/pdp.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="index_files/vkb.css" media="screen">
+		<!--<link type="text/css" rel="stylesheet" href="css/style.build.1702121623.min.css" media="screen"/>-->
+		<link type="text/css" rel="stylesheet" href="index_files/print.css" media="print">
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body environment="dev" lang="en">
+		<noscript><h1 style="margin:50px">Please enable Javascript</h1></noscript>
+		
+		<div id="webappContent" class="">
+			<div id="un_log_window" style="display:none">
+				<div id="unLog">Kiosk App Version 0.1<br>Kiosk url: https://m.usablenet.com/ma/tires.canadiantire.ca/index.html<br>dev Environment<br>Device ID: 1<br>Store ID: CTPOS-658<br>selVehicleYear Set Select 1<br>Load Select: selVehicleMake length 42<br>selVehicleMake Set Select 1<br>Load Select: selVehicleModel length 6<br>selVehicleModel Set Select 1<br>Load Select: selVehicleBody length 2<br>selVehicleBody Set Select 1<br>Load Select: selVehicleOption length 5<br></div>
+				<button onclick="$('#unLog').toggle()">HIDE/SHOW LOGS</button>
+				<button onclick="$('#unLog').html('')">CLEAR LOGS</button>
+				<button onclick="openConfigPage()">CONFIG PAGE</button>
+				<button onclick="$('#un_log_window').hide()">CLOSE</button>
+				<button onclick="printPdp()" class="d_none">PRINT</button>
+			</div>
+			
+			<div style="display: none;" id="homepageCntnt">
+				<div id="ct_title"><img id="ct_title_img" src="index_files/title_selector_en.png" alt="Tire and Wheel Selector"></div>
+				<div id="unSelector">
+					<div class="gr_cont left">
+						<div class="lucid">
+							<div style="transition: margin 0.5s ease 0s; margin-top: 0px;" id="tires_sel"><div class="inset">
+							<div class="start_div">
+								<!--<div class="start_by">START BY CHOOSING</div>
+								<div class="start_tw">WHEELS</div>-->
+							</div>
+						</div></div>
+						<div style="transition: margin 0.7s ease 0s; margin-top: 500px;" id="search_by">
+							<div style="box-shadow: 0px 0px 0px transparent;" class="vec_div" tab="0">
+								<div class="search_tit" data-i18n="search_t_by">Search tires by</div>
+								<div class="grey_big" data-i18n="vehicle">vehicle</div>
+							</div>
+							<div style="box-shadow: 0px 0px 0px transparent;" class="size_div" tab="1">
+								<div class="search_tit" data-i18n="search_t_by">Search tires by</div>
+								<div class="grey_big" data-i18n="size">Size</div>
+							</div>
+						</div>
+						</div>
+					</div>
+
+					<div class="gr_cont right">
+						<div class="lucid">
+							<div id="wheel_sel"><div class="inset">
+								<div class="start_div">
+									<!--<div class="start_by">START BY CHOOSING</div>
+									<div class="start_tw">WHEELS</div>-->
+								</div>
+							</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div style="display: block;" id="xhr-content">
+<div>
+
+<div id="unSearchWrap">
+<div id="searchTopBar">
+<div class="un-search-btn un-search-btn_grayL first complete">
+<div>1. <span data-ko="year" class="kk">Year</span>
+</div>
+<div class="uSelectedVal"><div>2013</div></div>
+</div>
+<div class="un-search-btn un-search-btn_grayL complete">
+<div>2. <span data-ko="make" class="kk">Make</span>
+</div>
+<div class="uSelectedVal"><div>Acura</div></div>
+</div>
+<div class="un-search-btn un-search-btn_grayL complete">
+<div>3. <span data-ko="model" class="kk">Model</span>
+</div>
+<div class="uSelectedVal"><div>ILX</div></div>
+</div>
+<div class="un-search-btn un-search-btn_grayL complete">
+<div>4. <span data-ko="body" class="kk">Body</span>
+</div>
+<div class="uSelectedVal"><div>4 Dr Sedan</div></div>
+</div>
+<div class="un-search-btn un-search-btn_grayL last  selected">
+<div>5. <span data-ko="option" class="kk">Options</span>
+</div>
+<div class="uSelectedVal"></div>
+</div>
+</div>
+<div id="searchCont">
+
+<div class="searchContDiv d_none">
+<div class="searchStepTitle">Search tires by vehicle<span data-i18n="step" class="kk"> - Step </span><span class="searchStepNumb">1<span data-i18n="of_de" class="kk"> of </span>5</span>
+</div>
+<div class="searchLabel">
+<span data-i18n="select_your_vec" class="kk">SELECT YOUR VEHICLE </span>YEAR</div>
+<div class="uSearchItems uFloatL">
+<div class="uSearchOuter" id="uSearchOuter_1">
+<div un-select="selVehicleYear" id="selVehicleYear_div"><div class="un-search-btn_grayH selected" u-ix="1">2013</div><div class="un-search-btn_grayH" u-ix="2">2012</div><div class="un-search-btn_grayH" u-ix="3">2011</div><div class="un-search-btn_grayH" u-ix="4">2010</div><div class="un-search-btn_grayH" u-ix="5">2009</div><div class="un-search-btn_grayH" u-ix="6">2008</div><div class="un-search-btn_grayH" u-ix="7">2007</div><div class="un-search-btn_grayH" u-ix="8">2006</div><div class="un-search-btn_grayH" u-ix="9">2005</div><div class="un-search-btn_grayH" u-ix="10">2004</div><div class="un-search-btn_grayH" u-ix="11">2003</div><div class="un-search-btn_grayH" u-ix="12">2002</div><div class="un-search-btn_grayH" u-ix="13">2001</div><div class="un-search-btn_grayH" u-ix="14">2000</div><div class="un-search-btn_grayH" u-ix="15">1999</div><div class="un-search-btn_grayH" u-ix="16">1998</div><div class="un-search-btn_grayH" u-ix="17">1997</div><div class="un-search-btn_grayH" u-ix="18">1996</div><div class="un-search-btn_grayH" u-ix="19">1995</div><div class="un-search-btn_grayH" u-ix="20">1994</div><div class="un-search-btn_grayH" u-ix="21">1993</div><div class="un-search-btn_grayH" u-ix="22">1992</div><div class="un-search-btn_grayH" u-ix="23">1991</div><div class="un-search-btn_grayH" u-ix="24">1990</div><div class="un-search-btn_grayH" u-ix="25">1989</div><div class="un-search-btn_grayH" u-ix="26">1988</div><div class="un-search-btn_grayH" u-ix="27">1987</div><div class="un-search-btn_grayH" u-ix="28">1986</div><div class="un-search-btn_grayH" u-ix="29">1985</div></div>
+</div>
+</div>
+<div class="uSearchPaginator uFloatR" id="uSearchPaginator_1">
+<button class="hide-text uPrev disabled" id="un_scroller_up" type="button">prev</button><button class="hide-text uNext" id="un_scroller_down" type="button">next</button>
+</div>
+<div class="clearB"></div>
+</div>
+
+<div class="searchContDiv d_none">
+<div class="searchStepTitle">Search tires by vehicle<span data-i18n="step" class="kk"> - Step </span><span class="searchStepNumb">2<span data-i18n="of_de" class="kk"> of </span>5</span>
+</div>
+<div class="searchLabel">SELECT YOUR VEHICLE MAKE</div>
+<div class="uSearchItems uFloatL">
+<div class="uSearchOuter" id="uSearchOuter_2">
+<div un-select="selVehicleMake" id="selVehicleMake_div"><div class="un-search-btn_grayH selected" u-ix="1">Acura</div><div class="un-search-btn_grayH" u-ix="2">Aston Martin</div><div class="un-search-btn_grayH" u-ix="3">Audi</div><div class="un-search-btn_grayH" u-ix="4">Bentley</div><div class="un-search-btn_grayH" u-ix="5">BMW</div><div class="un-search-btn_grayH" u-ix="6">Buick</div><div class="un-search-btn_grayH" u-ix="7">Cadillac</div><div class="un-search-btn_grayH" u-ix="8">Chevrolet</div><div class="un-search-btn_grayH" u-ix="9">Chrysler</div><div class="un-search-btn_grayH" u-ix="10">Dodge</div><div class="un-search-btn_grayH" u-ix="11">Ferrari</div><div class="un-search-btn_grayH" u-ix="12">Fiat</div><div class="un-search-btn_grayH" u-ix="13">Ford</div><div class="un-search-btn_grayH" u-ix="14">GMC</div><div class="un-search-btn_grayH" u-ix="15">Honda</div><div class="un-search-btn_grayH" u-ix="16">Hyundai</div><div class="un-search-btn_grayH" u-ix="17">Infiniti</div><div class="un-search-btn_grayH" u-ix="18">Jaguar</div><div class="un-search-btn_grayH" u-ix="19">Jeep</div><div class="un-search-btn_grayH" u-ix="20">Kia</div><div class="un-search-btn_grayH" u-ix="21">Lamborghini</div><div class="un-search-btn_grayH" u-ix="22">Land Rover</div><div class="un-search-btn_grayH" u-ix="23">Lexus</div><div class="un-search-btn_grayH" u-ix="24">Lincoln</div><div class="un-search-btn_grayH" u-ix="25">Lotus</div><div class="un-search-btn_grayH" u-ix="26">Maserati</div><div class="un-search-btn_grayH" u-ix="27">Mazda</div><div class="un-search-btn_grayH" u-ix="28">Mercedes-Benz</div><div class="un-search-btn_grayH" u-ix="29">Mini</div><div class="un-search-btn_grayH" u-ix="30">Mitsubishi</div><div class="un-search-btn_grayH" u-ix="31">Nissan</div><div class="un-search-btn_grayH" u-ix="32">Porsche</div><div class="un-search-btn_grayH" u-ix="33">Ram</div><div class="un-search-btn_grayH" u-ix="34">Rolls Royce</div><div class="un-search-btn_grayH" u-ix="35">Scion</div><div class="un-search-btn_grayH" u-ix="36">Smart</div><div class="un-search-btn_grayH" u-ix="37">SRT</div><div class="un-search-btn_grayH" u-ix="38">Subaru</div><div class="un-search-btn_grayH" u-ix="39">Toyota</div><div class="un-search-btn_grayH" u-ix="40">Volkswagen</div><div class="un-search-btn_grayH" u-ix="41">Volvo</div></div>
+</div>
+</div>
+<div class="uSearchPaginator uFloatR" id="uSearchPaginator_2">
+<button class="hide-text uPrev disabled" id="un_scroller_up" type="button">prev</button><button class="hide-text uNext" id="un_scroller_down" type="button">next</button>
+</div>
+<div class="clearB"></div>
+</div>
+
+<div class="searchContDiv d_none">
+<div class="searchStepTitle">Search tires by vehicle<span data-i18n="step" class="kk"> - Step </span><span class="searchStepNumb">3<span data-i18n="of_de" class="kk"> of </span>5</span>
+</div>
+<div class="searchLabel">SELECT YOUR VEHICLE MODEL</div>
+<div class="uSearchItems uFloatL">
+<div class="uSearchOuter" id="uSearchOuter_3">
+<div un-select="selVehicleModel" id="selVehicleModel_div"><div class="un-search-btn_grayH selected" u-ix="1">ILX</div><div class="un-search-btn_grayH" u-ix="2">MDX</div><div class="un-search-btn_grayH" u-ix="3">RDX</div><div class="un-search-btn_grayH" u-ix="4">TL</div><div class="un-search-btn_grayH" u-ix="5">TSX</div></div>
+</div>
+</div>
+<div class="uSearchPaginator uFloatR" id="uSearchPaginator_3">
+<button class="hide-text uPrev disabled" id="un_scroller_up" type="button">prev</button><button class="hide-text uNext disabled" id="un_scroller_down" type="button">next</button>
+</div>
+<div class="clearB"></div>
+</div>
+
+<div class="searchContDiv d_none">
+<div class="searchStepTitle">Search tires by vehicle<span data-i18n="step" class="kk"> - Step </span><span class="searchStepNumb">4<span data-i18n="of_de" class="kk"> of </span>5</span>
+</div>
+<div class="searchLabel">SELECT YOUR VEHICLE BODY</div>
+<div class="uSearchItems uFloatL">
+<div class="uSearchOuter" id="uSearchOuter_4">
+<div un-select="selVehicleBody" id="selVehicleBody_div"><div class="un-search-btn_grayH selected" u-ix="1">4 Dr Sedan</div></div>
+</div>
+</div>
+<div class="uSearchPaginator uFloatR" id="uSearchPaginator_4">
+<button class="hide-text uPrev disabled" id="un_scroller_up" type="button">prev</button><button class="hide-text uNext disabled" id="un_scroller_down" type="button">next</button>
+</div>
+<div class="clearB"></div>
+</div>
+
+<div class="searchContDiv d_yes">
+<div class="searchStepTitle">Search tires by vehicle<span data-i18n="step" class="kk"> - Step </span><span class="searchStepNumb">5<span data-i18n="of_de" class="kk"> of </span>5</span>
+</div>
+<div class="searchLabel">SELECT OPTIONS</div>
+<div class="uSearchItems uFloatL">
+<div class="uSearchOuter" id="uSearchOuter_5">
+<div un-select="selVehicleOption" id="selVehicleOption_div"><div class="un-search-btn_grayH " u-ix="1">Base</div><div class="un-search-btn_grayH long" u-ix="2"><div>Base<div> 17" option</div></div></div><div class="un-search-btn_grayH " u-ix="3">Hybrid</div><div class="un-search-btn_grayH long" u-ix="4"><div>Hybrid<div> 17" option</div></div></div></div>
+</div>
+</div>
+<div class="uSearchPaginator uFloatR" id="uSearchPaginator_5">
+<button class="hide-text uPrev disabled" id="un_scroller_up" type="button">prev</button><button class="hide-text uNext disabled" id="un_scroller_down" type="button">next</button>
+</div>
+<div class="clearB"></div>
+</div>
+<div id="searchFoot">
+<div class="big_gray uFloatL" data-i18n="use_of_data" id="uFitmentData">Use of Fitment Data in Tire/Wheel Selector </div>
+<div class="uFloatL uWarrantyFoot" data-i18n="warranty_foot">Thank you 
+for using our Tire and Wheel Selector.&nbsp; Before making a purchase, 
+please consult one of our Automotive Service Representatives to ensure 
+the product you have selected is the best for your driving needs.</div>
+<div style="display: block;" class="big_red uFloatR d_none disabled" data-i18n="continue" id="uSubmitSearch">continue</div>
+<div style="display: none;" class="big_red uFloatR disabled" data-i18n="continue" id="uNextStep">continue</div>
+<div class="clearB"></div>
+</div>
+<div class="clearB"></div>
+</div>
+<div class="d_none">
+<div class="tabContainer" id="selector">
+<div class="tab" id="searchByVehicle">
+<div class="heading">
+<b>Search Tires By Vehicle</b>
+</div>
+<form method="get" id="vehicleSearch" class="clear" novalidate="novalidate" data-toggletext="My saved vehicles" data-nextform="savedVehicleSearch" data-omnituretag="TiresEcom_MySavedVehicle_link" name="tireSearchForm" commandname="VehicleSearchInfo" action="https://m.usablenet.com/mt/http://tires.canadiantire.ca/view/CtTiresSelectionResponseController">
+<div>
+<input value="/view/content/tireslandinginfo" name="currentURL" type="hidden">
+<div class="required">All Fields Required</div>
+<div class="firstCol">
+<label for="selVehicleYear">Year:&nbsp; </label><select id="selVehicleYear" name="selVehicleYear"> <option value="" disabled="disabled">Please Select..</option> <option selected="selected" value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option></select> 
+</div>
+<div class="additional">
+<label for="selVehicleMake" id="lblVehicleMake">Make:&nbsp; </label><select id="selVehicleMake" name="selVehicleMake" data-defaulttext="Select Your Vehicle Make:"> <option value="" disabled="disabled">Select Your Vehicle Make:</option> <option selected="selected" value="Acura">Acura</option><option value="Aston Martin">Aston Martin</option><option value="Audi">Audi</option><option value="Bentley">Bentley</option><option value="BMW">BMW</option><option value="Buick">Buick</option><option value="Cadillac">Cadillac</option><option value="Chevrolet">Chevrolet</option><option value="Chrysler">Chrysler</option><option value="Dodge">Dodge</option><option value="Ferrari">Ferrari</option><option value="Fiat">Fiat</option><option value="Ford">Ford</option><option value="GMC">GMC</option><option value="Honda">Honda</option><option value="Hyundai">Hyundai</option><option value="Infiniti">Infiniti</option><option value="Jaguar">Jaguar</option><option value="Jeep">Jeep</option><option value="Kia">Kia</option><option value="Lamborghini">Lamborghini</option><option value="Land Rover">Land Rover</option><option value="Lexus">Lexus</option><option value="Lincoln">Lincoln</option><option value="Lotus">Lotus</option><option value="Maserati">Maserati</option><option value="Mazda">Mazda</option><option value="Mercedes-Benz">Mercedes-Benz</option><option value="Mini">Mini</option><option value="Mitsubishi">Mitsubishi</option><option value="Nissan">Nissan</option><option value="Porsche">Porsche</option><option value="Ram">Ram</option><option value="Rolls Royce">Rolls Royce</option><option value="Scion">Scion</option><option value="Smart">Smart</option><option value="SRT">SRT</option><option value="Subaru">Subaru</option><option value="Toyota">Toyota</option><option value="Volkswagen">Volkswagen</option><option value="Volvo">Volvo</option></select> 
+</div>
+<div class="additional">
+<label for="selVehicleModel" id="lblVehicleModel">Model:&nbsp; </label><select id="selVehicleModel" name="selVehicleModel" data-defaulttext="Select Your Vehicle Model"> <option value="" disabled="disabled">Select Your Vehicle Model</option> <option selected="selected" value="ILX">ILX</option><option value="MDX">MDX</option><option value="RDX">RDX</option><option value="TL">TL</option><option value="TSX">TSX</option></select> 
+</div>
+<div class="additional">
+<label for="selVehicleBody" id="lblVehicleBody">Body:&nbsp; </label><select id="selVehicleBody" name="selVehicleBody" data-defaulttext="Select Your Vehicle Body"> <option value="" disabled="disabled">Select Your Vehicle Body</option> <option selected="selected" value="4 Dr Sedan">4 Dr Sedan</option></select> 
+</div>
+<div class="additional last">
+<label for="selVehicleOption" id="lblVehicleOption">Options:&nbsp; </label><select id="selVehicleOption" name="selVehicleOption" data-defaulttext="Select Options"> <option value="" selected="selected" disabled="disabled">Select Options</option> <option value="Base">Base</option><option value="Base 17&quot; option">Base 17" option</option><option value="Hybrid">Hybrid</option><option value="Hybrid 17&quot; option">Hybrid 17" option</option></select> 
+</div>
+<input value="true" name="searchBySize" type="hidden">
+<div class="buttons" data-closelinktext="Close">
+<input id="vehicleSearch_submit" class="un_ltt_button" type="submit"> <a class="selectorHelp" href="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/customer-service/faq/">Help</a> &nbsp; <a class="disclaimerText" href="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/info-centre/fitment-data/">Use of Fitment Data in Tire/Wheel Selector</a> 
+</div>
+<input name="un_form_encoding" value="utf-8" type="hidden">
+</div>
+</form>
+<form method="get" id="byVehicleMyVehicle" novalidate="novalidate" class="active clear" data-toggletext="Change Vehicle" data-nextform="savedVehicleSearch" data-omnituretag="TiresEcom_MySavedVehicle_link" action="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/tires/search/">
+<div>
+<input id="savedVehicle" name="savedVehicle" value="2003_Ford_Focus_4 Dr Wagon_ZTW 16&quot; option" type="hidden"><input id="radSize" name="radSize" value="205/50R16" type="hidden"><input name="showSavedVehicle" value="true" type="hidden">
+<div>
+<b>My Vehicle: 2003 Ford Focus 4 Dr Wagon ZTW 16" option: 205/50R16</b>
+</div>
+<div class="buttons">
+<button id="submitButton" type="submit"><span class="buttonAlternate">Find Tires</span> </button> 
+</div>
+<input id="savedVehicleValue" value="2003_Ford_Focus_4 Dr Wagon_ZTW 16&quot; option_205/50R16#REGULAR#Both" name="savedVehicleValue" type="hidden"><input name="un_form_encoding" value="utf-8" type="hidden">
+</div>
+</form>
+<form method="get" id="savedVehicleSearch" novalidate="novalidate" class="clear" data-toggletext="Change Vehicle" data-nextform="vehicleSearch" action="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/tires/search/">
+<div>
+<div>
+<input name="showSavedVehicle" value="true" type="hidden"><label for="selSavedVehicles">Saved Vehicles:&nbsp; </label><select id="selSavedVehicles" name="savedVehicleValue" class="additional last"> <option selected="selected" value="">Please select a vehicle</option> <option value="2003_Ford_Focus_4 Dr Wagon_ZTW 16&quot; option_205/50R16#REGULAR#Both">2003 Ford Focus 4 Dr Wagon ZTW 16" option: 205/50R16</option> <option value="2013_Buick_Regal_4 Dr Sedan_GS 20&quot; option_8.5x20#REGULAR#Both">2013 Buick Regal 4 Dr Sedan GS 20" option: 8.5x20</option> <option value="2013_Hyundai_Sonata_4 Dr Sedan_SE_225/45R18#REGULAR#Both">2013 Hyundai Sonata 4 Dr Sedan SE: 225/45R18</option> </select> <button id="submitButtonSave" type="submit"> <span class="buttonDisabled">Find Tires</span> </button> 
+</div>
+<input name="un_form_encoding" value="utf-8" type="hidden">
+</div>
+</form>
+</div>
+<div class="tab" id="searchByType">
+<div class="heading">
+<b>Search Tires by Size</b>
+</div>
+<form method="post" id="bySizeSearch" novalidate="novalidate" class="active clear" action="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/tires/search/">
+<div>
+<div class="required">*Required Fields</div>
+<input name="sizeSelection" value="true" type="hidden">
+<div class="firstCol clear">
+<div>
+<label for="selSectionWidth" id="lblSectionWidth">Section Width*:&nbsp; </label><select id="selSectionWidth" name="selSectionWidth" data-apiparam="sw"> <option value="" selected="selected" disabled="disabled">Select</option> <option value="145">145</option><option value="155">155</option><option value="165">165</option><option value="175">175</option><option value="185">185</option><option value="195">195</option><option value="205">205</option><option value="215">215</option><option value="225">225</option><option value="235">235</option><option value="245">245</option><option value="255">255</option><option value="265">265</option><option value="275">275</option><option value="285">285</option><option value="295">295</option><option value="305">305</option><option value="315">315</option><option value="325">325</option><option value="335">335</option><option value="345">345</option><option value="355">355</option><option value="LT195">LT195</option><option value="LT215">LT215</option><option value="LT225">LT225</option><option value="LT235">LT235</option><option value="LT245">LT245</option><option value="LT255">LT255</option><option value="LT265">LT265</option><option value="LT275">LT275</option><option value="LT285">LT285</option><option value="LT295">LT295</option><option value="LT305">LT305</option><option value="LT315">LT315</option><option value="LT325">LT325</option><option value="LT335">LT335</option><option value="LT345">LT345</option><option value="LT365">LT365</option><option value="27X">27X</option><option value="30X">30X</option><option value="31X">31X</option><option value="32X">32X</option><option value="33X">33X</option><option value="35X">35X</option><option value="36X">36X</option><option value="37X">37X</option><option value="38X">38X</option><option value="40X">40X</option><option value="42X">42X</option></select> 
+</div>
+<div class="additional">
+<label for="selAspectRatio" id="lblAspectRatio">Aspect Ratio*:&nbsp; </label><select id="selAspectRatio" name="selAspectRatio" data-apiparam="ar"> <option value="" selected="selected" disabled="disabled">Select</option> <option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50</option><option value="55">55</option><option value="60">60</option><option value="65">65</option><option value="70">70</option><option value="75">75</option><option value="80">80</option><option value="85">85</option><option value="8.50">8.50</option><option value="9.50">9.50</option><option value="10.50">10.50</option><option value="11.50">11.50</option><option value="12.50">12.50</option><option value="13.50">13.50</option><option value="14.50">14.50</option></select> 
+</div>
+<div class="additional" id="selDiameterWrap">
+<label for="selDiameter" id="lblDiameter">Diameter*:&nbsp; </label><select id="selDiameter" name="selDiameter" data-apiparam="rd"> <option value="" selected="selected" disabled="disabled">Select</option> <option value="12">12"</option><option value="13">13"</option><option value="14">14"</option><option value="15">15"</option><option value="16">16"</option><option value="17">17"</option><option value="18">18"</option><option value="19">19"</option><option value="20">20"</option><option value="21">21"</option><option value="22">22"</option><option value="23">23"</option><option value="24">24"</option><option value="26">26"</option><option value="28">28"</option><option value="30">30"</option></select> 
+</div>
+<div class="additional">
+<label for="selLoadRating" id="lblLoadRating">Load Index:&nbsp; </label><select id="selLoadRating" name="selLoadRating"> <option value="" selected="selected" disabled="disabled">Select</option> <option value="">Don't Know</option> <option value="63">63</option> <option value="64">64</option> <option value="65">65</option> <option value="66">66</option> <option value="67">67</option> <option value="68">68</option> <option value="69">69</option> <option value="70">70</option> <option value="71">71</option> <option value="72">72</option> <option value="73">73</option> <option value="74">74</option> <option value="75">75</option> <option value="76">76</option> <option value="77">77</option> <option value="78">78</option> <option value="79">79</option> <option value="80">80</option> <option value="81">81</option> <option value="82">82</option> <option value="83">83</option> <option value="84">84</option> <option value="85">85</option> <option value="86">86</option> <option value="87">87</option> <option value="88">88</option> <option value="89">89</option> <option value="90">90</option> <option value="91">91</option> <option value="92">92</option> <option value="93">93</option> <option value="94">94</option> <option value="95">95</option> <option value="96">96</option> <option value="97">97</option> <option value="98">98</option> <option value="99">99</option> <option value="100">100</option> <option value="101">101</option> <option value="102">102</option> <option value="103">103</option> <option value="104">104</option> <option value="105">105</option> <option value="106">106</option> <option value="107">107</option> <option value="108">108</option> <option value="109">109</option> <option value="110">110</option> <option value="111">111</option> <option value="112">112</option> <option value="113">113</option> <option value="114">114</option> <option value="115">115</option> <option value="116">116</option> <option value="117">117</option> <option value="118">118</option> <option value="119">119</option> <option value="120">120</option> <option value="121">121</option> <option value="122">122</option> <option value="123">123</option> <option value="124">124</option> <option value="125">125</option> <option value="126">126</option> <option value="127">127</option> <option value="128">128</option> <option value="129">129</option> <option value="130">130</option> <option value="" disabled="disabled"></option> <option value="LT" disabled="disabled">LT</option> <option value="B">B</option> <option value="C">C</option> <option value="D">D</option> <option value="E">E</option> <option value="F">F</option> </select> 
+</div>
+<div class="additional last">
+<label for="selSpeedRating" id="lblSpeedRating">Speed Rating:&nbsp; </label><select id="selSpeedRating" name="selSpeedRating"> <option value="" selected="selected" disabled="disabled">Select</option> <option value="">Don't Know </option> <option value="M">M</option> <option value="N">N</option> <option value="P">P</option> <option value="Q">Q</option> <option value="R">R</option> <option value="S">S</option> <option value="T">T</option> <option value="U">U</option> <option value="H">H</option> <option value="V">V</option> <option value="Z">Z</option> <option value="W">W</option> <option value="Y">Y</option> </select> 
+</div>
+</div>
+<div class="disclaimer">
+<div>
+<b>Disclaimer:</b>
+</div>
+<input checked="checked" id="chkDisclaimer" name="chkDisclaimer" class="un_ltt_radio_checkbox" value="on" type="checkbox">&nbsp;<label for="chkDisclaimer" id="lblDisclaimer">I have read and understand the Disclaimer Information <a class="tooltipWrap" href="#"><span role="tooltip" class="tooltip">Please
+ note you have not entered a speed rating and/or load index for your 
+tire search. Continuing your search without listing the factory required
+ speed rating and load index could result in unsafe operation or poor 
+handling characteristics for your vehicle. Canadian Tire shall not be 
+liable in any way for the recommendations provided through this tool or 
+your reliance on such recommendations.</span></a>&nbsp; </label> 
+</div>
+<div class="buttons" data-closelinktext="Close">
+<button id="submitButtonsize" type="submit"><span class="buttonDisabled">Find Tires</span> </button> <a class="selectorHelp" href="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/customer-service/faq/">Help</a> &nbsp; <a class="disclaimerText" href="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/info-centre/fitment-data/">Use of Fitment Data in Tire/Wheel Selector</a> 
+</div>
+<input name="un_form_encoding" value="utf-8" type="hidden"><input name="un_form_post_list" value=":sizeSelection :selSectionWidth :selAspectRatio :selDiameter :selLoadRating :selSpeedRating :chkDisclaimer" type="hidden">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<img class="hide" onload="initSearch('selVehicleYear');" src="index_files/spacer.gif">
+<xhr-page xhr-version="0.1" xhr-id="search"></xhr-page>
+</div><div id="un_jtt_powered"></div>
+</div>
+
+			<div id="containerKB" style="visibility:hidden">
+				<div id="kb_top_shadow"></div>
+				<div id="un_keyboard"></div>
+				<div class="un_clear"></div>
+			</div>
+
+			<div id="appFooter">
+				<div class="big_gray" id="home" data-i18n="home">home</div>
+				<div class="big_light_gray">
+					
+				</div>
+				<div class="big_gray" id="help_b" data-i18n="help">help</div>
+			</div>
+			<div class="opacity_bg" style="display: none;"></div>
+			<div id="uHelp" style="display: none;"></div>
+			<div id="appOffline">
+				<h1 data-i18n="appOffline">THE APPLICATION IS OFFLINE</h1>
+			</div>
+		<div style="display: none; height: 1023px; width: 100%; top: 0px; left: 0px; background: url(&quot;images/loading.gif&quot;) no-repeat scroll 50% 50% rgb(254, 254, 254); opacity: 1; z-index: 1001; position: absolute;" id="xhrLoadingOverlay"></div></div>
+
+		<div id="printReceiptContainer">
+			<div id="logo">
+				<img src="index_files/ct_logo.png" alt="Canadian Tire">
+				<div data-i18n="please_bring">Please bring this slip to the<br> Automotive Counter</div>
+			</div>
+			<div id="p_store" class="tab">
+				<h4 data-i18n="your_store">Your Store</h4>
+				<div class="dot">
+					<span data-i18n="Store">Store</span> #<br>
+					<span id="store_id"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Address">Address</span><br>
+					<span id="store_address"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Phone">Phone</span> #<br>
+					<span id="store_phone"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Data_Time">Date/Time</span><br>
+					<span id="store_date"></span>
+				</div>
+			</div>
+			<div id="p_vehicle" class="tab">
+				<h4 data-i18n="Your_Vehicle">Your Vehicle</h4>
+				<div class="dot">
+					<span data-i18n="Year">Year</span><br>
+					<span id="p_vehicle_year"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Vehicle_Make">Vehicle Make</span><br>
+					<span id="p_vehicle_make"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Vehicle_Model">Vehicle Model</span><br>
+					<span id="p_vehicle_model"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Vehicle_Submodel">Vehicle Submodel</span><br>
+					<span id="p_vehicle_submodel"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Vehicle_Option">Vehicle Option</span><br>
+					<span id="p_vehicle_option"></span>
+				</div>
+			</div>
+			<div id="p_tire" class="tab">
+				<h4 data-i18n="Your_Tire">Your Selected Tire/Wheel</h4>
+				<div class="dot">
+					<span data-i18n="Product_Name">Product Name</span><br>
+					<span id="p_tire_name"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Product_#">Product #</span><br>
+					<span id="p_tire_sku"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Tire_Size">Tire Size</span><br>
+					<span id="p_tire_size"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Vendor_#">Vendor #</span><br>
+					<span id="p_tire_vendor"></span>
+				</div>
+				<div class="dot">
+					<span data-i18n="Price">Price</span><br>
+					<span id="p_tire_price"></span>
+				</div>
+			</div>
+			<div id="p_disclaimer" class="tab">
+				<h4 data-i18n="Disclaimer">Disclaimer</h4>
+				<b data-i18n="InStore_Device">In-Store Tire Selector Device</b>
+				<div data-i18n="p_disclaimer">When selecting automotive parts for 
+your vehicle, make sure that you have addressed all sizing and other 
+requirements for such parts, including making sure that wheels and tires
+ meet or exceed the load and speed rating of your vehicle's Original 
+Equipment tires. Please take the time to review your vehicle's specific 
+information (such as the vehicle's placard for the Original Equipment 
+tire and rim size) as well as the tires and wheels that are currently 
+installed on your vehicle. We strongly encourage you to consult one of 
+our trained automotive professionals for assistance in selecting the 
+appropriate parts for your vehicle prior to making any purchase 
+decision.<br> This tool should not be your sole basis for any purchase 
+decision and is available for users as a guide only. The information 
+conveyed herein is not guaranteed to be error free and has not been 
+endorsed by vehicle manufacturers. The decision on what parts to 
+purchase lies solely with the user and may result in insurance 
+implications. Canadian Tire Corporation, Limited, its affiliates, 
+Canadian Tire Associate Dealers and any of the aforementioned entities' 
+directors, employees, agents and contractors, shall not be liable for 
+the use of this tool which use shall constitute as your acceptance of 
+this disclaimer.</div>
+			</div>
+		</div>
+		<div id="welcome" style="display: none;">
+			<div id="ct_title"><img src="index_files/logo.png" alt="CANADIAN TIRE"></div>
+			<div id="def_lang">
+				<div id="big_tire"></div>
+				<div class="message">
+					<div class="red_title" data-i18n="start_txt">Find the right tires<br> and wheels for<br> your vehicle.</div>
+					<div class="red_arr grey_txt" data-i18n="touch_screen">Touch screen to start</div>
+				</div>
+			</div>
+			<div class="big_red" onclick="switchLang(this)" id="uStartLang" data-i18n="touch_here">Touchez ici pour la version française</div>
+		</div>
+		<div id="uSearchDisclaimer">
+			<div data-i18n="pop_disclaimer" class="pop_disclaimer">Please note 
+you have not entered a speed rating and/or load index for your tire 
+search. Continuing your search without listing the factory required 
+speed rating and load index could result in unsafe operation or poor 
+handling characteristics for your vehicle.<br><br> Canadian Tire shall 
+not be liable in any way for the recommendations provided through this 
+tool or your reliance on such recommendations.</div>
+			<div id="uDismissSearch" class="uBtnMidGray uFloatL" data-i18n="Cancel">Cancel</div>
+			<div id="uSubmitOptionSearch" class="big_red uFloatR" data-i18n="Accept">Accept</div>
+		</div>
+		<div id="uPopUp">
+			<div class="uPopContent"></div>
+			<div id="uDismissPopup" class="uBtnMidGray uFloatL uTxtUppercase" data-i18n="close">close</div>
+		</div>
+		<div id="uthere" style="display: none;">
+			<div class="red_title" data-i18n="continue_shopping">Continue Shopping</div>
+			<div class="big_red" onclick="unResetSession(tM, cLs, true)" data-i18n="continue">continue</div>
+			<div class="big_gray quit" onclick="unClearSession(tM, cLs)" data-i18n="quit">quit</div>
+
+			<div class="clearB"></div>
+		</div>
+		<div class="d_none"><img src="index_files/title_selector_fr.png" alt=""></div>
+
+		<script type="text/javascript" src="index_files/jquery-1.js"></script>
+		<script type="text/javascript" src="index_files/jquery.js"></script>
+		<script type="text/javascript" src="index_files/jquery_002.js"></script>
+		<script type="text/javascript" src="index_files/jquery-transit.js"></script>
+		<script type="text/javascript" src="index_files/xhr-da-1.js"></script>
+		<script type="text/javascript" src="index_files/jquery_003.js"></script>
+		<script type="text/javascript" src="index_files/vPaginator.js"></script>
+		<script type="text/javascript" src="index_files/vScroll.js"></script>
+		<script type="text/javascript" src="index_files/tmpl.js"></script>
+		<script type="text/javascript" src="index_files/CTKi_18n.js"></script>
+		<script type="text/javascript" src="index_files/CTKioskCore.js"></script>
+		<script type="text/javascript" src="index_files/ctw_base.js"></script>
+		<script type="text/javascript" src="index_files/plp.js"></script>
+		<script type="text/javascript" src="index_files/vkb_layout.js"></script>
+		<script type="text/javascript" src="index_files/vKeyboard.js"></script><!-- must be after vkb_layout.js -->
+		<script type="text/javascript" src="index_files/fieldsController.js"></script>
+		<!--<script type="text/javascript" src="js/scripts.build.1702121939.min.js"></script>-->
+		
+		<script type="text/javascript">
+			initOfflineCache(); // Check if a new cache manifest is available
+			var tM, cLs, uSType, omniSType, uOmniSTypePLP, help_src = 'home', isVar48 = false;
+			if(uDB.get('environment') == 'prod' ){
+				$(document).bind('xhrloaded click kbclick', function(){
+					unResetSession(tM, cLs);
+				});
+			}
+			//unLog(u_i18n.touch_here[ctk.app.lang]);
+
+			$(document).ready( function () { 
+				render_i18n_keys();
+				unLog('Kiosk App Version ' + ctk.app.version);
+				unLog('Kiosk url: ' + document.location);
+				setEnvironment();
+				
+				if (ctk.id === null | ctk.store === null) {
+					 /*var prompedDeviceID = prompt("Please enter the Device ID (00003)"),
+					 	 prompedStoreID; 
+					if ( prompedDeviceID !== null ) {  
+						setDeviceID(prompedDeviceID); 
+						prompedStoreID = prompt("Please enter the Store ID (150)");  
+						if ( prompedStoreID !== null )
+							getAndSaveStoreDetails(prompedStoreID);
+						openConfigPage();
+					} */
+					openConfigPage();
+				}
+				else { // check if store details are set
+					$('#webappContent').removeClass('d_none');
+					initHome();	
+					unLog('Device ID: ' + ctk.id);
+					if(document.location.href.indexOf('stagetires.canadiantire.ca') != -1){
+						ctk.siteDomain = 'stagetires.canadiantire.ca';
+					}
+						
+					xhrDA.init({'platform':'xhr-kiosk', 'company':'Canadian Tire'});
+					xhrDA.loadPageAnimation.init({'background':'#FEFEFE url("images/loading.gif") no-repeat 50% 50%'});
+					ctk.homepageUrl = ctk.siteDomain;
+					//xhrDA.loadPage('/mt/' + ctk.homepageUrl);
+
+					if ( ctk.store !== null && ctk.store.id !== null ) { 
+						unLog('Store ID: ' + ctk.store.id);
+					} 
+					else {
+						refreshStoreDetails();
+					}
+				}
+				$('#help_b').click(uOpenHelp);
+				$('#uHelp').click(function(){
+					$(this).hide();
+				});
+				$('#home').click(function(){
+					unClearSession(tM, cLs);
+					KOlinkCode(this, 'Kiosk_Footer_Home');
+				});
+
+				$.ajax({
+    			  url: '/mt/http://tires.canadiantire.ca/en/?un_jtt_v_only_ip=yes',
+				  success: function(data) {
+				    ctk.app.IP = data.split('{@}')[1];
+				  }
+				});
+
+				//xhrDA.loadPage('/mt/http://tires.canadiantire.ca/en/tires/all-season-touring-tires/product/0041949P/motomaster-touring-aw-h/0072214/')
+
+				var l = $('#un_log_window');
+				if (false)
+					document.onselectstart = function () { return false; }; // do not let customers to select text, IE specific
+				
+				$(document).keydown(function(event) {
+					
+					if (event.keyCode == 27) { // ESC key, call attract loop if user leaves the kiosk
+						unClearSession(tM, cLs);
+					}
+					if (event.keyCode == 76) {
+						l.toggle();
+						unLog('Keycode: ' + event.keyCode + ';');
+					}
+				});	
+				l.hide();
+			});
+		</script>
+
+		<div name="CampaignTag" style="position:absolute; left:10px; top:10px; visibility: hidden">
+		<!-- SiteCatalyst code version: H.23.2. Copyright 1996-2010 Adobe, Inc. All Rights Reserved More info available at http://www.omniture.com -->
+		<script language="JavaScript" type="text/javascript" src="index_files/s_code_prd.js"></script>
+		<script language="JavaScript" type="text/javascript">s.server=window.location.hostname;</script>
+		<div id="uOpenConfig">
+			<div data-cx="0" id="uOpen0"></div>
+			<div data-cx="1" id="uOpen1"></div>
+			<div data-cx="2" id="uOpen2"></div>
+			<div data-cx="3" id="uOpen3"></div>
+		</div>
+
+	
+</div></body></html>
