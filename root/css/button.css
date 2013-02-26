@@ -1,0 +1,29 @@
+a {
+  text-decoration: none;
+}
+
+a.back, a.back div {
+  
+}
+
+a.home, a.home div {
+  color: white;
+  display: inline;
+  vertical-align: top;
+}
+
+a.home:hover {
+
+}
+
+a.home:visited {
+
+}
+
+a.ct-logo, a.ct-logo div {
+  
+}
+
+a.help, a.help div {
+  
+}
