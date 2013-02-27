@@ -1,8 +1,73 @@
-/*
-red: B6000A;
-dark red: A1020E;
-*/
+// Variables
+@red: #B6000A;
+@dark-red: #A1020E;
 
+@dark-gray: #5f5f5f;
+
+@header-height: 70px;
+@footer-height: 99px;
+
+// Mixins
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.gradient (@c1: #f3f3f3, @c2: #d7d7d7) {
+	-moz-linear-gradient(@c1, @c2);
+}
+
+// Newly added CSS
+html {
+  margin: 0px;
+  padding: 0px;
+}
+
+div.header {
+   position:fixed;
+   left:0px;
+   top:0px;
+   height: @header-height;
+   width:100%;
+   background:#999;
+}
+
+div.footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height: @footer-height;
+   width:100%;
+   background:#999;
+}
+
+div.header-button {
+	height: @header-height;
+		color: #fff;
+		font-weight: medium;
+		font-size: 1.7em;
+		text-align:center;
+		vertical-align: middle;
+		background-color: @dark-gray;
+		border-radius: 2px; 
+		box-shadow: inset 0px 1px 0px #fff;
+		border: 1px solid #050505; 
+		cursor: pointer;
+		text-shadow: #000 -1px -1px 0;
+		user-select: none;
+		text-transform: uppercase;
+
+	.gradient(#797979, #343434); 
+}
+
+#header-back.header-button {
+	width: 240px;
+}
+
+// CSS from Canadian Tire website
 html[environment=prod] * { 
 	/* if production */
 	cursor: none; /* hide pointer cursor */
@@ -131,22 +196,13 @@ body[lang="fr"] #wheel_sel {background: url('../images/select_wheel_fr.png') no-
 .start_by {color:#5c5c5c;font-size:1.2em;}
 .start_tw {color:#de301b;font-weight:bold;font-size:2.50em;background: url('../images/red_arrow.png') no-repeat right;background-size: 35px 35px;text-align:right;padding-right:40px;}
 
-
-#appFooter {
-	position: absolute;
-	top: 898px; 
-	margin: 0 25px 0 25px;
-	width: 96%;
-	min-width: 1024px;
-}
 	.big_light_gray {
 		background: url('../images/logo.png') left no-repeat #d7d7d7;
 	    background: url('../images/logo.png'), -moz-linear-gradient(#f3f3f3, #d7d7d7);  
     	background-repeat: no-repeat, no-repeat;  
       	background-position: 50% 50%, right;  
-		float: left; 
-		width: 740px;
-		height: 99px;
+		width: 100%;
+		height: @footer-height;
 		padding: 13px 20px;
 		border-radius: 3px;
 		border: 2px solid #d0d0d0;
@@ -154,9 +210,10 @@ body[lang="fr"] #wheel_sel {background: url('../images/select_wheel_fr.png') no-
 		box-shadow: inset 0px -1px 1px #e8e8e8;
 		text-transform: uppercase;
 		margin: 0 5px 0 20px;
+    display: inline;
 	}
 	.big_gray {
-		width: 220px; height: 99px;
+		width: 220px; height: @footer-height;
 		color: #fff; font-weight: medium;
 		font-size: 1.7em;
 		text-align:center;
@@ -175,7 +232,7 @@ body[lang="fr"] #wheel_sel {background: url('../images/select_wheel_fr.png') no-
 		text-transform: uppercase;
 	}
 	.big_red {
-		width: auto; height: 99px;
+		width: auto; height: @footer-height;
 		color: #fbfbf9; font-weight: medium;
 		font-size: 2.3em;
 		text-shadow: 1px 1px 0px #000;
@@ -250,21 +307,33 @@ body[lang="fr"] #wheel_sel {background: url('../images/select_wheel_fr.png') no-
 	}
 
 #home.big_gray {
-	background: url('../images/home.png'), -moz-linear-gradient(#797979, #343434);
+	background: url('../img/home.png');
 	background-repeat: no-repeat, no-repeat;  
 	background-position:40px 46%, right;  
 	float: left;
 	margin-left: 0px;
+	.gradient(#797979, #343434);
 }
+#ct-logo.big_gray {
+	background: url('../img/ct_logo.png');
+	background-repeat: no-repeat, no-repeat;  
+	background-position:40px 46%, right;
+	float: left;
+	margin-left: 0px;
+	.gradient(#797979, #343434);
+}
+
 body[lang="fr"] #home.big_gray{
 	text-indent: 50px;
 }
 #help_b.big_gray {
-	background: url('../images/question.png'), -moz-linear-gradient(#797979, #343434);
+	background: url('../img/question.png');
 	background-repeat: no-repeat, no-repeat;  
 	background-position:40px 46%, right;  
 	float: right;
+  display: inline;
 	margin-left:0px;
+	.gradient(#797979, #343434);
 }
 #help_b.disabled { 
 	opacity: 0.3;

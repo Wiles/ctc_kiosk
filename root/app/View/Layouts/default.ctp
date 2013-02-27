@@ -27,9 +27,7 @@
     <?php
       echo $this->Html->meta('icon');
 
-      echo $this->Html->css('main.css');
-      echo $this->Html->css('button.css');
-      echo $this->Html->css('ct.css');
+      echo $this->Less->link('ct.less');
       echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
       echo $this->Html->script('main.js');
 
@@ -43,7 +41,7 @@
     <noscript><h1 style="margin:50px">Please enable Javascript</h1></noscript>
   
     <div class="header">
-      <a class="back"     href="#"><div>Back</div></a>
+	<div id="header-back" class="header-button">Back</div>
     </div>
     
     <div class="content">
@@ -52,9 +50,9 @@
     </div>
     
     <div class="footer">
-      <a class="home"     href="#"><?php echo $this->Html->image('home.png', array('alt' => 'Home')) ?><div>Home</div></a>
-      <a class="ct-logo"  href="#"><div></div></a>
-      <a class="help"     href="#"><div>Help</div></a>
+      <div id="home" class="big_gray">Home</div>
+      <div id="ct-logo" class="big_gray"></div>
+      <div id="help_b" class="big_gray">Help</div>
     </div>
   </body>
 
