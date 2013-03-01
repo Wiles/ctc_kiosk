@@ -1,5 +1,10 @@
 <?php
-  $this->set('title_for_layout', 'Canadian Tire - ');
+  $this->set('title_for_layout', 'Canadian Tire');
   
-  $this->element('main');
+  echo $this->element('start');
+  echo $this->element('find-year');
+  echo $this->element('find-make');
+  echo $this->element('find-model');
+  echo $this->element('find-body');
+  echo $this->element('options');
 ?>
