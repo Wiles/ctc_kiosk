@@ -1,4 +1,10 @@
+// ------------
+// Canadian Tire
+// ------------
+
+// ------------
 // Variables
+// ------------
 @red: #B6000A;
 @dark-red: #A1020E;
 
@@ -7,20 +13,32 @@
 @header-height: 70px;
 @footer-height: 99px;
 
+// ------------
 // Mixins
+// ------------
 .rounded-corners (@radius: 5px) {
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-  -ms-border-radius: @radius;
-  -o-border-radius: @radius;
-  border-radius: @radius;
+  -webkit-border-radius:  @radius;
+  -moz-border-radius:     @radius;
+  -ms-border-radius:      @radius;
+  -o-border-radius:       @radius;
+  border-radius:          @radius;
 }
 
-.gradient (@c1: #f3f3f3, @c2: #d7d7d7) {
-  -moz-linear-gradient(@c1, @c2);
+.gradient (@c1: #f3f3f3, @c2: #d7d7d7, @img: "") {
+  background-color: @c1; /* fallback color if gradients are not supported */
+
+  background-image: url("@{img}"); 
+  background-image: url("@{img}"), -webkit-gradient(linear, left top, left bottom, from(@c1), to(@c2)); 
+  background-image: url("@{img}"), -webkit-linear-gradient(top,   @c1, @c2); 
+  background-image: url("@{img}"), -moz-linear-gradient(top,      @c1, @c2); 
+  background-image: url("@{img}"), -ms-linear-gradient(top,       @c1, @c2); 
+  background-image: url("@{img}"), -o-linear-gradient(top,        @c1, @c2); 
+  background-image: url("@{img}"), linear-gradient(to bottom,     @c1, @c2); /* current standard, but unimplemented and subject to change */
 }
 
+// ------------
 // Newly added CSS
+// ------------
 html {
   margin: 0px;
   padding: 0px;
@@ -45,6 +63,8 @@ div.footer {
 }
 
 div.header-button {
+  .gradient(#797979, #343434);
+  
   height: @header-height;
   color: #fff;
   font-weight: medium;
@@ -59,8 +79,6 @@ div.header-button {
   text-shadow: #000 -1px -1px 0;
   user-select: none;
   text-transform: uppercase;
-
-  .gradient(#797979, #343434); 
 }
 
 #content {
@@ -76,15 +94,19 @@ div.content-page {
   display: none;
 }
 
+// ------------
 // CSS from Canadian Tire website
+// ------------
 html[environment=prod] * { 
   /* if production */
   cursor: none; /* hide pointer cursor */
 }
+
 html[environment=prod] *:not([type="text"]) { 
   -moz-user-select: -moz-none ;
   user-select: -moz-none ;
 }
+
 html[environment=prod] input[type="text"] { 
   -moz-user-select: text !important;
   user-select: text !important;
@@ -94,9 +116,11 @@ html[environment=dev] {
   /* if development */
   overflow:auto; 
 }
+
 body[environment=prod] { /* CTK-101 */
   overflow: hidden;
 }
+
 body { 
   background: #FFF;
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -104,7 +128,11 @@ body {
   max-width: 1280px;
   height: 1013px;
 }
-* {-moz-box-sizing: border-box; box-sizing: border-box;}
+
+* {
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
 
 .hide-text {
     text-indent: 110%;
@@ -324,38 +352,41 @@ body[lang="fr"] #wheel_sel {background: url('../images/select_wheel_fr.png') no-
 }
 
 #home.big_gray {
-  background: url('../img/home.png');
+  .gradient(#797979, #343434, "../img/home.png");
+  
   background-repeat: no-repeat, no-repeat;  
-  background-position:40px 46%, right;  
+  background-position: 40px 46%, right;  
   float: left;
   margin-left: 0px;
-  .gradient(#797979, #343434);
 }
 
 #ct-logo.big_gray {
-  background: url('../img/ct_logo.png');
+  .gradient(#797979, #343434, "../img/ct_logo.png");
+  
   background-repeat: no-repeat, no-repeat;  
   background-position:40px 46%, right;
   float: left;
   margin-left: 0px;
-  .gradient(#797979, #343434);
 }
 
 body[lang="fr"] #home.big_gray{
   text-indent: 50px;
 }
+
 #help_b.big_gray {
-  background: url('../img/question.png');
+  .gradient(#797979, #343434, "../img/question.png");
+  
   background-repeat: no-repeat, no-repeat;  
   background-position:40px 46%, right;  
   float: right;
   display: inline;
   margin-left:0px;
-  .gradient(#797979, #343434);
 }
+
 #help_b.disabled { 
   opacity: 0.3;
 }
+
 #search_by {
   padding: 25px;
   margin-top:500px;

@@ -1,4 +1,8 @@
 var ct = new function() {
+  this.pages = new function() {
+    
+  };
+
   this.changePage = function(page) {
     $('div.content-page').hide();
     $('#' + page).show();
@@ -15,7 +19,6 @@ var ct = new function() {
       $('#header').hide();
     }
   }.bind(this);
-  
 };
 
 $(function() {
