@@ -136,11 +136,11 @@ function initHome() {
 		};
 		setTimeout(anim2,300);
 	});
-	$('.uTopNavBarBackSvg').live('click', function(){
+	$('.uTopNavBarBackSvg').on('click', function(){
 		xhrDA.back();
 		KOback(this);
 	});
-	$('#uFitmentData').live('click', function(){
+	$('#uFitmentData').on('click', function(){
 		uOpenModal("/mt/https://"+ctk.siteDomain+"/"+ctk.app.lang+"/info-centre/fitment-data/");
 	});
 	KOsetProp1();
@@ -158,7 +158,7 @@ function initPdp(){
 	}
 	$('.selected_veh').html(ctk[uOmniSTypePLP].summary);
 	$('#uStyleSize .uSizePdpValue').eq($('#selStyleSize option:selected').index()).addClass('selected');
-	$('#pdpPrint').live('click', function(){
+	$('#pdpPrint').on('click', function(){
 		if(!$(this).hasClass('disabled')){
 			$('#pdpPrint').addClass('disabled');
 			printPdp(true);
@@ -175,14 +175,14 @@ function initPdp(){
        help_src = 'email';
        $('#help_b').removeClass('disabled');
     });
-	$('.uTopNavBarBackSvg_toPdp').live('click', function(){
+	$('.uTopNavBarBackSvg_toPdp').on('click', function(){
 		$(this).hide();
 		$('#pdpDesc > div, #pdpActionArrow').hide();
 		$('.uGeneral, #svgelem').show();
 		KOback(this);
 	});
 
-	/*$('#pdpSize').live('click', function(){
+	/*$('#pdpSize').on('click', function(){
 		$('#pdpDesc > div, #svgelem').hide();
 		$('.'+$(this).attr('data-show')+' , #backToPdp').show();
 		if(s){
@@ -203,7 +203,7 @@ function initPdp(){
 		}
 	});
 
-	$('.uSizePdpValue').live('click', function(){
+	$('.uSizePdpValue').on('click', function(){
 		document.getElementById('selStyleSize').selectedIndex = $(this).attr('data-index');
 		$('#pdpSize .pdpStyle').html($('#selStyleSize option:selected').text());
 		$('#pdpDesc > div, #pdpActionArrow, #backToPdp').hide();
@@ -238,7 +238,7 @@ function initSearch(id){
 				$('#'+id+'_div').append(btn);
 			}
 		}
-		$('select').live('change', function(){
+		$('select').on('change', function(){
 			//unLoadSelect($(this).attr('id'));
 		});
 		iTvr = setTimeout(checkCont,1000);
@@ -271,7 +271,7 @@ function initSearch(id){
 	        nextSelect: "selVehicleOption"
 	    }
 	};
-	d.find("select").live("change", function () {
+	d.find("select").on("change", function () {
 	 var b = $(this),
 	     c = b.attr("id"),
 	     d = b.parents("form");
@@ -502,7 +502,7 @@ function uLocalStorage() {
 }
 
 function unLog(e) {
-	undebug(e);
+	console.log(e);
 	var el = $('#unLog');
 	if (el.length)
 		el.append(e + '</br>');

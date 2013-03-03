@@ -67,7 +67,7 @@ function uPlpController() {
 		this.updateProps(options);
 		mem.init({'blocksLimit' : props.pagesMemoryLimit});
 		uPlp.itemsToCompare = [];
-		$('#uPlpCompareBtn').live('click', function(){
+		$('#uPlpCompareBtn').on('click', function(){
 			if(!$('.uBtnOpenCompare').hasClass('disabled')){
 				document.uCompareProds.productCodes.value = "";
 				for(var i=0; i< uPlp.getItemsToCompare().length; i++){

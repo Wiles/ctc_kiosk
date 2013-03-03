@@ -69,7 +69,7 @@ var CTW = {
     }
 };
 (function (a, c, b, f, g) {
-    $('#uNextStep').live('click', function(){
+    $('#uNextStep').on('click', function(){
         if(!( $(this).hasClass('disabled'))){
             
             v48.populate();
@@ -92,7 +92,7 @@ var CTW = {
             KOtrackSearch(isVar48);
         }
     });
-    $('#uSubmitSearch').live('click', function(){
+    $('#uSubmitSearch').on('click', function(){
         if(!( $(this).hasClass('disabled'))){
             isVar48 = true;
             v48.populate();
@@ -113,7 +113,7 @@ var CTW = {
         }
         //$('#vehicleSearch').submit();
     });
-    $('#uSubmitSearchDisc').live('click', function(){
+    $('#uSubmitSearchDisc').on('click', function(){
         if(!( $(this).hasClass('disabled'))){
             
             v48.populate();
@@ -127,7 +127,7 @@ var CTW = {
             }
         }
     });
-    $('#uSubmitOptionSearch').live('click', function(){
+    $('#uSubmitOptionSearch').on('click', function(){
         if(!$(this).hasClass('disabled')){
             isVar48 = true;
             v48.populate();
@@ -152,16 +152,16 @@ var CTW = {
                 xhrDA.sendForm( $('#submitButton')[0] );
         }
     });
-    $('#uDismissSearch').live('click', function(){
+    $('#uDismissSearch').on('click', function(){
         $('#uSearchDisclaimer, .opacity_bg').hide();
     });
-    $('#uNextStepDis').live('click', function(){
+    $('#uNextStepDis').on('click', function(){
         if(!$(this).hasClass('disabled')){
             $('#uSearchDisclaimer, .opacity_bg').show();
             $('#uSubmitOptionSearch').removeClass('disabled');
         }
     })
-    $('.un-search-btn_grayH').live('click', function(){
+    $('.un-search-btn_grayH').on('click', function(){
         if($(this).parents('#searchCont').hasClass('options')){
             $('input[data-val="'+$(this).attr('un-radio')+'"]').click();
             $('.un-search-btn_grayH').removeClass('selected');
@@ -176,7 +176,7 @@ var CTW = {
         $('#uNextStep').removeClass('disabled');
         $(this).addClass('selected');
      });
-    $('.un-search-btn_grayL').live('click', function(){
+    $('.un-search-btn_grayL').on('click', function(){
         var a = $(this);
         if(a.hasClass('complete')){
             $('#searchTopBar .un-search-btn_grayL').removeClass('selected');
@@ -272,7 +272,7 @@ var CTW = {
                 },
                 startAt: l
             });
-            j.find("select").live("change", function () {
+            j.find("select").on("change", function () {
                 var b = a(this).parents("form"),
                     c = !0;
                 if (b.attr("id") == "vehicleSearch") {
@@ -298,7 +298,7 @@ var CTW = {
                 a.val() != "" && b.val() != "" && d.val() != "" && c.val() != "" && e.val() != "" ? i.find(".disclaimer").hide() : i.find(".disclaimer").show();
                 a.val() != "" && b.val() != "" && d.val() != "" ? (c.val() == "" || e.val() == "") && f.is(":checked") || c.val() != "" && e.val() != "" ? i.find(".buttonDisabled").removeClass("buttonDisabled").addClass("buttonAlternate") : i.find(".buttonAlternate").removeClass("buttonAlternate").addClass("buttonDisabled") : i.find(".buttonAlternate").removeClass("buttonAlternate").addClass("buttonDisabled")
             };
-            i.find("select").live("change", l);
+            i.find("select").on("change", l);
             i.find("#chkDisclaimer").bind("click", l);
             var n = j.find("form"),
                 o = i.find("form");
