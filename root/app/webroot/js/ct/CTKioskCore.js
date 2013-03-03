@@ -96,7 +96,9 @@ function initHome() {
 	$('#tires_sel').bind('click', function(){
 		$(this).css('-moz-transition','margin 0.7s').css('margin-top','500px');
 		//$('#search_by').css('-moz-transition','margin 0.9s').css('margin-top','0px')
-		function anim1(){$('#search_by').css('-moz-transition','margin 0.5s').css('margin-top','0px')};
+		function anim1(){
+      $('#search_by').css('-moz-transition','margin 0.5s').css('margin-top','0px')
+    };
 		setTimeout(anim1,300);
 	});
 	$('#wheel_sel').bind('click', function(){

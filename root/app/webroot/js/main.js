@@ -62,15 +62,4 @@ $(function() {
       ctk.app.IP = data.split('{@}')[1];
     }
   });
-  
-  /**
-   * Start Page
-   */
-  $('wheel_sel').click(function() {
-  
-  });
-  
-  $('wheel_sel').click(function() {
-  
-  });
 });
