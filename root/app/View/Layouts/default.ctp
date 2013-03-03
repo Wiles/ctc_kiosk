@@ -31,12 +31,13 @@
       echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
       echo $this->Html->script('main.js');
       
-      echo $this->Html->script('ct/jquery-1.js');
+      // Commented out some source files we don't want to use
+      //echo $this->Html->script('ct/jquery-1.js');
       echo $this->Html->script('ct/jquery.js');
-      echo $this->Html->script('ct/jquery_002.js');
+      //echo $this->Html->script('ct/jquery_002.js');
       echo $this->Html->script('ct/jquery-transit.js');
-      echo $this->Html->script('ct/xhr-da-1.js');
-      echo $this->Html->script('ct/jquery_003.js');
+      //echo $this->Html->script('ct/xhr-da-1.js');
+      //echo $this->Html->script('ct/jquery_003.js');
       echo $this->Html->script('ct/vPaginator.js');
       echo $this->Html->script('ct/vScroll.js');
       echo $this->Html->script('ct/tmpl.js');
