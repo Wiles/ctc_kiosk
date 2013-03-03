@@ -30,7 +30,26 @@
       echo $this->Less->link('ct.less');
       echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
       echo $this->Html->script('main.js');
-
+      
+      echo $this->Html->script('ct/jquery-1.js');
+      echo $this->Html->script('ct/jquery.js');
+      echo $this->Html->script('ct/jquery_002.js');
+      echo $this->Html->script('ct/jquery-transit.js');
+      echo $this->Html->script('ct/xhr-da-1.js');
+      echo $this->Html->script('ct/jquery_003.js');
+      echo $this->Html->script('ct/vPaginator.js');
+      echo $this->Html->script('ct/vScroll.js');
+      echo $this->Html->script('ct/tmpl.js');
+      echo $this->Html->script('ct/CTKi_18n.js');
+      echo $this->Html->script('ct/CTKioskCore.js');
+      echo $this->Html->script('ct/ctw_base.js');
+      echo $this->Html->script('ct/plp.js');
+      echo $this->Html->script('ct/vkb_layout.js');
+      echo $this->Html->script('ct/vKeyboard.js');
+      echo $this->Html->script('ct/fieldsController.js');
+      echo $this->Html->script('ct/s_code_prd.js');
+      echo $this->Html->script('ct/start.js');
+      
       echo $this->fetch('meta');
       echo $this->fetch('css');
       echo $this->fetch('script');
@@ -41,7 +60,7 @@
     <noscript><h1 style="margin:50px">Please enable Javascript</h1></noscript>
   
     <div class="header">
-	<div id="header-back" class="header-button">Back</div>
+  <div id="header-back" class="header-button">Back</div>
     </div>
     
     <div class="content">

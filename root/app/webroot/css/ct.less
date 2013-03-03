@@ -11,7 +11,7 @@
 @dark-gray: #5f5f5f;
 
 @header-height: 70px;
-@footer-height: 99px;
+@footer-height: 60px;
 
 // ------------
 // Mixins
@@ -45,21 +45,22 @@ html {
 }
 
 div.header {
-   position:fixed;
-   left:0px;
-   top:0px;
-   height: @header-height;
-   width:100%;
-   background:#999;
+  display: none;
+  position:fixed;
+  left:0px;
+  top:0px;
+  height: @header-height;
+  width:100%;
+  background:#999;
 }
 
 div.footer {
-   position:fixed;
-   left:0px;
-   bottom:0px;
-   height: @footer-height;
-   width:100%;
-   background:#999;
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height: @footer-height;
+  width:100%;
+  background:#999;
 }
 
 div.header-button {
@@ -97,27 +98,22 @@ div.content-page {
 // ------------
 // CSS from Canadian Tire website
 // ------------
-html[environment=prod] * { 
+html[environment=kiosk] * { 
   /* if production */
   cursor: none; /* hide pointer cursor */
 }
 
-html[environment=prod] *:not([type="text"]) { 
+html[environment=kiosk] *:not([type="text"]) { 
   -moz-user-select: -moz-none ;
   user-select: -moz-none ;
 }
 
-html[environment=prod] input[type="text"] { 
+html[environment=kiosk] input[type="text"] { 
   -moz-user-select: text !important;
   user-select: text !important;
 }
 
-html[environment=dev] { 
-  /* if development */
-  overflow:auto; 
-}
-
-body[environment=prod] { /* CTK-101 */
+body[environment=kiosk] { /* CTK-101 */
   overflow: hidden;
 }
 
@@ -125,8 +121,8 @@ body {
   background: #FFF;
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   margin: 0;
-  max-width: 1280px;
-  height: 1013px;
+  
+  .gradient(#e1e1e1, #c7c7c7);
 }
 
 * {
@@ -184,12 +180,6 @@ body[lang="fr"] #homepageCntnt #unSelector {
   margin: 19px auto;
 }
 
-#homepageCntnt {
-  background: url(../images/blank_bg.png) no-repeat top center;
-  border-top: 1px solid #cccccc;
-  min-height: 1010px;
-}
-
 .gr_cont{
   border: 2px solid #cccccc;
   border-radius: 3px;
@@ -220,10 +210,10 @@ body[lang="fr"] #homepageCntnt #unSelector {
   height: 390px;
 }
 
-#tires_sel {background: url('../images/select_tire.png') no-repeat;}
-#wheel_sel {background: url('../images/select_wheel.png') no-repeat;}
-body[lang="fr"] #tires_sel {background: url('../images/select_tire_fr.png') no-repeat;}
-body[lang="fr"] #wheel_sel {background: url('../images/select_wheel_fr.png') no-repeat;}
+#tires_sel {background: url('../img/select_tire.png') no-repeat;}
+#wheel_sel {background: url('../img/select_wheel.png') no-repeat;}
+body[lang="fr"] #tires_sel {background: url('../img/select_tire_fr.png') no-repeat;}
+body[lang="fr"] #wheel_sel {background: url('../img/select_wheel_fr.png') no-repeat;}
 
 #tires_sel .inset, #wheel_sel .inset {
   height: 390px;
@@ -231,11 +221,11 @@ body[lang="fr"] #wheel_sel {background: url('../images/select_wheel_fr.png') no-
 
 .start_div {float: right; margin:40px 45px 0 0;}
 .start_by {color:#5c5c5c;font-size:1.2em;}
-.start_tw {color:#de301b;font-weight:bold;font-size:2.50em;background: url('../images/red_arrow.png') no-repeat right;background-size: 35px 35px;text-align:right;padding-right:40px;}
+.start_tw {color:#de301b;font-weight:bold;font-size:2.50em;background: url('../img/red_arrow.png') no-repeat right;background-size: 35px 35px;text-align:right;padding-right:40px;}
 
 .big_light_gray {
-  background: url('../images/logo.png') left no-repeat #d7d7d7;
-  background: url('../images/logo.png'), -moz-linear-gradient(#f3f3f3, #d7d7d7);  
+  background: url('../img/logo.png') left no-repeat #d7d7d7;
+  background: url('../img/logo.png'), -moz-linear-gradient(#f3f3f3, #d7d7d7);  
   background-repeat: no-repeat, no-repeat;  
   background-position: 50% 50%, right;  
   width: 100%;
@@ -399,13 +389,13 @@ body[lang="fr"] #home.big_gray{
   width: 455px;
   box-shadow: 0px 5px 0px #c7c7c7;
   height:155px;
-  background-image: url('../images/vehicle.png'),  -moz-linear-gradient(#ffffff, #e1e1e1);
+  background-image: url('../img/vehicle.png'),  -moz-linear-gradient(#ffffff, #e1e1e1);
   background-repeat: no-repeat;
   background-position:15px 70%, right;
   padding: 45px 30px;
 }
-.vec_div {margin-bottom: 25px;background-image: url('../images/vehicle.png'),  -moz-linear-gradient(#ffffff, #e1e1e1);}
-.size_div {background-image: url('../images/dimension.png'),  -moz-linear-gradient(#ffffff, #e1e1e1); background-position:27px 15px, right center;}
+.vec_div {margin-bottom: 25px;background-image: url('../img/vehicle.png'),  -moz-linear-gradient(#ffffff, #e1e1e1);}
+.size_div {background-image: url('../img/dimension.png'),  -moz-linear-gradient(#ffffff, #e1e1e1); background-position:27px 15px, right center;}
 
 .search_tit, .grey_big {
   text-align: right;
@@ -420,7 +410,7 @@ body[lang="fr"] #home.big_gray{
  .grey_big {
   height: 47px;
   font-size: 2.5em; color: #525252; font-weight: bold;
-  background: url('../images/red_arrow.png') no-repeat right;background-size: 35px 35px;text-align:right;padding-right:40px;
+  background: url('../img/red_arrow.png') no-repeat right;background-size: 35px 35px;text-align:right;padding-right:40px;
 }
 
 body[lang=fr] #search_by .grey_big {
@@ -493,7 +483,7 @@ body[lang=fr] #search_by .grey_big {
   background-color: #333;
   opacity: 0.5;
 }
-#uHelp { background-image: url('../images/help/help-home.png'); opacity:1;background-repeat: no-repeat;}
+#uHelp { background-image: url('../img/help/help-home.png'); opacity:1;background-repeat: no-repeat;}
 
 /* NOTUM END */
 #welcome {
@@ -522,7 +512,7 @@ body[lang=fr] #search_by .grey_big {
   height: 600px;
   margin: 50px 0;
   float: left;
-  background: url('../images/big_tire.png') no-repeat right;
+  background: url('../img/big_tire.png') no-repeat right;
 }
 .red_title {
   color:#a00f16;
@@ -538,7 +528,7 @@ body[lang=fr] #search_by .grey_big {
   text-shadow: 0px 1px 0px #666;
 }
 #welcome .red_arr {
-  background: url('../images/red_arrow1.png') no-repeat right;background-size: 25px 24px;
+  background: url('../img/red_arrow1.png') no-repeat right;background-size: 25px 24px;
 }
 #uthere, #uNoMoreItem, #uSearchDisclaimer, #uPopUp{
     top: 50%;
