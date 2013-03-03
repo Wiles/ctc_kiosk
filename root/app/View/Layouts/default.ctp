@@ -24,6 +24,10 @@
       <?php echo $title_for_layout; ?>
     </title>
     
+    <script type="text/javascript">
+      
+    </script>
+    
     <?php
       echo $this->Html->meta('icon');
 
