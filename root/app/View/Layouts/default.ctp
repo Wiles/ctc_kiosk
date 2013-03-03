@@ -66,9 +66,9 @@
     </div>
     
     <div class="footer">
-      <div id="home" class="big_gray">Home</div>
-      <div id="ct-logo" class="big_gray"></div>
-      <div id="help_b" class="big_gray">Help</div>
+      <div id="home" class="big_gray"     data-i18n="home">Home</div>
+      <div id="ct-logo" class="big_gray"  ></div>
+      <div id="help_b" class="big_gray"   data-i18n="help">Help</div>
     </div>
   </body>
 

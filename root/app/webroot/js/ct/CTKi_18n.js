@@ -38,8 +38,8 @@ var u_i18n = {
 		'fr' : 'accueil',
 	},
 	'touch_here' : {
-		'en' : 'Touchez ici pour la version fran&#231;aise', 
-		'fr' : 'Touch here for the English version',
+		'en' : 'Fran&#231;ais', 
+		'fr' : 'English',
 	},
 	'touch_screen' : {
 		'en' : 'Touch screen to start', 

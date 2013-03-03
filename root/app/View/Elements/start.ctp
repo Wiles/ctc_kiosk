@@ -1,5 +1,5 @@
 <div id="page-start" class="content-page">
-  <div id="button-francais"><?php echo __('Francais'); ?></div>
+  <div id="button-francais" onclick="switchLang(this)" data-i18n="touch_here"><?php echo __('Francais'); ?></div>
   <div id="homepageCntnt">
     <div id="ct_title">
       <?php echo $this->Html->image(__('title_selector_en.png'), array('id' => 'ct_title_img', 'alt' => 'Tire and Wheel Selector')); ?>
