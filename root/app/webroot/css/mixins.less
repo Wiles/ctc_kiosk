@@ -1,0 +1,42 @@
+// ------------
+// Mixins
+// ------------
+.button() {
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius:  @radius;
+  -moz-border-radius:     @radius;
+  -ms-border-radius:      @radius;
+  -o-border-radius:       @radius;
+  border-radius:          @radius;
+}
+
+.gradient (@c1: #f3f3f3, @c2: #d7d7d7) {
+  background-color: @c1; /* fallback color if gradients are not supported */
+
+  background: -webkit-gradient(linear, left top, left bottom, from(@c1), to(@c2));
+  background: -webkit-linear-gradient(top,   @c1, @c2);
+  background: -moz-linear-gradient(top,      @c1, @c2);
+  background: -ms-linear-gradient(top,       @c1, @c2);
+  background: -o-linear-gradient(top,        @c1, @c2);
+  background: linear-gradient(to bottom,     @c1, @c2); /* current standard, but unimplemented and subject to change */
+}
+
+.gradient (@c1: #f3f3f3, @c2: #d7d7d7, @img: "") {
+  background-color: @c1; /* fallback color if gradients are not supported */
+
+  background-image: url("@{img}");
+  background-image: url("@{img}"), -webkit-gradient(linear, left top, left bottom, from(@c1), to(@c2));
+  background-image: url("@{img}"), -webkit-linear-gradient(top,   @c1, @c2);
+  background-image: url("@{img}"), -moz-linear-gradient(top,      @c1, @c2);
+  background-image: url("@{img}"), -ms-linear-gradient(top,       @c1, @c2);
+  background-image: url("@{img}"), -o-linear-gradient(top,        @c1, @c2);
+  background-image: url("@{img}"), linear-gradient(to bottom,     @c1, @c2); /* current standard, but unimplemented and subject to change */
+}
+

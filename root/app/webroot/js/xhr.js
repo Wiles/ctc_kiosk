@@ -22,7 +22,7 @@ var xhrDA = new function() {
   }.bind(this);
   
   this.back = function() {
-    history.back();
+    history.go(-1);
   }.bind(this);
   
   /**
@@ -57,7 +57,6 @@ var xhrDA = new function() {
     
     if ('currentPage' in pageValues) {
       ct.changePage('page-' + pageValues['currentPage'])
-      debugger;
     }
   }.bind(this);
 };
