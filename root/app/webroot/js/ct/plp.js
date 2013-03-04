@@ -88,7 +88,6 @@ function uPlpController() {
 			paginatorContainer.hide();
 			return false;
 		} else {
-			//paginatorContainer.find('.uPlpPageLoadingMsg').append('<img width="12" src="images/loading.gif" style="margin-left:5px;visibility: visible;">'); 
 			paginatorContainer.show();
 		}
 

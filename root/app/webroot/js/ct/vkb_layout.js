@@ -80,6 +80,6 @@ window.kb_layout = [
 		{type:'symbol', values:[' '], labels:['space']},
 		{type:'fn', values:['abc'], labels:['?#%', 'Abc']},
 		{type:'number', values:['0'], 'id':'zero'},
-		{type:'fn', values:['<img src="images/kbIcn.png" id="uHideVkbIcn"/>'], 'id':'uHideVkb'}
+		{type:'fn', values:['<img src="' + window.webroot + 'img/kbIcn.png" id="uHideVkbIcn"/>'], 'id':'uHideVkb'}
 	]
 ];

@@ -25,7 +25,8 @@
     </title>
     
     <script type="text/javascript">
-      
+      <?php
+      echo "window.webroot = '" . $this->webroot . "/'" ?>
     </script>
     
     <?php
@@ -37,6 +38,8 @@
       // Commented out some source files we don't want to use
       echo $this->Html->script('ct/jquery.js');
       echo $this->Html->script('ct/jquery-transit.js');
+      echo $this->Html->script('ct.js');
+      echo $this->Html->script('xhr.js');
       //echo $this->Html->script('ct/xhr-da-1.js');
       echo $this->Html->script('ct/vPaginator.js');
       echo $this->Html->script('ct/vScroll.js');
@@ -61,7 +64,7 @@
     <noscript><h1 style="margin:50px">Please enable Javascript</h1></noscript>
   
     <div class="header">
-  <div id="header-back" class="header-button">Back</div>
+      <div id="header-back" class="header-button" data-i18n="back">Back</div>
     </div>
     
     <div class="content">
