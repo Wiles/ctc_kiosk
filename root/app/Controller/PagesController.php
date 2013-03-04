@@ -72,11 +72,4 @@ class PagesController extends AppController {
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
 	}
-  
-    // json:
-    // http://gablog.eu/online/node/92.html
-
-    public function jsonFunction() {
-        $this->respond('stuff');
-    }
 }

@@ -41,12 +41,12 @@ class DataController extends AppController {
     /**
      * Reads a variable from the request
      */
-    private function getVar($var) {
+    private function getVar($var, $default) {
         if (isset($_REQUEST[$var])) {
             return $_REQUEST[$var];
         }
         else {
-            return null;
+            return $default;
         }
     }
     
@@ -63,7 +63,7 @@ class DataController extends AppController {
      
      
     public function jsonFunction() {
-        $year = $this->getVar('year');
+        $year = $this->getVar('year', null);
         return new CakeResponse(array('body' => json_encode($year)));
     }
 }
