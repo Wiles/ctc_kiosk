@@ -114,8 +114,11 @@ function initHome() {
     uSType = 'Wheels';
     omniSType = ':Wheel';
 
-    $('#homepageCntnt, #welcome').hide();
-    xhrDA.loadPage('/mt/http://'+ctk.siteDomain+'/'+ctk.app.lang+'/wheels/?tab=0&un_search=searchByVehicle');
+    xhrDA.loadPage({
+      'lang' : ctk.app.lang,
+      'currentPage' : 'find-year',
+      'find-type' : 'wheels'
+    });
   });
 
   $('.vec_div').bind('click', function(){

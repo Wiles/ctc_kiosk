@@ -1,5 +1,9 @@
 var ct = new function() {
 
+  this.initValues = function(values) {
+    
+  }.bind(this);
+
   this.changePage = function(page) {
     $('div.content-page').hide();
     $('#' + page).show();

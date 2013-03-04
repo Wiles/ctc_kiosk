@@ -35,10 +35,20 @@ $(function() {
     KOlinkCode(this, 'Kiosk_Footer_Home');
   });
 
+  // What is this?
   $.ajax({
       url: '/mt/http://tires.canadiantire.ca/en/?un_jtt_v_only_ip=yes',
     success: function(data) {
       ctk.app.IP = data.split('{@}')[1];
     }
   });
+  
+  /**
+   * Handle selecting correct page
+   */
+  $(window).on('hashchange', function() {
+    xhrDA.init(location.hash);
+  });
+  
+  xhrDA.init(location.hash);
 });
