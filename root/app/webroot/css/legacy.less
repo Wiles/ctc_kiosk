@@ -738,13 +738,13 @@ body[lang=fr] #uSearchDisclaimer #uSubmitOptionSearch {
  }
 
 .un-search-btn_grayH {
-  background-color: #ffffff;
+  .gradient(#ffffff, #e1e1e1);
+  .rounded-corners (3px);
+  .button();
   border: 1px solid #bcbcbc;
-  border-radius: 3px;
-  width: 250px;
+  min-width: 250px;
   box-shadow: 0 -1px 1px #FFFFFF inset;
   height:90px;
-  background-image:  -moz-linear-gradient(#ffffff, #e1e1e1);
   padding: 32px;
   margin: 0px 20px 20px 0px;
   font-size: 1.4em;
@@ -759,12 +759,9 @@ body[lang=fr] #uSearchDisclaimer #uSubmitOptionSearch {
   font-size: 1em !important;
   padding: 25px 37px 28px 28px;
 }
-.un-search-btn_grayH:nth-of-type(4n+4) {
-  margin: 0px 0px 20px 0px;
-}
 .un-search-btn_grayH.selected {
+  .gradient(#e1e1e1, #ffffff, "../img/tick_r.png");
   box-shadow: inset 0px 10px 20px #b5b5b5;
-  background-image: url('../img/tick_r.png'),  -moz-linear-gradient(#e1e1e1, #ffffff);
   background-repeat: no-repeat;
   background-position: 90% 50%, right;
   color: #c82a18;

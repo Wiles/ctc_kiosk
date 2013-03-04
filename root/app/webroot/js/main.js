@@ -39,6 +39,12 @@ $(function() {
     xhrDA.back();
   });
   
+  $('.un-search-btn').click(function(elem) {
+    var ko = $(this).find('div .kk').attr('data-ko');
+    xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
+    xhrDA.loadPage(xhrDA.locationHashValues);
+  });
+  
   // What is this?
   $.ajax({
       url: '/mt/http://tires.canadiantire.ca/en/?un_jtt_v_only_ip=yes',

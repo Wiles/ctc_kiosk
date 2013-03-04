@@ -1,14 +1,11 @@
 <script type="text/javascript">
     $(function() {
-        $("#page-start").hide();
-        $("#page-find-year").show();
-        
         $(window).resize(function () {
-            resizeStuff($("#button-container"), ".un-search-btn_grayH")
+            resizeStuff($("#page-find-year"), ".un-search-btn_grayH")
         });
         
         loadButtons(
-            $("#button-container"),
+            $("#page-find-year"),
             "/data/getYears",
             {},
             function (obj) {
@@ -54,8 +51,8 @@
     }
 </script>
 
-<?php echo $this->element('z-find-header') ?>
 <div id="page-find-year" class="content-page">
+  <?php echo $this->element('z-find-header', array('yearStatus' => 'selected')) ?>
   <div class="search-step-title">Search tires by vehicle<span data-i18n="step" class="kk"> - Step </span>
     <span class="searchStepNumb">1<span data-i18n="of_de" class="kk"> of </span>5</span>
   </div>
