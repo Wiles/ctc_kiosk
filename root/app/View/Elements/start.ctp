@@ -38,6 +38,4 @@
       </div>
     </div>
   </div>
-
-  <div style="display: block;" id="xhr-content">
 </div>
