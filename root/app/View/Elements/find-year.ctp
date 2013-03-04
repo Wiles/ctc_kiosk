@@ -1,14 +1,11 @@
 <script type="text/javascript">
     $(function() {
-        $("#page-start").hide();
-        $("#page-find-year").show();
-        
         $(window).resize(function () {
-            resizeStuff($("#button-container"), ".un-search-btn_grayH")
+            resizeStuff($("#page-find-year"), ".un-search-btn_grayH")
         });
         
         loadButtons(
-            $("#button-container"),
+            $("#page-find-year"),
             "/data/getYears",
             {},
             function (obj) {
@@ -55,5 +52,4 @@
 </script>
 
 <div id="page-find-year" class="content-page">
-    <div id="button-container"></div>
 </div>
