@@ -34,6 +34,10 @@ $(function() {
     unClearSession(tM, cLs);
     KOlinkCode(this, 'Kiosk_Footer_Home');
   });
+  
+  $('#header-back').click(function() {
+    xhrDA.back();
+  });
 
   // What is this?
   $.ajax({
