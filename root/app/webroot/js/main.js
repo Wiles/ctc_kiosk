@@ -38,7 +38,7 @@ $(function() {
   $('#header-back').click(function() {
     xhrDA.back();
   });
-
+  
   // What is this?
   $.ajax({
       url: '/mt/http://tires.canadiantire.ca/en/?un_jtt_v_only_ip=yes',

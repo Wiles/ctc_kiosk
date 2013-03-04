@@ -62,31 +62,7 @@
   
   <body>
     <noscript><h1 style="margin:50px">Please enable Javascript</h1></noscript>
-  
-    <div class="header">
-      <div id="header-back" class="header-button" data-i18n="back">Back</div>
-      <div id="header-find-year-tab" class="header-tab" >
-        <span data-ko="year">Year</span>
-        <span></span>
-      </div>
-      <div id="header-find-make-tab" class="header-tab" >
-        <span data-ko="make">Make</span>
-        <span></span>
-      </div>
-      <div id="header-find-model-tab" class="header-tab" >
-        <span data-ko="model">Model</span>
-        <span></span>
-      </div>
-      <div id="header-find-body-tab" class="header-tab" >
-        <span data-ko="body">Body</span>
-        <span></span>
-      </div>
-      <div id="header-find-option-tab" class="header-tab" >
-        <span data-ko="option">Options</span>
-        <span></span>
-      </div>
-    </div>
-    
+      
     <div class="content">
       <?php echo $this->Session->flash(); ?>
       <?php echo $this->fetch('content'); ?>
