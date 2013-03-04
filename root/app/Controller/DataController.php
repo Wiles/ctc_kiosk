@@ -20,13 +20,14 @@
  */
 
 App::uses('AppController', 'Controller');
+App::uses('CarProService', 'Model/Datasource');
 
 /**
  * Static content controller
  *
  * Override this controller by placing a copy in controllers directory of an application
  *
- * @package       app.Controller
+ * @package       data.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class DataController extends AppController {
@@ -36,7 +37,7 @@ class DataController extends AppController {
      *
      * @var string
      */
-	public $name = 'Data';
+    public $name = 'Data';
     
     /**
      * Reads a variable from the request
@@ -50,20 +51,89 @@ class DataController extends AppController {
         }
     }
     
-    /*
-     * JSON FORMAT:
-     * array of:
-     *  {
-     *      text: "",
-     *      value: "",
-     *      checked: true/false
-     *  }
+    /**
+     * Gets years
      *
+     * @var year
+     * @var isVehicleCrossOver
      */
-     
-     
-    public function jsonFunction() {
-        $year = $this->getVar('year', null);
-        return new CakeResponse(array('body' => json_encode($year)));
+    public function getYears() {
+        $year = $this->getVar('year', '0');
+        $crossover = $this->getVar('isVehicleCrossOver', 'false');
+        
+        $response = CarProService::getYears($year, $crossover);
+        
+        return new CakeResponse(array('body' => json_encode($response)));
     }
+    
+    /**
+     * Gets car makes by year
+     *
+     * @var year
+     * @var make
+     * @var isVehicleCrossOver
+     */
+    public function getMakes() {
+        $year = $this->getVar('year', '0');
+        $make = $this->getVar('make', '""');
+        $crossover = $this->getVar('isVehicleCrossOver', 'false');
+        
+        $response = CarProService::getMakes($year, $make, $crossover);
+        
+        return new CakeResponse(array('body' => json_encode($response)));
+    }
+    
+    /**
+     * Gets car models by year and make
+     *
+     * @var year
+     * @var make
+     * @var model
+     */
+    public function getModels() {
+        $year = $this->getVar('year', '0');
+        $make = $this->getVar('make', '""');
+        $model = $this->getVar('model', '""');
+        
+        $response = CarProService::getModels($year, $make, $model);
+        
+        return new CakeResponse(array('body' => json_encode($response)));
+    }
+    
+    /**
+     * Gets car bodies and year, make, and model
+     *
+     * @var year
+     * @var make
+     * @var model
+     */
+    public function getBodies() {
+        $year = $this->getVar('year', '0');
+        $make = $this->getVar('make', '""');
+        $model = $this->getVar('model', '""');
+        $crossover = $this->getVar('isVehicleCrossOver', 'false');
+        
+        $response = CarProService::getBodies($year, $make, $model, $crossover);
+        
+        return new CakeResponse(array('body' => json_encode($response)));
+    }
+    
+    /**
+     * Gets car options and year, make, model, and body
+     *
+     * @var year
+     * @var make
+     * @var model
+     * @var body
+     */
+     public function getOptions() {
+        $year = $this->getVar('year', '0');
+        $make = $this->getVar('make', '""');
+        $model = $this->getVar('model', '""');
+        $body = $this->getVar('body', '""');
+        
+        $response = CarProService::getOptions($year, $make, $model, $body);
+        
+        return new CakeResponse(array('body' => json_encode($response)));
+     }
 }
