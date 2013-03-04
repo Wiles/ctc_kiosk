@@ -35,28 +35,29 @@ var xhrDA = new function() {
   }.bind(this);
   
   
+  /**
+   * Initialize the location hash values from the location.hash
+   * and change the page
+   */
   this.init = function(hash) {
     var pages = hash.split('&');
-    var pageValues = new Array();
+    var pageValues = {};
     
-    var i = function(index, page) {
-      var kv = page.split('=');
-      this[kv[0]] = kv[1];
-      debugger;
-    };
-    
-    i.bind(pageValues);
-    
-    $.each(pages, i);
+    $.each(pages, function(index, page) {
+      if (page !== '') {
+        var kv = page.split('=');
+        pageValues[kv[0].replace(/^#/, '')] = kv[1];
+      }
+    });
     
     $.each(pageValues, function(key, value) {
       // TODO: Fill global variables
       xhrDA.setLocationHashParam(key, value);
     });
     
-    debugger;
     if ('currentPage' in pageValues) {
-      ct.changePage('page' + pageValues['currentPage'])
+      ct.changePage('page-' + pageValues['currentPage'])
+      debugger;
     }
   }.bind(this);
 };
