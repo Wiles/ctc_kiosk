@@ -1,26 +1,3 @@
-var ct = new function() {
-  this.pages = new function() {
-    
-  };
-
-  this.changePage = function(page) {
-    $('div.content-page').hide();
-    $('#' + page).show();
-  }.bind(this);
-  
-  this.isHeaderVisible = function() {
-    return $('header').css('display') != 'none';
-  }.bind(this);
-
-  this.showHeader = function(show) {
-    if (show) {
-      $('#header').show();
-    } else {
-      $('#header').hide();
-    }
-  }.bind(this);
-};
-
 $(function() {
   ct.changePage('page-start');
   
@@ -36,18 +13,19 @@ $(function() {
     ctk.siteDomain = 'stagetires.canadiantire.ca';
   }
     
-  xhrDA.init({'platform':'xhr-kiosk', 'company':'Canadian Tire'});
-  xhrDA.loadPageAnimation.init({'background':'#FEFEFE url("img/loading.gif") no-repeat 50% 50%'});
+  // TODO: Add a load page animation
+  //xhrDA.loadPageAnimation.init({'background':'#FEFEFE url("img/loading.gif") no-repeat 50% 50%'});
+  
   ctk.homepageUrl = ctk.siteDomain;
-  //xhrDA.loadPage('/mt/' + ctk.homepageUrl);
 
   if ( ctk.store !== null && ctk.store.id !== null ) { 
     unLog('Store ID: ' + ctk.store.id);
-  } 
-  else {
+  } else {
     //refreshStoreDetails();
   }
+  
   $('#help_b').click(uOpenHelp);
+  
   $('#uHelp').click(function(){
     $(this).hide();
   });
