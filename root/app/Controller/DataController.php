@@ -111,9 +111,8 @@ class DataController extends AppController {
         $year = $this->getVar('year', '0');
         $make = $this->getVar('make', '""');
         $model = $this->getVar('model', '""');
-        $crossover = $this->getVar('isVehicleCrossOver', 'false');
         
-        $response = CarProService::getBodies($year, $make, $model, $crossover);
+        $response = CarProService::getBodies($year, $make, $model);
         
         return new CakeResponse(array('body' => json_encode($response)));
     }
