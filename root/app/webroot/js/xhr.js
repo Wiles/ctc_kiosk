@@ -38,7 +38,11 @@ var xhrDA = new function() {
     
     this.gotoLocationHash();
   }.bind(this);
-  
+
+
+  this.reloadPage = function() {
+    this.gotoLocationHash();
+  }.bind(this);
   
   /**
    * Initialize the location hash values from the location.hash

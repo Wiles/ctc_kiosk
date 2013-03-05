@@ -4,7 +4,6 @@ $(function() {
   unLog('Kiosk url: ' + document.location);
   setEnvironment();
   
-  $('#webappContent').removeClass('d_none');
   initHome(); 
   unLog('Device ID: ' + ctk.id);
   if(document.location.href.indexOf('stagetires.canadiantire.ca') != -1){
@@ -29,7 +28,7 @@ $(function() {
   });
   
   $('#home').click(function(){
-    xhrDA.loadPage({'currentPage': 'start'});
+    xhrDA.loadPage({'currentPage': 'home'});
   });
   
   $('#header-back').click(function() {
@@ -42,12 +41,10 @@ $(function() {
     xhrDA.loadPage(xhrDA.locationHashValues);
   });
   
-  // What is this?
-  $.ajax({
-      url: '/mt/http://tires.canadiantire.ca/en/?un_jtt_v_only_ip=yes',
-    success: function(data) {
-      ctk.app.IP = data.split('{@}')[1];
-    }
+  $('#welcome').click(function() {
+    xhrDA.setLocationHashParam('currentPage', 'start');
+    xhrDA.reloadPage();
+    debugger;
   });
   
   /**

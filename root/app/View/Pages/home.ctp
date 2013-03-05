@@ -4,6 +4,7 @@
 <div id="content">
 
 <?php
+  echo $this->element('home');
   echo $this->element('start');
   echo $this->element('find-year');
   echo $this->element('find-make');
