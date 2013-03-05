@@ -1,4 +1,10 @@
-<div id="page-find-make" class="content-page">
-  <?php echo $this->element('z-find-header', array('makeStatus' => 'selected')) ?>
 
+<div id="page-find-make" class="content-page">
+  <div class="search-step-title">Search tires by vehicle<span data-i18n="step" class="kk"> - Step </span>
+    <span class="searchStepNumb">2<span data-i18n="of_de" class="kk"> of </span>5</span>
+  </div>
+  <div class="search-label">
+    <span data-i18n="select_your_vec" class="kk">SELECT YOUR VEHICLE </span>MAKE
+  </div>
+  <div id="make-container"></div>
 </div>

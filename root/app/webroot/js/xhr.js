@@ -34,7 +34,6 @@ var xhrDA = new function() {
     }.bind(this));
   }.bind(this);
   
-  
   /**
    * Initialize the location hash values from the location.hash
    * and change the page

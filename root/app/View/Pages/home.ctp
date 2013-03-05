@@ -3,8 +3,11 @@
 ?>
 <div id="content">
 
+<?php echo $this->element('start'); ?>
+<div class="header" style="display:none;">
+  <?php echo $this->element('z-find-header', array('yearStatus' => 'selected')); ?>
+</div>
 <?php
-  echo $this->element('start');
   echo $this->element('find-year');
   echo $this->element('find-make');
   echo $this->element('find-model');
