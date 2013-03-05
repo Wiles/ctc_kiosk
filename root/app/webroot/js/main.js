@@ -1,6 +1,4 @@
 $(function() {
-  ct.changePage('page-start');
-  
   render_i18n_keys();
   unLog('Kiosk App Version ' + ctk.app.version);
   unLog('Kiosk url: ' + document.location);
@@ -31,8 +29,7 @@ $(function() {
   });
   
   $('#home').click(function(){
-    unClearSession(tM, cLs);
-    KOlinkCode(this, 'Kiosk_Footer_Home');
+    xhrDA.loadPage({'currentPage': 'start'});
   });
   
   $('#header-back').click(function() {
