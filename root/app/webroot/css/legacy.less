@@ -35,6 +35,12 @@ body {
   .gradient(#e1e1e1, #c7c7c7);
 }
 
+html, body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -56,13 +62,12 @@ body {
 }
 
 #ct_title {
-  width:1000px;
-  height: 49px;
+  width: 100%;
   margin: 63px auto 0 auto;
   text-align: center;
   color: #e85544;
   font-weight: bold;
-  font-size: 2.6em;
+  font-size: 1.6em;
   text-shadow: #a92314 -1px -1px 0;
 }
 
@@ -71,9 +76,7 @@ body[lang="fr"] #homepageCntnt #ct_title {
 }
 
 #uStartLang {
-  position:absolute;
-  bottom: 50px;
-  left: 25%;
+  margin-bottom: 25px;
 }
 
 body[lang="fr"] #uStartLang {
@@ -81,11 +84,10 @@ body[lang="fr"] #uStartLang {
 }
 
 #unSelector{
-  width:1111px;
+  width: 100%;
+  height: 100%;
   margin: 10px auto;
   padding:28px 31px;
-  height: 420px;
-  position: relative;
   overflow:hidden;
 }
 
@@ -93,99 +95,126 @@ body[lang="fr"] #homepageCntnt #unSelector {
   margin: 19px auto;
 }
 
-.gr_cont{
+.gr_cont {
+  max-width: 508px;
+  vertical-align: top;
   border: 2px solid #cccccc;
   border-radius: 3px;
-  background: -moz-linear-gradient(#f0f0f0, #cccccc);
-  width: 512px;
-  height: 394px;
-  float:left;
+  width: 45%;
+  height: 45%;
   margin: 0 5px 0 7px;
   box-shadow: 0px 0px 2px #a9a9a9;
   border-bottom: 1px solid #717171;
+  
+  display: inline-block;
+  
+  .gradient(#f0f0f0, #cccccc);
+  .button();
 }
 
-.lucid {
-  box-shadow: inset 0px 1px 0px #fff;
-  width: 507px;
-  height: 390px;
-  position: relative;
-  overflow:hidden;
+@media screen and (max-width: 699px) {
+  .gr_cont {
+    display: block;
+    width: 90%;
+    
+    margin-top: 40px;
+  }
 }
 
-.gr_cont.right {
-  float: right;
+//#tires_sel {
+//  background: url('../img/select_tire.png') no-repeat;
+//  background-size: contain;
+//}
+//
+//#wheel_sel {
+//  background: url('../img/select_wheel.png') no-repeat;
+//  background-size: contain;
+//}
+//
+//body[lang="fr"] #tires_sel {
+//  background: url('../img/select_tire_fr.png') no-repeat;
+//}
+//
+//body[lang="fr"] #wheel_sel {
+//  background: url('../img/select_wheel_fr.png') no-repeat;
+//}
+
+.start_by {
+  color:#5c5c5c;font-size:1.2em;
 }
 
-#tires_sel, #wheel_sel{
-  position: absolute;
-  width: 512px;
-  height: 390px;
+.start_tw {
+  color:#de301b;
+  font-weight:bold;
+  font-size:2.50em;
+  background: url('../img/red_arrow.png') no-repeat right;
+  background-size: 35px 35px;
+  text-align:right;
+  padding-right:40px;
 }
 
-#tires_sel {background: url('../img/select_tire.png') no-repeat;}
-#wheel_sel {background: url('../img/select_wheel.png') no-repeat;}
-body[lang="fr"] #tires_sel {background: url('../img/select_tire_fr.png') no-repeat;}
-body[lang="fr"] #wheel_sel {background: url('../img/select_wheel_fr.png') no-repeat;}
-
-#tires_sel .inset, #wheel_sel .inset {
-  height: 390px;
+#appFooter {
+  display: block;
+  margin: 0px 25px 0px 25px;
+  width: 96%;
 }
-
-.start_div {float: right; margin:40px 45px 0 0;}
-.start_by {color:#5c5c5c;font-size:1.2em;}
-.start_tw {color:#de301b;font-weight:bold;font-size:2.50em;background: url('../img/red_arrow.png') no-repeat right;background-size: 35px 35px;text-align:right;padding-right:40px;}
 
 .big_light_gray {
   background: url('../img/logo.png') left no-repeat #d7d7d7;
-  background: url('../img/logo.png'), -moz-linear-gradient(#f3f3f3, #d7d7d7);
-  background-repeat: no-repeat, no-repeat;
-  background-position: 50% 50%, right;
-  width: 100%;
+  background-repeat: no-repeat, no-repeat;  
+  background-position: 50% 50%, right;  
+
   height: @footer-height;
+  
   padding: 13px 20px;
-  border-radius: 3px;
   border: 2px solid #d0d0d0;
   border-top:1px solid #d0d0d0;
   box-shadow: inset 0px -1px 1px #e8e8e8;
   text-transform: uppercase;
-  margin: 0 5px 0 20px;
-  display: inline;
+  margin: 0px 5px 0px 20px;
+  
+  .gradient(#f3f3f3, #d7d7d7, '../img/logo.png');
+  .rounded-corners(3px);
 }
 
 .big_gray {
-  width: 220px;
   height: @footer-height;
-  color: #fff;
-  font-weight: medium;
+  
+  color: #fff; font-weight: medium;
   font-size: 1.7em;
   text-align:center;
-  padding: 15px;
+  padding: 30px;
   text-indent:30px;
+  background-color: #5f5f5f; 
   box-shadow: inset 0px 1px 0px #fff;
-  border: 1px solid #050505;
+  border: 1px solid #050505; 
+  margin-left: 10px;
   text-shadow: #000 -1px -1px 0;
   text-transform: uppercase;
 
+  .gradient(#797979, #343434);
   .rounded-corners(2px);
   .button();
 }
 
 .big_red {
-  width: auto; height: @footer-height;
-  color: #fbfbf9; font-weight: medium;
-  font-size: 2.3em;
+  width: auto;
+  height: 99px;
+  color: #fbfbf9;
+  font-weight: medium;
+  font-size: 1.3em;
   text-shadow: 1px 1px 0px #000;
   text-align:center;
   padding: 27px;
   text-indent:0px;
-  background-color: #5f5f5f;
-  background: -moz-linear-gradient(#ea1d2b, #a91f31);
-  border-radius: 3px;
+  background-color: #5f5f5f; 
   box-shadow: inset 0px 1px 0px #fff;
-  border: 1px solid #050505;
-  cursor: pointer;
+  border: 1px solid #050505; 
   text-shadow: #000 0px -1px 0;
+  
+  .rounded-corners(3px);
+  .gradient(#ea1d2b, #a91f31);
+  .button();
 }
 
 .uBtn {
@@ -252,23 +281,18 @@ body[lang="fr"] #wheel_sel {background: url('../img/select_wheel_fr.png') no-rep
 }
 
 #home.big_gray {
+  vertical-align: top;
   .gradient(#797979, #343434, "../img/home.png");
-
+  
   background-repeat: no-repeat, no-repeat;
   background-position: 40px 46%, right;
-  float: left;
-  margin-left: 0px;
+  display: inline-block;
+  width: 20%;
 }
 
-#ct-logo.big_gray {
-  .gradient(#797979, #343434, "../img/ct_logo.png");
-
-  width: 145px;
-  background-repeat: no-repeat, no-repeat;
-  background-position:40px 46%, right;
-  background-size: contain;
-  float: left;
-  margin-left: 0px;
+#ct-logo.big_light_gray {
+  width: 50%;
+  display: inline-block;
 }
 
 body[lang="fr"] #home.big_gray{
@@ -276,13 +300,14 @@ body[lang="fr"] #home.big_gray{
 }
 
 #help_b.big_gray {
+  vertical-align: top;
   .gradient(#797979, #343434, "../img/question.png");
 
+  display: inline-block;
   background-repeat: no-repeat, no-repeat;
   background-position:40px 46%, right;
-  float: right;
-  display: inline;
-  margin-left:0px;
+  
+  width: 20%;
 }
 
 #help_b.disabled {
@@ -404,12 +429,12 @@ body[lang=fr] #search_by .grey_big {
 }
 
 .opacity_bg, #uHelp {
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
-    width: 100%;
-    z-index: 998;
+  width: 100%;
+  z-index: 998;
   background-color: #333;
   opacity: 0.5;
 }
@@ -422,54 +447,61 @@ body[lang=fr] #search_by .grey_big {
 
 /* NOTUM END */
 #welcome {
-  background-image: -moz-linear-gradient(top, #ffffff 3%, #cccccc 72%);
   opacity: 1;
-  position: absolute;
-    top: 0;
-    left: 0;
   height: 100%;
-    width: 100%;
-    z-index: 100;
-    padding: 0 7%;
+  width: 100%;
+  padding: 0 7%;
+  
+  .button();
+  //.gradient(#ffffff 3%, #cccccc 72%);
 }
 
 #welcome #def_lang {
-  width: 100%;max-width:1100px;
-  height: 700px;
+  width: 100%;
 }
 
 #welcome .message {
-  width: 100%;max-width:500px;
-  height: 400px;
+  width: 40%;
   margin: 200px 0;
-  float: right;
+  vertical-align: top;
+  display: inline-block;
 }
 
 #welcome #big_tire {
-  width: 500px;
-  height: 600px;
+  width: 50%;
   margin: 50px 0;
-  float: left;
-  background: url('../img/big_tire.png') no-repeat right;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#welcome #big_tire img {
+  max-width: 100%;
+  margin: 50px 0;
+  display: inline-block;
 }
 
 .red_title {
   color:#a00f16;
   text-shadow: 0px 1px 0px #875d5f;
-  font-size: 3.5em;
+  font-size: 1.5em;
   font-weight: bold;
 }
 
 #welcome .grey_txt {
   color: #666666;
-  font-size: 2em;
+  font-size: 1em;
   margin-top: 20px;
-  width: 330px;
   text-shadow: 0px 1px 0px #666;
+  display: inline-block;
 }
 
 #welcome .red_arr {
-  background: url('../img/red_arrow1.png') no-repeat right;background-size: 25px 24px;
+  background: url('../img/red_arrow1.png') no-repeat right;
+  background-size: 25px 24px;
+  
+  width: 25px;
+  height: 24px;
+  display: inline-block;
 }
 
 #uthere, #uNoMoreItem, #uSearchDisclaimer, #uPopUp{
@@ -518,9 +550,24 @@ body[lang=fr] #search_by .grey_big {
   float: left;
   margin-left: 50px;
 }
-#uNoMoreItem .big_red{width: 265px !important; float:right; margin-right:206px;text-transform: uppercase;}
-#uthere .big_red{width: 265px !important; float:right; margin-right:50px;text-transform: uppercase;}
-#uNoMoreItem .red_title{ font-size:3em;}
+
+#uNoMoreItem .big_red{
+  float:right; 
+  margin-right:206px;
+  text-transform: uppercase;
+}
+
+#uthere .big_red{
+  width: 265px !important; 
+  float:right; 
+  margin-right:50px;
+  text-transform: uppercase;
+}
+
+#uNoMoreItem .red_title{ 
+  font-size:3em;
+}
+
 #uSearchDisclaimer .red_title{ font-size:2em; padding: 20px 0; text-align: center;}
 #uthere .red_title, #uNoMoreItem .red_title{
   color:#c51f2f;

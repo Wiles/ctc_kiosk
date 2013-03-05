@@ -67,11 +67,13 @@
       <?php echo $this->Session->flash(); ?>
       <?php echo $this->fetch('content'); ?>
     </div>
-    
-    <div class="footer">
-      <div id="home" class="big_gray"     data-i18n="home">Home</div>
-      <div id="ct-logo" class="big_gray"  ></div>
-      <div id="help_b" class="big_gray"   data-i18n="help">Help</div>
+
+    <div id="appFooter">
+      <div class="big_gray" id="home" data-i18n="home">home</div>
+      <div class="big_light_gray" id="ct-logo">
+        
+      </div>
+      <div class="big_gray" id="help_b" data-i18n="help">help</div>
     </div>
   </body>
 

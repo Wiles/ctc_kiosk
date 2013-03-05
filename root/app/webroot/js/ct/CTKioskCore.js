@@ -70,26 +70,18 @@ function setDeviceLang(val) {
   $('#ct_title_img').attr('src', window.webroot + 'img/title_selector_'+ln+'.png');
   unLog('Device Lang: ' + ctk.app.lang);
 }
+
 function setSessionLang(val) {
   ctk.app.lang = val;
   $('body').attr('lang', val);
+  xhrDA.setLocationHashParam('lang', val);
+  xhrDA.reloadPage();
   render_i18n_keys();
   unLog('Session Lang: ' + ctk.app.lang);
 }
 
 function initHome() {
-  if(ctk.welcome){
-    $('#welcome').show()
-  }
-  
   uPlp.removeAllItemToCompare();
-  
-  $('#welcome').click(function(){
-    $(this).hide();
-    $('#ct_title_img').attr('src', window.webroot + 'img/title_selector_'+ctk.app.lang+'.png');
-    KOload(KOmap.selectorPage, function(){s.eVar58 = ctk.store.id; s.eVar59 = ctk.app.IP;});
-    v48.init();
-  });
   
   $('#xhr-content').hide();
   
@@ -138,7 +130,6 @@ function initHome() {
     
     $(this).css('box-shadow','inset 0px 10px 25px #b5b5b5');
     function anim2(){
-      $('#homepageCntnt, #welcome').hide();
       xhrDA.loadPage('/mt/http://'+ctk.siteDomain+'/'+ctk.app.lang+'/tires/?tab=0&un_search=searchByVehicle');
     };
     setTimeout(anim2,300);
@@ -152,7 +143,6 @@ function initHome() {
     
     $(this).css('box-shadow','inset 0px 10px 25px #b5b5b5');
     function anim2(){
-      $('#homepageCntnt, #welcome').hide();
       xhrDA.loadPage('/mt/http://'+ctk.siteDomain+'/'+ctk.app.lang+'/tires/?tab=1&un_search=searchByType');
     };
     setTimeout(anim2,300);
@@ -170,10 +160,6 @@ function initHome() {
   KOsetProp1();
   KOload(KOmap.home);
 }
-
-/*function initPlp(){
-    KOload(KOmap.plp);
-}*/
 
 function initPdp(){
   var s = true;
@@ -380,7 +366,6 @@ function unSetSelect(ix, id){
 function setHomeScreen(ln){
   setSessionLang(ln);
   ctk.home = false;
-  $('#welcome').hide();
   $('#ct_title_img').attr('src', window.webroot + 'img/title_selector_'+ln+'.png');
   unResetSession();
 }
@@ -423,25 +408,6 @@ function areYouThere(){
   function anim1(){$('#tires_sel').css('-moz-transition','margin 0.5s').css('margin-top','0px')};
   setTimeout(anim1, 300);
 }
-
-/*function unClearSession(x, y){
-  $('#welcome, #homepageCntnt, #appFooter').show();
-  $('#uthere,.opacity_bg, #xhr-content').hide();
-  $('.vec_div, .size_div').css('box-shadow', '0px 0px 0px transparent');
-  $('#search_by').css('-moz-transition','margin 0.7s').css('margin-top','500px');
-  function anim1(){$('#tires_sel').css('-moz-transition','margin 0.5s').css('margin-top','0px')};
-  setTimeout(anim1,300);
-  clearTimeout(x);
-  clearTimeout(y);
-  ctk.home = true;
-  uDB.set('home', true);
-  ctk.app.lang = uDB.get('lang');
-  $('#ct_title_img').attr('src', window.webroot + 'img/title_selector_en.png');
-  $('body').attr('lang', ctk.app.lang);
-  render_i18n_keys();
-  uHideVkb();
-  KOsetProp1();
-}*/
 
 function unClearSession() { // new implementation, app reloads if session timeouts
   document.location.reload();
@@ -649,7 +615,8 @@ function printPdp(v){
     $('#p_tire #p_tire_name').html($('#productName').text());
     $('#p_tire #p_tire_sku').html($('#metaProductID').text());
     $('#p_tire #p_tire_size').html($('.pdpStyle').text());
-    $('#p_tire #p_tire_vendor').html($('.pdpMaker img').attr('src').replace('http://tiresinc.canadiantire.ca/assets/images/Logos/', '').replace('.gif', ''));
+    $('#p_tire #p_tire_vendor').html($('.pdpMaker img').attr('src')
+      .replace('http://tiresinc.canadiantire.ca/assets/images/Logos/', '').replace('.gif', ''));
     $('#p_tire #p_tire_price').html($('.pdpPrice').html());
   }
 

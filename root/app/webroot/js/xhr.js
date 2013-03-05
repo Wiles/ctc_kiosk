@@ -17,9 +17,12 @@ var xhrDA = new function() {
   
   this.setLocationHashParam = function(param, value) {
     this.locationHashValues[param] = value;
-    location.hash = this.getLocationHashValuesString();
     return location.hash === this.getLocationHashValuesString();
   }.bind(this);
+  
+  this.gotoLocationHash = function() {
+    location.hash = this.getLocationHashValuesString();
+  }
   
   this.back = function() {
     history.go(-1);
@@ -32,6 +35,13 @@ var xhrDA = new function() {
     $.each(params, function(key, val) {
       this.setLocationHashParam(key, val);
     }.bind(this));
+    
+    this.gotoLocationHash();
+  }.bind(this);
+
+
+  this.reloadPage = function() {
+    this.gotoLocationHash();
   }.bind(this);
   
   /**
@@ -56,6 +66,8 @@ var xhrDA = new function() {
     
     if ('currentPage' in pageValues) {
       ct.changePage('page-' + pageValues['currentPage'])
+    } else {
+      ct.changePage('page-start');
     }
   }.bind(this);
 };
