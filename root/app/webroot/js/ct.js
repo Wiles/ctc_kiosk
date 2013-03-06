@@ -12,6 +12,7 @@ var ct = new function() {
       this.showHeader(false);
     } else {
       this.showHeader(true);
+      resizeFindButtons();
     }
     
   }.bind(this);
