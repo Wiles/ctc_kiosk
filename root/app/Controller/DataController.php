@@ -21,6 +21,7 @@
 
 App::uses('AppController', 'Controller');
 App::uses('CarProService', 'Model/Datasource');
+App::uses('CtService', 'Model/Datasource');
 
 /**
  * Static content controller
@@ -133,6 +134,15 @@ class DataController extends AppController {
         
         $response = CarProService::getOptions($year, $make, $model, $body);
         
+        return new CakeResponse(array('body' => json_encode($response)));
+     }
+     
+     /**
+      *
+      */
+     public function getTires() {
+        
+        $response = CtService::getTires('en', '2013', 'Acura', 'ILX', '4 Dr Sedan', 'Base', '205/55R16');
         return new CakeResponse(array('body' => json_encode($response)));
      }
 }
