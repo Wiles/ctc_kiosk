@@ -76,7 +76,7 @@ class DataController extends AppController {
      */
     public function getMakes() {
         $year = $this->getVar('year', '0');
-        $make = $this->getVar('make', '""');
+        $make = $this->getVar('make', '');
         $crossover = $this->getVar('isVehicleCrossOver', 'false');
         
         $response = CarProService::getMakes($year, $make, $crossover);
@@ -93,10 +93,11 @@ class DataController extends AppController {
      */
     public function getModels() {
         $year = $this->getVar('year', '0');
-        $make = $this->getVar('make', '""');
-        $model = $this->getVar('model', '""');
+        $make = $this->getVar('make', '');
+        $model = $this->getVar('model', '');
+        $crossover = $this->getVar('isVehicleCrossOver', 'false');
         
-        $response = CarProService::getModels($year, $make, $model);
+        $response = CarProService::getModels($year, $make, $model, $crossover);
         
         return new CakeResponse(array('body' => json_encode($response)));
     }
@@ -110,8 +111,8 @@ class DataController extends AppController {
      */
     public function getBodies() {
         $year = $this->getVar('year', '0');
-        $make = $this->getVar('make', '""');
-        $model = $this->getVar('model', '""');
+        $make = $this->getVar('make', '');
+        $model = $this->getVar('model', '');
         
         $response = CarProService::getBodies($year, $make, $model);
         
@@ -128,9 +129,9 @@ class DataController extends AppController {
      */
      public function getOptions() {
         $year = $this->getVar('year', '0');
-        $make = $this->getVar('make', '""');
-        $model = $this->getVar('model', '""');
-        $body = $this->getVar('body', '""');
+        $make = $this->getVar('make', '');
+        $model = $this->getVar('model', '');
+        $body = $this->getVar('body', '');
         
         $response = CarProService::getOptions($year, $make, $model, $body);
         

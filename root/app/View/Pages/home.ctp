@@ -15,7 +15,6 @@
       echo $this->element('find-make');
       echo $this->element('find-model');
       echo $this->element('find-body');
-      echo $this->element('option-standard');
-      echo $this->element('option-optional');
+      echo $this->element('find-option');
     ?>
 </div>

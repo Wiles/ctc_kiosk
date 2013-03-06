@@ -1,6 +1,9 @@
 <script type="text/javascript">
     var selectedYear;
     var selectedMake;
+    var selectedModel;
+    var selectedBody;
+    var selectedOption;
 
     $(function() {
         $(window).resize(resizeFindButtons);
@@ -20,8 +23,51 @@
                     "/data/getMakes",
                     { year: selectedYear },
                     function (makeObj) {
+                        // selectedMake
                         selectedMake = makeObj.Value;
                         $("#make-selected-value").html(selectedMake);
+                        
+                        loadButtons(
+                            $("#model-container"),
+                            "/data/getModels",
+                            {
+                                year: selectedYear,
+                                make: selectedMake,
+                            },
+                            function (modelObj) {
+                                // selected model
+                                selectedModel = modelObj.Value;
+                                $("#model-selected-value").html(selectedModel);
+                                
+                                loadButtons(
+                                    $("#body-container"),
+                                    "/data/getBodies",
+                                    {
+                                        year: selectedYear,
+                                        make: selectedMake,
+                                        model: selectedModel
+                                    },
+                                    function (bodyObj) {
+                                        // selected body
+                                        selectedBody = bodyObj.Value;
+                                        $("#body-selected-value").html(selectedBody);
+                                        
+                                        loadButtons(
+                                            $("#option-container"),
+                                            "/data/getOptions",
+                                            {
+                                                year: selectedYear,
+                                                make: selectedMake,
+                                                model: selectedModel,
+                                                body: selectedBody
+                                            },
+                                            function (optionObj) {
+                                                // selected option
+                                                selectedOption = optionObj.Value;
+                                                $("#option-selected-value").html(selectedOption);
+                                            });
+                                    });
+                            });
                     });
             });
     });
