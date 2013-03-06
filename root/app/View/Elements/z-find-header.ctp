@@ -22,6 +22,6 @@
     <div id="header-button-option" class="un-search-btn un-search-btn_grayL last <?php if (isset($optionsStatus)) echo $optionsStatus ?>">
       <div>5.&nbsp;<span data-ko="option" class="kk">Options</span>
       </div>
-      <div id="options-selected-value" class="uSelectedVal"></div>
+      <div id="option-selected-value" class="uSelectedVal"></div>
     </div>
 </div>

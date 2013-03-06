@@ -56,7 +56,7 @@ class CarProService {
             'getMakes', 
             array(
                 'Year' => $year,
-                'Make' => $make,
+                'Make' => '"' . $make . '"',
                 'isVehicleCrossOver' => $isCrossOver,
                 'format' => self::$format,
                 'Username' => self::$username,
@@ -84,8 +84,8 @@ class CarProService {
             'getModels', 
             array(
                 'Year' => $year,
-                'Make' => $make,
-                'Model' => $model,
+                'Make' => '"' . $make . '"',
+                'Model' => '"' . $model . '"',
                 'isVehicleCrossOver' => $isCrossOver,
                 'format' => self::$format,
                 'Username' => self::$username,
@@ -112,8 +112,8 @@ class CarProService {
             'getChassis', 
             array(
                 'Year' => $year,
-                'Make' => $make,
-                'Model' => $model,
+                'Make' => '"' . $make . '"',
+                'Model' => '"' . $model . '"',
                 'format' => self::$format,
                 'Username' => self::$username,
                 'Password' => self::$password
@@ -140,9 +140,9 @@ class CarProService {
             'getOptions', 
             array(
                 'Year' => $year,
-                'Make' => $make,
-                'Model' => $model,
-                'Chassis' => $body,
+                'Make' => '"' . $make . '"',
+                'Model' => '"' . $model . '"',
+                'Chassis' => '"' . $body . '"',
                 'format' => self::$format,
                 'Username' => self::$username,
                 'Password' => self::$password

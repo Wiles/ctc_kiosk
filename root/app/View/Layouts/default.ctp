@@ -53,6 +53,7 @@
       echo $this->Html->script('ct/fieldsController.js');
       echo $this->Html->script('ct/s_code_prd.js');
       echo $this->Html->script('main.js');
+      echo $this->Html->script('find.js');
       
       echo $this->fetch('meta');
       echo $this->fetch('css');
