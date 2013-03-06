@@ -162,4 +162,50 @@ class DataController extends AppController {
         $response = CtService::getTiresByVehicle($lang, $year, $make, $model, $body, $option, $size);
         return new CakeResponse(array('body' => json_encode($response)));
      }
+     
+     /**
+      * Get tires by size
+      *
+      * $width         [number] - 
+      * $aspect_ratio  [number] - 
+      * $diameter      [number] -
+      * $load_index    [number] - [optional]
+      * $speed         [number] - [optional]
+      */
+     public function getTiresBySize() {
+        $width         = $this->getVar('width', '');
+        $aspect_ratio  = $this->getVar('aspect_ratio', '');
+        $diameter      = $this->getVar('diameter', '');
+        $load_index    = $this->getVar('load_index', '');
+        $speed         = $this->getVar('speed', '');
+        
+        $response = CtService::getTiresBySize($width, $aspect_ratio, $diameter, $load_index, $speed);
+        return new CakeResponse(array('body' => json_encode($response)));
+     }
+     
+     /**
+      * Get wheel results by vehicle
+      *
+      * $lang   [string] - 'en'/'fr'
+      * $year   [number] - 
+      * $make   [string] -
+      * $model  [string] -
+      * $body   [string] -
+      * $option [string] -
+      * $size   [string] -
+      *
+      * Example: getTiresByVehicle('en', '2013', 'Acura', 'ILX', '4 Dr Sedan', 'Base', '205/55R16')
+      */
+     public function getWheelsByVehicle() {
+        $lang   = $this->getVar('lang', 'en');
+        $year   = $this->getVar('year', '0');
+        $make   = $this->getVar('make', '""');
+        $model  = $this->getVar('model', '""');
+        $body   = $this->getVar('body', '""');
+        $option = $this->getVar('option', '""');
+        $size   = $this->getVar('size', '""');
+        
+        $response = CtService::getWheelsByVehicle($lang, $year, $make, $model, $body, $option, $size);
+        return new CakeResponse(array('body' => json_encode($response)));
+     }
 }
