@@ -67,7 +67,7 @@ var xhrDA = new function() {
     if ('currentPage' in pageValues) {
       ct.changePage('page-' + pageValues['currentPage'])
     } else {
-      ct.changePage('page-start');
+      ct.changePage('page-home');
     }
   }.bind(this);
 };
