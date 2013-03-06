@@ -91,12 +91,20 @@ function initHome() {
     render_i18n_keys();
   }
   
-  $('#tires_sel').bind('click', function(){
-    $(this).css('-moz-transition','margin 0.7s').css('margin-top','500px');
-    function anim1(){
-      $('#search_by').css('-moz-transition','margin 0.5s').css('margin-top','0px')
-    };
-    setTimeout(anim1,300);
+  $('#tires_sel').click(function(){
+    var h = $(this).height();
+    $(this).animate({
+        top: '+=' + h
+    },
+    500,
+    function() {
+      $("#search_by").animate({
+        margin: '0px'
+      },
+      500,
+      function() {
+      });
+    });
   });
   
   $('#wheel_sel').bind('click', function(){
@@ -104,6 +112,8 @@ function initHome() {
     v48.setProp('TR2', 'Vehicle');
     uSType = 'Wheels';
     omniSType = ':Wheel';
+    
+    //$("#find-container").show();
 
     xhrDA.loadPage({
       'lang' : ctk.app.lang,
@@ -124,7 +134,7 @@ function initHome() {
     };
     setTimeout(anim2,300);
   });
-  
+
   $('.size_div').bind('click', function(){
     v48.setProp('TR1', 'Tires');
     v48.setProp('TR2', 'TireSize');
