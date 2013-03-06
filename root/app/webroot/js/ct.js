@@ -8,7 +8,7 @@ var ct = new function() {
     $('div.content-page').hide();
     $('#' + page).show();
     
-    if (page === 'page-start') {
+    if (page === 'page-start' || page === 'page-home') {
       this.showHeader(false);
     } else {
       this.showHeader(true);
