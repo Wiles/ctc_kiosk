@@ -12,5 +12,6 @@
   echo $this->element('find-body');
   echo $this->element('option-standard');
   echo $this->element('option-optional');
+  echo $this->element('results');
 ?>
 </div>

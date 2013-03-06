@@ -5,9 +5,9 @@
     </div>
     <div id="unSelector">
       <div class="gr_cont">
-        <?php $this->Html->image(__('select_tire.png'), array('alt' => 'Select Tire')); ?>
         <div id="tires_sel">
           <div class="start_div">
+            <?php echo $this->Html->image(__('select_tire.png'), array('alt' => 'Select Tire')); ?>
             <!--<div class="start_by">START BY CHOOSING</div>
             <div class="start_tw">WHEELS</div>-->
           </div>
@@ -29,7 +29,7 @@
       <div class="lucid">
         <div id="wheel_sel">
           <div class="start_div">
-            <?php $this->Html->image(__('select_wheel.png'), array('alt' => 'Select Wheel')); ?>
+            <?php echo $this->Html->image(__('select_wheel.png'), array('alt' => 'Select Wheel')); ?>
             <!--<div class="start_by">START BY CHOOSING</div>
             <div class="start_tw">WHEELS</div>-->
           </div>
