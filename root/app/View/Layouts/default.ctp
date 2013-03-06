@@ -70,10 +70,10 @@
 
     <div id="appFooter">
       <div class="big_gray" id="home" data-i18n="home">home</div>
-      <div class="big_light_gray" id="ct-logo">
+      <div class="big_light_gray" style="border-style:none;" id="ct-logo">
         
       </div>
-      <div class="big_gray" id="help_b" data-i18n="help">help</div>
+      <div class="big_gray" id="help_b" data-i18n="help" style="right:26px;position:fixed;">help</div>
     </div>
   </body>
 

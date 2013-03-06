@@ -3,10 +3,7 @@
     var selectedMake;
 
     $(function() {
-        $(window).resize(function () {
-            resizeStuff($("#year-container"), ".un-search-btn_grayH");
-            resizeStuff($("#make-container"), ".un-search-btn_grayH");
-        });
+        $(window).resize(resizeFindButtons);
         
         loadButtons(
             $("#year-container"),
@@ -66,6 +63,11 @@
         var w = Math.floor(totalWidth / count) - 25;
         
         container.find(stuff).css('width', w);
+    }
+    
+    function resizeFindButtons() {
+        resizeStuff($("#year-container"), ".un-search-btn_grayH");
+        resizeStuff($("#make-container"), ".un-search-btn_grayH");
     }
 </script>
 
