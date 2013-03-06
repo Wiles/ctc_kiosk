@@ -10,15 +10,15 @@ class CtService {
     private static $ctServiceUrl = 'http://tires.canadiantire.ca';
     
     /**
-     * Gets Tires
-     *
+     * Gets Tires by vehicle
      * 
-     * @param $year   - 
-     * @param $make   - 
-     * @param $model  - 
-     * @param $body   - 
-     * @param $option - 
-     * @param $size   -
+     * @var lang   -
+     * @var year   - 
+     * @var make   - 
+     * @var model  - 
+     * @var body   - 
+     * @var option - 
+     * @var size   -
      */
     public static function getTiresByVehicle($lang, $year, $make, $model, $body, $option, $size) {
         $params = array(
@@ -30,22 +30,128 @@ class CtService {
           urlencode($size)
         );
         
-        $query = '?vehicle='.implode('_', $params).'#REGULAR#Both&showSavedVehicle=true&un_form_encoding=utf-8';
         $base_url = self::$ctServiceUrl . '/' . $lang . '/tires' . '/search/';
+        
+        $query = '?vehicle='.implode('_', $params).'#REGULAR#Both&showSavedVehicle=true&un_form_encoding=utf-8';
         
         $cleaned_query = str_replace(array(' ', '/', '#', ','), array('%2B', '%25252F', '%23', '%2C'), $query);
         
         $url = $base_url . $cleaned_query;
         
-        $opts = array('http' => array('header'=> 'Cookie: ' . $_SERVER['HTTP_COOKIE']."\r\n"));
-        $context = stream_context_create($opts);
-        
-        echo($url."\n");
         $contents = file_get_contents($url);
         
         return self::extractContents($contents);
     }
     
+    /**
+     * Gets Tires by size
+     * 
+     * @var lang          [string] - 'en'/'fr'
+     * @var width         [number] -  
+     * @var aspect_ratio  [number] -  
+     * @var diameter      [number] - 
+     * @var load_index    [number] - [optional] 
+     * @var speed         [number] - [optional] 
+     */
+    public static function getTiresBySize($lang, $width, $aspect_ratio, $diameter, $load_index, $speed) {
+        $params = array(
+          urlencode($width),
+          urlencode($aspect_ratio),
+          urlencode($diameter)
+        );
+        
+        $base_url = self::$ctServiceUrl . '/' . $lang . '/tires' . '/search/';
+        
+        // Create the query string
+        $query = '?SecRatioDia='.implode('_', $params);
+        
+        if (!empty($load)) {
+          $query .= '&load='.$load;
+        }
+        
+        if (!empty($speed)) {
+          $query .= '&speed='.$speed;
+        }
+        
+        $query .= '&sizeSelection=true&tab=1';
+        
+        $url = $base_url . $query;
+        
+        $contents = file_get_contents($url);
+        
+        return self::extractContents($contents);
+    }
+    
+    /**
+     * Gets Wheels by vehicle
+     * 
+     * @var lang   -
+     * @var year   - 
+     * @var make   - 
+     * @var model  - 
+     * @var body   - 
+     * @var option - 
+     * @var size   -
+     */
+    public static function getWheelsByVehicle($lang, $year, $make, $model, $body, $option, $size) {
+        $params = array(
+          urlencode($year),
+          urlencode($make),
+          urlencode($model),
+          urlencode($body),
+          urlencode($option),
+          urlencode($size)
+        );
+        
+        $base_url = self::$ctServiceUrl . '/' . $lang . '/wheels/search/';
+        
+        $query = '?vehicle='.implode('_', $params).'#REGULAR#Both&showSavedVehicle=true&un_form_encoding=utf-8';
+        
+        $cleaned_query = str_replace(array(' ', '/', '#', ','), array('%2B', '%25252F', '%23', '%2C'), $query);
+        
+        $url = $base_url . $cleaned_query;
+        
+        $contents = file_get_contents($url);
+        
+        return self::extractContents($contents);
+    }
+    
+    
+    /**
+     * Extract the contents from the products list into array
+     *
+     * This converts the HTML into a DOM tree and scraps out the elements
+     *
+     * The return value will not contain elements that could not be located.
+     *
+     * @var contents [string] - HTML Source code
+     *
+     *
+     * @return
+     *    Array
+     *    (
+     *        [title_href] => /en/tires/light-truck-tires/product/0052465P/goodyear-wrangler-sr-a/0072465/
+     *        [title_name] => Goodyear Wrangler SR-A
+     *        [rating_img] => http://tiresinc.canadiantire.ca/assets/images/rating-3_7.gif
+     *        [category_href] => /en/tires/light-truck-tires/
+     *        [category_name] => Light Truck Tires
+     *        [img_url] => http://s7d5.scene7.com/is/image/CanadianTire/0052465_1?wid=160&hei=160&qlt=70&resMode=sharp2
+     *        [tire_id] => 0072465
+     *        [product_features] => For on- or off-highway driving
+     *    
+     *    
+     *    
+     *                                                                            Aggressive tread pattern for excellent on/off-road traction
+     *    
+     *    
+     *    
+     *        [product_price] => $249.99
+     *    
+     *                                                                            *
+     *    
+     *                                                                            (each)
+     *    )
+     */
     private static function extractContents($contents) {
         $DOM = new DOMDocument;
         @$DOM->loadHTML($contents);
@@ -64,20 +170,72 @@ class CtService {
               continue;
             }
             
+            $title = self::extractTitle($cur);
+            $rating = self::extractRating($cur);
             $category = self::extractCategory($cur);
             $img = self::extractImage($cur);
             $desc = self::extractDescription($cur);
             $price = self::extractPrice($cur);
             
-            $data = array_merge($category, $img, $desc, $price);
-            print_r($data);
-            echo "<br/>";
+            $data = array_merge($title, $rating, $category, $img, $desc, $price);
+            return $data;
           }
-          
-          return $ret;
         }
     }
+    
+    private static function extractTitle($element) {
+      $children = $element->getElementsByTagName('div');
+      
+      for ($i = 0; $i < $children->length; $i++) {
+        $cur = $children->item($i);
         
+        if (self::hasClass($cur, 'productDetails')) {
+          $pdChildren = $cur->getElementsByTagName('h3');
+          // Get the first H3 in the Product Details list item
+          $h3 = $pdChildren->item(0);
+          for ($j = 0; $j < $h3->childNodes->length; $j++) {
+            $title = $h3->childNodes->item($j);
+            if (self::isDomElement($title) && $title->tagName === 'a') {
+              // Get the URL for the title
+              $data = array(
+                'title_href' => $title->getAttribute('href'),
+                'title_name' => trim($title->nodeValue)
+              );
+              
+              return $data;
+            }
+          }
+        }
+      }
+      
+      // Couldn't find the title of the product item
+      return array();
+    }
+    
+    private static function extractRating($element) {
+      $children = $element->getElementsByTagName('div');
+      
+      for ($i = 0; $i < $children->length; $i++) {
+        $cur = $children->item($i);
+        
+        if (self::hasClass($cur, 'reviews')) {
+          $imgs = $cur->getElementsByTagName('img');
+          // Get the first H3 in the Product Details list item
+          $img = $imgs->item(0);
+          
+          // Get the URL for the rating image
+          $data = array(
+            'rating_img' => $img->getAttribute('src')
+          );
+          
+          return $data;
+        }
+      }
+      
+      // Couldn't find the ratings image
+      return array();
+    }
+    
     private static function extractCategory($element) {
       $children = $element->getElementsByTagName('li');
       

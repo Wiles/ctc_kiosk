@@ -141,13 +141,13 @@ class DataController extends AppController {
      /**
       * Get tire results by vehicle
       *
-      * $lang   [string] - 'en'/'fr'
-      * $year   [number] - 
-      * $make   [string] -
-      * $model  [string] -
-      * $body   [string] -
-      * $option [string] -
-      * $size   [string] -
+      * @var lang   [string] - 'en'/'fr'
+      * @var year   [number] - 
+      * @var make   [string] -
+      * @var model  [string] -
+      * @var body   [string] -
+      * @var option [string] -
+      * @var size   [string] -
       *
       * Example: getTiresByVehicle('en', '2013', 'Acura', 'ILX', '4 Dr Sedan', 'Base', '205/55R16')
       */
@@ -167,13 +167,17 @@ class DataController extends AppController {
      /**
       * Get tires by size
       *
-      * $width         [number] - 
-      * $aspect_ratio  [number] - 
-      * $diameter      [number] -
-      * $load_index    [number] - [optional]
-      * $speed         [number] - [optional]
+      * @var lang          [string] - 'en'/'fr'
+      * @var width         [number] - 
+      * @var aspect_ratio  [number] - 
+      * @var diameter      [number] -
+      * @var load_index    [number] - [optional]
+      * @var speed         [number] - [optional]
+      *
+      * Example: getTiresBySize('en', 205, 55, 16, false, false)
       */
      public function getTiresBySize() {
+        $lang          = $this->getVar('lang', '');
         $width         = $this->getVar('width', '');
         $aspect_ratio  = $this->getVar('aspect_ratio', '');
         $diameter      = $this->getVar('diameter', '');
@@ -187,15 +191,15 @@ class DataController extends AppController {
      /**
       * Get wheel results by vehicle
       *
-      * $lang   [string] - 'en'/'fr'
-      * $year   [number] - 
-      * $make   [string] -
-      * $model  [string] -
-      * $body   [string] -
-      * $option [string] -
-      * $size   [string] -
+      * @var lang   [string] - 'en'/'fr'
+      * @var year   [number] - 
+      * @var make   [string] -
+      * @var model  [string] -
+      * @var body   [string] -
+      * @var option [string] -
+      * @var size   [string] -
       *
-      * Example: getTiresByVehicle('en', '2013', 'Acura', 'ILX', '4 Dr Sedan', 'Base', '205/55R16')
+      * Example: getWheelsByVehicle('en', '2013', 'Acura', 'ILX', '4 Dr Sedan', 'Base', '205/55R16')
       */
      public function getWheelsByVehicle() {
         $lang   = $this->getVar('lang', 'en');
