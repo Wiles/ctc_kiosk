@@ -22,18 +22,18 @@ class CtService {
      */
     public static function getTires($lang, $year, $make, $model, $body, $option, $size) {
         $params = array(
-          $year,
-          $make,
-          $model,
-          $body,
-          $option,
-          $size
+          urlencode($year),
+          urlencode($make),
+          urlencode($model),
+          urlencode($body),
+          urlencode($option),
+          urlencode($size)
         );
         
         $query = '?vehicle='.implode('_', $params).'#REGULAR#Both&showSavedVehicle=true&un_form_encoding=utf-8';
         $base_url = self::$ctServiceUrl . '/' . $lang . '/tires' . '/search/';
         
-        $cleaned_query = str_replace(array(' ', '/', '#'), array('%2520', '%25252F', '%252523'), $query);
+        $cleaned_query = str_replace(array(' ', '/', '#', ','), array('%2B', '%25252F', '%23', '%2C'), $query);
         
         $url = $base_url . $cleaned_query;
         
@@ -43,17 +43,22 @@ class CtService {
         $contents = file_get_contents($url);
         
         $DOM = new DOMDocument;
-        $DOM->loadHTML($contents);
-
-        echo($url);
-        //get all H1
-        $items = $DOM->getElementsByTagName('h1');
-
-        //display all H1 text
-        for ($i = 0; $i < $items->length; $i++) {
-          echo $items->item($i)->nodeValue . "<br/>";
-        }
+        @$DOM->loadHTML($contents);
         
-        return $ret;
+        echo($url."\n");
+        //get all H1
+        $item = $DOM->getElementById('productList');
+        
+        if ($item == null) {
+          // No search results found
+          return array();
+        } else {
+          $children = $item->childNodes;
+          for ($i = 0; $i < $children->length; $i++) {
+            echo $children->item($i)->nodeValue . "<br/>";
+          }
+          
+          return $ret;
+        }
     }
 }
