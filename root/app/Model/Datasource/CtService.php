@@ -1,6 +1,9 @@
 <?php
 /**
- * Canadian Tire website scraper
+ * Service for scrapping search results from the Canadian Tire website
+ *
+ * This only deals with search results and nothing more. It does not extract the specifications for each product or item.
+ *
  */
 class CtService {
 
@@ -12,35 +15,24 @@ class CtService {
     /**
      * Gets Tires by vehicle
      * 
-     * @var lang   -
-     * @var year   - 
-     * @var make   - 
-     * @var model  - 
-     * @var body   - 
-     * @var option - 
-     * @var size   -
+     * @var lang   [string] -
+     * @var year   [number] - 
+     * @var make   [string] - 
+     * @var model  [string] - 
+     * @var body   [string] - 
+     * @var option [string] - 
+     * @var size   [string] -
+     * @var sort   [array] - Sorting information
+     *      array(
+     *          'by' => 'Price_up'
+     *          // This contains the ids of the items that we're narrowing by. Separated by '+'
+     *          'narrow' => '3234+4234234+4324234'
+     *          
+     *          
+     *      )
      */
-    public static function getTiresByVehicle($lang, $year, $make, $model, $body, $option, $size) {
-        $params = array(
-          urlencode($year),
-          urlencode($make),
-          urlencode($model),
-          urlencode($body),
-          urlencode($option),
-          urlencode($size)
-        );
-        
-        $base_url = self::$ctServiceUrl . '/' . $lang . '/tires' . '/search/';
-        
-        $query = '?vehicle='.implode('_', $params).'#REGULAR#Both&showSavedVehicle=true&un_form_encoding=utf-8';
-        
-        $cleaned_query = str_replace(array(' ', '/', '#', ','), array('%2B', '%25252F', '%23', '%2C'), $query);
-        
-        $url = $base_url . $cleaned_query;
-        
-        $contents = file_get_contents($url);
-        
-        return self::extractContents($contents);
+    public static function getTiresByVehicle($lang, $year, $make, $model, $body, $option, $size, $sort) {
+        return self::getByVehicle('tires', $lang, $year, $make, $model, $body, $option, $size, $sort);
     }
     
     /**
@@ -79,21 +71,55 @@ class CtService {
         
         $contents = file_get_contents($url);
         
-        return self::extractContents($contents);
+        $dom = new DOMDocument;
+        @$dom->loadHTML($contents);
+        
+        return self::extractContents($dom);
     }
     
     /**
-     * Gets Wheels by vehicle
+     * Gets wheels by vehicle
      * 
-     * @var lang   -
-     * @var year   - 
-     * @var make   - 
-     * @var model  - 
-     * @var body   - 
-     * @var option - 
-     * @var size   -
+     * @var lang   [string] -
+     * @var year   [number] - 
+     * @var make   [string] - 
+     * @var model  [string] - 
+     * @var body   [string] - 
+     * @var option [string] - 
+     * @var size   [string] -
+     * @var sort   [array] - Sorting information
+     *      array(
+     *          'by' => 'Price_up'
+     *          // This contains the ids of the items that we're narrowing by. Separated by '+'
+     *          'narrow' => '3234+4234234+4324234'
+     *          
+     *          
+     *      )
      */
     public static function getWheelsByVehicle($lang, $year, $make, $model, $body, $option, $size) {
+        return self::getByVehicle('wheels', $lang, $year, $make, $model, $body, $option, $size);
+    }
+    
+    /**
+     * Gets Tires or wheels by vehicle
+     * 
+     * @var lang   [string] -
+     * @var year   [number] - 
+     * @var make   [string] - 
+     * @var model  [string] - 
+     * @var body   [string] - 
+     * @var option [string] - 
+     * @var size   [string] -
+     * @var sort   [array] - Sorting information
+     *      array(
+     *          'by' => 'Price_up'
+     *          // This contains the ids of the items that we're narrowing by. Separated by '+'
+     *          'narrow' => '3234+4234234+4324234'
+     *          
+     *          
+     *      )
+     */
+    private static function getByVehicle($type, $lang, $year, $make, $model, $body, $option, $size) {
         $params = array(
           urlencode($year),
           urlencode($make),
@@ -103,9 +129,23 @@ class CtService {
           urlencode($size)
         );
         
-        $base_url = self::$ctServiceUrl . '/' . $lang . '/wheels/search/';
+        $base_url = self::$ctServiceUrl . '/' . $lang . '/' . $type . '/search/';
         
         $query = '?vehicle='.implode('_', $params).'#REGULAR#Both&showSavedVehicle=true&un_form_encoding=utf-8';
+        
+        if (!empty($sort)) {
+          $count = 50;
+          $by = $sort['by'];
+          $narrow = $sort['narrow'];
+          
+          if (!empty($by)) {
+            $query .= "&pn_ps=$count&pn_ok=$by&pn_p=1";
+          }
+          
+          if (!empty($narrow)) {
+            $query .= '&N='.$narrow;
+          }
+        }
         
         $cleaned_query = str_replace(array(' ', '/', '#', ','), array('%2B', '%25252F', '%23', '%2C'), $query);
         
@@ -113,9 +153,11 @@ class CtService {
         
         $contents = file_get_contents($url);
         
-        return self::extractContents($contents);
+        $dom = new DOMDocument;
+        @$dom->loadHTML($contents);
+        
+        return self::extractContents($dom);
     }
-    
     
     /**
      * Extract the contents from the products list into array
@@ -124,7 +166,7 @@ class CtService {
      *
      * The return value will not contain elements that could not be located.
      *
-     * @var contents [string] - HTML Source code
+     * @var dom [DOMDocument] - DOMDocument based on HTML Source code
      *
      *
      * @return
@@ -152,16 +194,16 @@ class CtService {
      *                                                                            (each)
      *    )
      */
-    private static function extractContents($contents) {
-        $DOM = new DOMDocument;
-        @$DOM->loadHTML($contents);
-        
-        $item = $DOM->getElementById('productList');
+    private static function extractContents($dom) {     
+        $item = $dom->getElementById('productList');
         
         if ($item == null) {
           // No search results found
           return array();
         } else {
+          $filters = self::extractFilterInformation($dom);
+          $products = array();
+          
           // Find all the children of the product list
           $children = $item->childNodes;
           for ($i = 0; $i < $children->length; $i++) {
@@ -178,9 +220,63 @@ class CtService {
             $price = self::extractPrice($cur);
             
             $data = array_merge($title, $rating, $category, $img, $desc, $price);
-            return $data;
+            $products[] = $data;
+          }
+          
+          return array(
+            'filter' => $filters,
+            'products' => $products
+          );
+        }
+    }
+    
+    /**
+     * Extract the ids for the narrowing filters (ie. narrow by price, season, brand, etc.)
+     * 
+     *
+     *
+     */
+    private static function extractFilterInformation($dom) {
+      $sidemenu = $dom->getElementById('sideMenu');
+      
+      $subNarrows = $sidemenu->getElementsByTagName('li');
+      
+      $narrowData = array();
+      
+      for ($i = 0; $i < $subNarrows->length; $i++) {
+        // Extract the contents of a specific narrow category. Such as 'Narrow by Price'.
+        $ndata = array();
+        $ndata['values'] = array();
+        
+        $titles = $subNarrows->item($i)->getElementsByTagName('h4');
+        $title = $titles->item(0);
+        
+        if (empty($title)) {
+          continue;
+        }
+        
+        $ndata['narrow_title'] = $title->nodeValue;
+        
+        $sub = $subNarrows->item($i)->getElementsByTagName('ul');
+        
+        for ($k = 0; $k < $sub->length; $k++) {
+          $cur = $sub->item($k);
+          $links = $cur->getElementsByTagName('a');
+          $link = $links->item(0);
+          
+          if (self::isDomElement($link)) {
+            $ndata['values'][] = array(
+              'link_href' => $link->getAttribute('href'),
+              'link_value' => $link->nodeValue
+            );
           }
         }
+        
+        $narrowData[] = $ndata;
+      }
+      
+      print_r($narrowData);
+      return $narrowData;
     }
     
     private static function extractTitle($element) {
