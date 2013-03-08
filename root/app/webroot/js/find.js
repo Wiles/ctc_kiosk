@@ -15,10 +15,16 @@ function loadYears() {loadButtons(
     {},
     function (yearObj) {
         // selected year
-        selectedYear = yearObj.Value;
-        $("#year-selected-value").html(selectedYear);
-        
-        loadMakes();
+        if (selectedYear != yearObj.Value) {
+            selectedYear = yearObj.Value;
+            $("#year-selected-value").html(selectedYear);
+            $("#make-selected-value").html("");
+            $("#model-selected-value").html("");
+            $("#body-selected-value").html("");
+            $("#otpion-selected-value").html("");
+            
+            loadMakes();
+        }
     });
 }
 
@@ -107,6 +113,7 @@ function loadButtons(container, url, args, onClick) {
             }
             
             div.click(function() {
+                $("#uNextStep").removeClass("disabled");
                 container.find(".un-search-btn_grayH.selected").removeClass("selected");
                 $(this).addClass("selected");
                 onClick(value);

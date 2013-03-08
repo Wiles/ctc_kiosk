@@ -8,6 +8,12 @@ var ct = new function() {
     $('div.content-page').hide();
     $('#' + page).show();
     
+    // header highlighting magic
+    $(".un-search-btn.un-search-btn_grayL.selected").removeClass("selected");
+    $("#header-" + page).addClass("selected").removeClass("complete");
+    $("#header-" + page).prevAll().addClass("complete");
+    $("#header-" + page).nextAll().removeClass("complete").addClass("disabled");
+    
     if (page === 'page-start' || page === 'page-home') {
       this.showHeader(false);
     } else {
@@ -24,8 +30,10 @@ var ct = new function() {
   this.showHeader = function(show) {
     if (show) {
       $('div.header').show();
+      $("#findFooter").show();
     } else {
       $('div.header').hide();
+      $("#findFooter").hide();
     }
   }.bind(this);
   

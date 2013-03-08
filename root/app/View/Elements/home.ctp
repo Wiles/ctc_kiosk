@@ -1,4 +1,4 @@
-<div id="page-home" class="content-page">
+<div id="page-home" class="content-page" style="display:block;">
   <div id="welcome">
     <div id="ct_title">
       <?php echo $this->Html->image('logo.png', array('alt' => 'CANADIAN TIRE')); ?>
