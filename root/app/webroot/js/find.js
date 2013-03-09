@@ -5,7 +5,7 @@ var selectedBody;
 var selectedOption;
 
 $(function() {
-    $(window).resize(resizeFindButtons);
+    $(window).resize(resizeFindPages);
     
     $('#uNextStep').click(function(){
         if(!( $(this).hasClass('disabled'))){
@@ -14,6 +14,10 @@ $(function() {
             if (next.length) {
                 sel.removeClass("selected").addClass("complete");
                 next.addClass("selected");
+                
+                if (!next.find(".uSelectedVal").html().length) {
+                    $(this).addClass('disabled');
+                }
                 
                 var ko = next.find('div .kk').attr('data-ko');
                 xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
@@ -160,6 +164,17 @@ function loadButtons(container, url, args, onClick) {
     });
 }
 
+function clearFindPages() {
+    $(".find-page .selected").removeClass("selected");
+    $(".uSelectedVal").html("");
+    $("#uNextStep").addClass("disabled");
+    selectedYear = null;
+    selectedMake = null;
+    selectedModel = null;
+    selectedBody = null;
+    selectedOption = null;
+}
+
 function resizeStuff(container, stuff) {
     var totalWidth = container.width();
     var count = Math.floor(totalWidth / 275);
@@ -168,7 +183,18 @@ function resizeStuff(container, stuff) {
     container.find(stuff).css('width', w);
 }
 
-function resizeFindButtons() {
+function resizeFindPages() {
+    var totalHeight = $(window).height();
+    var footerHeight = $("#appFooter").height() + $("findFooter").height();
+    var headerHeight = $(".header").height();
+    var margin = 260;
+    var h = totalHeight - (footerHeight + headerHeight + margin);
+    
+    $(".find-page").height(h);
+    
     resizeStuff($("#year-container"), ".un-search-btn_grayH");
     resizeStuff($("#make-container"), ".un-search-btn_grayH");
+    resizeStuff($("#model-container"), ".un-search-btn_grayH");
+    resizeStuff($("#body-container"), ".un-search-btn_grayH");
+    resizeStuff($("#option-container"), ".un-search-btn_grayH");
 }

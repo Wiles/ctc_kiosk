@@ -113,8 +113,8 @@ function initHome() {
     uSType = 'Wheels';
     omniSType = ':Wheel';
     
-    //$("#find-container").show();
-
+    clearFindPages();
+    
     xhrDA.loadPage({
       'lang' : ctk.app.lang,
       'currentPage' : 'find-year',

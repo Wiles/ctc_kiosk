@@ -5,5 +5,5 @@
   <div class="search-label">
     <span data-i18n="select_your_vec" class="kk">SELECT YOUR VEHICLE </span>BODY
   </div>
-  <div id="body-container"></div>
+  <div id="body-container" class="find-page"></div>
 </div>
