@@ -1,6 +1,7 @@
 <div id="page-start" class="content-page">
   <div id="homepageCntnt">
-    <div id="ct_title">
+    <div id="ct_title" data-i18n="title_wheel_selector">
+      <!-- Tire and Wheel Selector -->
       <?php echo $this->Html->image(__('title_selector_en.png'), array('id' => 'ct_title_img', 'alt' => 'Tire and Wheel Selector')); ?>
     </div>
     <div id="unSelector">

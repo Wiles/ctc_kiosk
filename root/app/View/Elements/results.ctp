@@ -1,7 +1,7 @@
-<div id="page-results" class="content-page">
+<div id="page-results">
     <div>
       <div class="results-top-bar" id="results-nav-bar">
-        <div class="results-back-button">        
+        <div class="results-back-button">
           <svg class="uTopNavBarBackSvg" height="80" width="170" data-i18n="BACK" id="svgelem">
             <linearGradient y2="100%" x2="0%" y1="0%" x1="0%" id="grad6">
               <stop style="stop-color:#797979;stop-opacity:1" offset="0%"></stop>
@@ -20,78 +20,95 @@
           <div class="uTxtX" style="color: #999;">Showing: <span class="k" style="color:#333">All Wheels that fit your vehicle</span></div>
         </div>
       </div>
-      
+
       <div id="results-content">
         <div id="results-menu">
-          <div class="results-filter-options notum" id="byprice_options">
-            <div class="results-filter-options-title uTxtXLL">
-              <span><?php echo __('Narrow by').'&nbsp;'.__('price') ?></span>
-            </div>
-          </div>
-          
-          <div class="results-filter-options notum" id="bybrand_options">
-            <div class="results-filter-option uTxtXLL">
-              <span><?php echo __('Narrow by').'&nbsp;'.__('brand') ?></span>
-            </div>
-          </div>
-          
-          <div class="results-filter-options notum" id="byfinish_options">
+          <div class="results-filter-option" id="byprice-option">
             <div class="results-filter-title uTxtXLL">
-              <span><?php echo __('Narrow by').'&nbsp;'.__('finish') ?></span>
+              <?php $title = __('Narrow by').'&nbsp;'.__('price') ?>
+              <span><?php echo $title ?></span>
             </div>
+            <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'byprice-options-page', 'index' => 1)); ?>
+          </div>
+
+          <div class="results-filter-option" id="bybrand-option">
+            <div class="results-filter-title uTxtXLL">
+              <?php $title = __('Narrow by').'&nbsp;'.__('brand') ?>
+              <span><?php echo $title ?></span>
+            </div>
+            <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'bybrand-options-page', 'index' => 2)); ?>
           </div>
           
-          <div class="results-filter-options notum" id="bycolour_options">
+          <div class="results-filter-option" id="bysubcategory-option">
             <div class="results-filter-title uTxtXLL">
-              <span><?php echo __('Narrow by').'&nbsp;'.__('colour') ?></span>
+              <?php $title = __('Narrow by').'&nbsp;'.__('sub category') ?>
+              <span><?php echo $title ?></span>
             </div>
+            <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'bysubcategory-options-page', 'index' => 3)); ?>
+          </div>
+
+          <div class="results-filter-option" id="byfinish-option">
+            <div class="results-filter-title uTxtXLL">
+              <?php $title = __('Narrow by').'&nbsp;'.__('finish') ?>
+              <span><?php echo $title ?></span>
+            </div>
+            <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'byfinish-options-page', 'index' => 6)); ?>
+          </div>
+
+          <div class="results-filter-option" id="bycolour-option">
+            <div class="results-filter-title uTxtXLL">
+              <?php $title = __('Narrow by').'&nbsp;'.__('colour') ?>
+              <span><?php echo $title ?></span>
+            </div>
+          <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'bycolour-options-page', 'index' => 7)); ?>
           </div>
         </div>
-        
+
         <div id="results-items">
-            <div class="results-item">
-              <div class="results-item-col">
-                <a href="/mt/http://tires.canadiantire.ca/en/wheels/alloy-wheels/product/1419759P/momo-rpm-in-matte-anthracite/1419763/">
-                <img src="http://s7d5.scene7.com/is/image/CanadianTire/1419759_1?wid=160&amp;hei=160&amp;qlt=70&amp;resMode=sharp2" class="uPlpItemImg"></a>
-                <div class="uPlpItemRate"><img src="http://tiresinc.canadiantire.ca/assets/images/rating-0_0.gif"></div>
-                <div class="uPlpItemCompareItem" data-sku="1419763"><button class="uBtn uBtnCompare " type="button">Compare </button></div>
+            <?php if(empty($results)): ?>
+              <div>
+                No results found
               </div>
-              <div class="results-item-col">
-                <a href="/mt/http://tires.canadiantire.ca/en/wheels/alloy-wheels/product/1419759P/momo-rpm-in-matte-anthracite/1419763/">
+            <?php else: ?>
+            <?php foreach ($results as $result): ?>
+              <div class="results-item">
+                <div class="results-item-col-l">
+                  <a href="/results/from/?url=<?php echo $result['title_href'] ?>">
+                  <img src="<?php echo $result['img_url'] ?>" class="results-item-image"></a>
+                  <div class="uPlpItemRate"><img src="<?php echo $result['rating_img']; ?>"></div>
+                  <div class="uPlpItemCompareItem" data-sku="1419763"><button class="uBtn uBtnCompare " type="button"><?php echo __('Compare') ?></button></div>
+                </div>
+                <div class="results-item-col-r">
                   <div class="uPlpItemName">
-                    <div>MOMO RPM in Matte Anthracite</div>
+                    <div><?php echo $result['title_name']; ?></div>
                   </div>
                   <div class="price">
-                    $<strong>149</strong>.99
+                    <?php echo $result['product_price'] ?>
                     <span class="eachElement eachRegElement">(each)</span>
                   </div>
-                  <div class="uPlpItemCategory"><span class="uBold">Category</span>: 
-                    Alloy Wheels
+                  <div class="uPlpItemCategory"><span class="uBold">Category</span>:
+                    <?php echo $result['category_name'] ?>
                   </div>
-                  <ul class="uPlpItemFeatures">
-                    <li>
-                      <div>Lightweight performance alloy wheel is designed in Italy</div>
-                    </li>
-                    <li>
-                      <div>MOMO Corse logo on the external lip. Wheel meets the...</div>
-                    </li>
+                  <ul class="results-item-features">
+                    <?php echo $result['product_features'] ?>
                   </ul>
-                </a>
+                </div>
               </div>
-            </div>
+            <?php endforeach; ?>
+            <?php endif; ?>
         </div>
-        
+
         <div id="results-toolbar">
           <form method="POST" action="">
             <div>
-              <button style="margin: 0px;" class="uBtn uBtnGray uFloatL disabled" id="uPlpHelpMeChoose" type="button">
+              <button style="margin: 0px;" class="uBtn uBtnGray disabled" id="uPlpHelpMeChoose" type="button">
                 <span data-i18n="help_me_choose" class="k">Help Me Choose</span>&nbsp;<br>
                 <span style="font-size:0.7em" data-i18n="guided_tire_selection_tool" class="k">Guided tire selection tool</span>
               </button>
               <input name="un_form_encoding" value="utf-8" type="hidden"><input name="un_form_post_list" value="" type="hidden">
             </div>
           </form>
-          
+
           <form method="get" id="uPlpSortForm" action="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/wheels/search/?vehicle=2012_Audi_A4_4%2BDr%2BSedan_Base_7.5x17%23REGULAR%23Both&amp;showSavedVehicle=true">
             <div>
               <div class="d_none">
@@ -106,7 +123,7 @@
                 </select>
                 <input value="Sort by" id="uPlpSortGo" class="un_ltt_button" type="submit">
               </div>
-              <button class="uBtn uBtnGray" id="uPlpSortBtn" type="button"><img style="margin-right: 10px;" src="/mt/a/canadiantire.ca/30d/images/dropdownArrow.png"><span data-i18n="sort_results" class="k">Sort Results</span><span class="uPlpSortStatus uFloatR uTxtBBB">Custom Sort</span></button><input name="un_form_encoding" value="utf-8" type="hidden">
+              <button class="uBtn uBtnGray" id="uPlpSortBtn" type="button"><img style="margin-right: 10px;" src="/mt/a/canadiantire.ca/30d/images/dropdownArrow.png"><span data-i18n="sort_results" class="k">Sort Results</span><span class="uPlpSortStatus uTxtBBB">Custom Sort</span></button><input name="un_form_encoding" value="utf-8" type="hidden">
             </div>
           </form>
           <form id="uCompareProds" name="uCompareProds" method="post" action="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/wheels/compare/">
@@ -125,36 +142,33 @@
         </div>
         <div class="uPlpFilterOptions notum" id="uPlpSortByOptions">
           <div class="uPlpFilterOptionsTitle uTxtXLL">
-            <span data-i18n="narrow" class="k">Narrow by</span><span class="close_notum uFloatR uBtn uBtnGray"><span class="xIcn"></span><span data-i18n="CLOSE" class="kk">CLOSE</span></span>
+            <span data-i18n="narrow" class="k">Narrow by</span><span class="close_notum uBtn uBtnGray"><span class="xIcn"></span><span data-i18n="CLOSE" class="kk">CLOSE</span></span>
           </div>
           <div class="uPlpFilterOption">
-            <button data-value="Price_up" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Price (Low-High)</button>
+            <button data-i18n="Price_up" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Price (Low-High)</button>
           </div>
           <div class="uPlpFilterOption">
-            <button data-value="Price_down" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Price (High-Low)</button>
+            <button data-i18n="Price_down" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Price (High-Low)</button>
           </div>
           <div class="uPlpFilterOption">
-            <button data-value="Brand_up" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Brand Name (A-Z)</button>
+            <button data-i18n="Brand_up" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Brand Name (A-Z)</button>
           </div>
           <div class="uPlpFilterOption">
-            <button data-value="Brand_down" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Brand Name (Z-A)</button>
+            <button data-i18n="Brand_down" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Brand Name (Z-A)</button>
           </div>
           <div class="uPlpFilterOption">
-            <button data-value="customerRating_down" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Customer Rating (High-Low)</button>
+            <button data-i18n="customerRating_down" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Customer Rating (High-Low)</button>
           </div>
           <div class="uPlpFilterOption">
-            <button data-value="custom" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Custom Sort</button>
+            <button data-i18n="custom" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Custom Sort</button>
           </div>
-          <div class="clearB"></div>
         </div>
       </div>
-      
+
       <div id="uNoMoreItem">
         <div class="red_title" data-i18n="no_more_4">You can only add 4 items for comparison.</div>
         <div class="big_red" onclick="uHideCompareAlert()" data-i18n="Continue">Continue</div>
-        <div class="clearB"></div>
       </div>
-      
+
     </div>
-    <div id="un_jtt_powered"></div>
 </div>

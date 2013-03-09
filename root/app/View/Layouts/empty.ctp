@@ -54,18 +54,6 @@
       echo $this->Html->script('ct/s_code_prd.js');
       echo $this->Html->script('main.js');
       echo $this->Html->script('find.js');
-
-      if (!empty($styles)) {
-        foreach($styles as $style) {
-          echo $style;
-        }
-      }
-      
-      if (!empty($scripts)) {
-        foreach($scripts as $script) {
-          echo $script;
-        }
-      }
       
       echo $this->fetch('meta');
       echo $this->fetch('css');
@@ -79,16 +67,6 @@
     <div class="content">
       <?php echo $this->Session->flash(); ?>
       <?php echo $this->fetch('content'); ?>
-    </div>
-
-    <div id="appFooter">
-        <div id="pageFooter">
-          <div class="big_gray" id="home" data-i18n="home">home</div>
-          <div class="big_light_gray" style="border-style:none;" id="ct-logo">
-            
-          </div>
-          <div class="big_gray" id="help_b" data-i18n="help" style="right:26px;position:fixed;">help</div>
-        </div>
     </div>
   </body>
 

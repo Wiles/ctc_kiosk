@@ -22,6 +22,7 @@
 App::uses('AppController', 'Controller');
 App::uses('CarProService', 'Model/Datasource');
 App::uses('CtService', 'Model/Datasource');
+App::uses('CtProductService', 'Model/Datasource');
 
 /**
  * Static content controller
