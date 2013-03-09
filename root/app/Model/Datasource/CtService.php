@@ -96,8 +96,8 @@ class CtService {
      *
      *      )
      */
-    public static function getWheelsByVehicle($lang, $year, $make, $model, $body, $option, $size) {
-        return self::getByVehicle('wheels', $lang, $year, $make, $model, $body, $option, $size);
+    public static function getWheelsByVehicle($lang, $year, $make, $model, $body, $option, $size, $sort) {
+        return self::getByVehicle('wheels', $lang, $year, $make, $model, $body, $option, $size, $sort);
     }
 
     /**
@@ -139,7 +139,7 @@ class CtService {
           $narrow = $sort['narrow'];
 
           if (!empty($by)) {
-            $query .= "&pn_ps=$count&pn_ok=$by&pn_p=1";
+            $query .= '&pn_ps='.$count.'&pn_ok='.$by.'&pn_p=1';
           }
 
           if (!empty($narrow)) {
@@ -386,8 +386,6 @@ class CtService {
     }
 
     private static function extractImage($element) {
-        // Find all the elements of an item on the product list
-        // This will allow the extraction of the product description, ratings, image, etc...
         $liChildren = $element->childNodes;
         for ($j = 0; $j < $liChildren->length; $j++) {
           $liCur = $liChildren->item($j);
@@ -422,9 +420,27 @@ class CtService {
         if (self::hasClass($liCur, 'productFeatures listStyleType2')) {
           $detailChildren = $liCur->childNodes;
 
+          $clean = function($a) {
+            return $a !== '<li></li>';
+          };
+          
+          $htmlify = function($a) {
+            $str = trim($a);
+            if (strlen($str) >= 59) {
+              $str = substr($str, 0, 59).'...';
+            }
+            return '<li>'.$str.'</li>';
+          };
+          
+          $features = explode("\n", $liCur->nodeValue);
+          $features = array_map($htmlify, $features);
+          $features = array_filter($features, $clean);
+          
+          $feature_text = implode('', $features);
+          
           // Get the product details
           $data = array(
-            'product_features' => $liCur->nodeValue
+            'product_features' => $feature_text
           );
 
           return $data;

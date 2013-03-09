@@ -6,10 +6,11 @@ div.results-top-bar {
   height: 102px;
   width: 100%;
   padding: 0px 25px;
-  background: linear-gradient(rgb(254, 254, 254), rgb(206, 206, 206)) repeat scroll 0% 0% transparent;
   color: rgb(183, 183, 183);
   border-bottom: 1px solid rgb(200, 200, 200);
   box-shadow: 0px -1px 3px rgb(255, 255, 255) inset;
+  
+  .gradient(rgb(254, 254, 254), rgb(206, 206, 206));
 }
 
 div.results-back-button {
@@ -34,33 +35,148 @@ div.results-vehicle-title {
 }
 
 div.results-content {
-
 }
 
-div.results-menu {
-
-}
-
-div.results-filter-options {
-
+#results-menu {
+  margin-bottom: 1%;
 }
 
 div.results-filter-option {
-
-}
-
-div.results-toolbar {
-
-}
-
-div.results-items {
+  padding: 15px;
+  display: inline-block;
+  margin: 1% 9px 0px 0px;
+  vertical-align: top;
+  font-size: 0.9em;
+  color: rgb(251, 251, 249);
+  box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
+  border: 1px solid rgb(17, 17, 17);
+  text-shadow: 0px -1px 0px rgb(0, 0, 0);
+  text-align: center;
   
+  .gradient(rgb(234, 29, 43), rgb(169, 31, 49));
+  .button();
 }
 
+div.results-filter-title {
+
+}
+
+
+#results-toolbar {
+
+}
+
+#results-items {
+  margin-top: 1%;
+  width: 100%;
+}
+
+// TODO: Add media query here for width
 div.results-item {
-
+  vertical-align: top;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0px 18px 28px 0px;
+  padding: 10px;
+  min-width: 25%;
+  max-width: 30%;
+  height: auto;
+  border: 1px solid rgb(204, 204, 204);
+  box-shadow: 0px -1px 1px rgb(221, 221, 221) inset;
+  border-radius: 3px 3px 3px 3px;
+  
+  .button();
 }
 
-div.results-item-col {
+div.results-item-col-l, div.results-item-col-r {
+  display: inline-block;
+  vertical-align: top;
+}
 
+div.results-item-col-l {
+  width: 35%;
+}
+
+div.results-item-col-r {
+  width: 55%;
+}
+
+div.results-item-col-r * {
+  color: rgb(102, 102, 102);
+  text-decoration: none;
+}
+
+img.results-item-image {
+  max-width: 128px;
+  max-height: 128px;
+}
+
+ul.results-item-features {
+  padding-left: 9%;
+}
+
+// -----------------------------
+// Under the search results
+// -----------------------------
+#results-toolbar form, #results-toolbar form div {
+  display: inline-block;
+}
+
+#results-toolbar button {
+    display: inline-block;
+    height: 70px;
+    margin: 0px 0px 0px 15px;
+    padding: 0px 12px;
+    text-align: left;
+    font-size: 1.15em;
+}
+
+#uPlpCompareBtn {
+    border: 1px solid rgb(68, 68, 68);
+    color: rgb(68, 68, 68);
+    font-size: 1.1em !important;
+}
+
+.uBtnLightGray {
+    color: rgb(51, 51, 51);
+    background: linear-gradient(rgb(243, 243, 243), rgb(215, 215, 215)) repeat scroll 0% 0% transparent;
+    box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
+    border: 1px solid rgb(5, 5, 5);
+    text-shadow: -1px -1px 0px rgb(255, 255, 255);
+}
+
+.uBtnGray {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(rgb(121, 121, 121), rgb(52, 52, 52)) repeat scroll 0% 0% transparent;
+    box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
+    border: 1px solid rgb(5, 5, 5);
+    text-shadow: -1px -1px 0px rgb(0, 0, 0);
+}
+
+div.options-page-enclosure {
+  display: none;
+}
+
+div.options-page-title {
+  width: 100%;
+  padding: 25px;
+  color: rgb(85, 85, 85);
+  border-bottom: 1px solid rgb(200, 200, 200);
+  box-shadow: 0px -1px 3px rgb(255, 255, 255) inset;
+  border-radius: 5px 5px 0px 0px;
+  
+  .gradient(rgb(254, 254, 254), rgb(206, 206, 206));
+}
+
+div.options-page {
+}
+
+span.options-page-title-text {
+  width: auto;
+  display: inline;
+}
+
+div.options-page-title-close {
+  float: right;
+  margin-right: 1%;
 }

@@ -1,5 +1,4 @@
-var ct = new function() {
-
+var ct = new function() {  
   this.initValues = function(values) {
     
   }.bind(this);
