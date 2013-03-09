@@ -69,17 +69,6 @@ var CTW = {
     }
 };
 (function (a, c, b, f, g) {
-    $('#uNextStep').on('click', function(){
-        if(!( $(this).hasClass('disabled'))){
-            var sel = $(".un-search-btn.un-search-btn_grayL.selected");
-            var next = sel.next();
-            if (next) {
-                
-            } else {
-                // submit?
-            }
-        }
-    });
     $('#uSubmitSearchDisc').on('click', function(){
         if(!( $(this).hasClass('disabled'))){
             

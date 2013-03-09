@@ -36,15 +36,16 @@ $(function() {
   });
   
   $('.un-search-btn').click(function(elem) {
-    var ko = $(this).find('div .kk').attr('data-ko');
-    xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
-    xhrDA.loadPage(xhrDA.locationHashValues);
+    if ($(this).hasClass("complete")) {
+        var ko = $(this).find('div .kk').attr('data-ko');
+        xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
+        xhrDA.loadPage(xhrDA.locationHashValues);
+    }
   });
   
   $('#welcome').click(function() {
     xhrDA.setLocationHashParam('currentPage', 'start');
     xhrDA.reloadPage();
-    debugger;
   });
   
   /**

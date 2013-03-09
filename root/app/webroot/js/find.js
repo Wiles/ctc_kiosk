@@ -6,6 +6,24 @@ var selectedOption;
 
 $(function() {
     $(window).resize(resizeFindButtons);
+    
+    $('#uNextStep').click(function(){
+        if(!( $(this).hasClass('disabled'))){
+            var sel = $(".un-search-btn.un-search-btn_grayL.selected");
+            var next = sel.next();
+            if (next.length) {
+                sel.removeClass("selected").addClass("complete");
+                next.addClass("selected");
+                
+                var ko = next.find('div .kk').attr('data-ko');
+                xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
+                xhrDA.loadPage(xhrDA.locationHashValues);
+            } else {
+                // submit?
+            }
+        }
+    });
+    
     loadYears();
 });
 
@@ -19,9 +37,13 @@ function loadYears() {loadButtons(
             selectedYear = yearObj.Value;
             $("#year-selected-value").html(selectedYear);
             $("#make-selected-value").html("");
+            selectedMake = null;
             $("#model-selected-value").html("");
+            selectedModel = null;
             $("#body-selected-value").html("");
-            $("#otpion-selected-value").html("");
+            selectedBody = null;
+            $("#option-selected-value").html("");
+            selectedOption = null;
             
             loadMakes();
         }
@@ -37,6 +59,12 @@ function loadMakes() {
             // selectedMake
             selectedMake = makeObj.Value;
             $("#make-selected-value").html(selectedMake);
+            $("#model-selected-value").html("");
+            selectedModel = null;
+            $("#body-selected-value").html("");
+            selectedBody = null;
+            $("#option-selected-value").html("");
+            selectedOption = null;
             
             loadModels();
         });
@@ -54,6 +82,10 @@ loadButtons(
         // selected model
         selectedModel = modelObj.Value;
         $("#model-selected-value").html(selectedModel);
+            $("#body-selected-value").html("");
+            selectedBody = null;
+            $("#option-selected-value").html("");
+            selectedOption = null;
         
         loadBodies();
     });
@@ -72,6 +104,8 @@ function loadBodies() {
             // selected body
             selectedBody = bodyObj.Value;
             $("#body-selected-value").html(selectedBody);
+            $("#option-selected-value").html("");
+            selectedOption = null;
             
             loadOptions();
         });
