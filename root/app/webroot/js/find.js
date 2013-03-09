@@ -7,6 +7,9 @@ var selectedOption;
 $(function() {
     $(window).resize(resizeFindPages);
     
+    $(".uPrev").click(scrollUpFind);
+    $(".uNext").click(scrollDownFind);
+    
     $('#uNextStep').click(function(){
         if(!( $(this).hasClass('disabled'))){
             var sel = $(".un-search-btn.un-search-btn_grayL.selected");
@@ -164,6 +167,18 @@ function loadButtons(container, url, args, onClick) {
     });
 }
 
+function scrollDownFind() {
+    var div = $(this).parent().prev();
+    var curr = div.scrollTop();
+    div.animate({ scrollTop: curr + 110 }, 100);
+}
+
+function scrollUpFind() {
+    var div = $(this).parent().prev();
+    var curr = div.scrollTop();
+    div.animate({ scrollTop: curr - 110 }, 100);
+}
+
 function clearFindPages() {
     $(".find-page .selected").removeClass("selected");
     $(".uSelectedVal").html("");
@@ -191,6 +206,11 @@ function resizeFindPages() {
     var h = totalHeight - (footerHeight + headerHeight + margin);
     
     $(".find-page").height(h);
+    
+    var totalWidth = $("#content").width();
+    var w = totalWidth - 110;
+    
+    $(".find-page").width(w);
     
     resizeStuff($("#year-container"), ".un-search-btn_grayH");
     resizeStuff($("#make-container"), ".un-search-btn_grayH");

@@ -6,4 +6,8 @@
     <span data-i18n="select_your_vec" class="kk">SELECT YOUR VEHICLE </span>MODEL
   </div>
   <div id="model-container" class="find-page"></div>
+  <div class="find-scroller uSearchPaginator uFloatR">
+    <button class="hide-text uPrev" type="button">prev</button>
+    <button class="hide-text uNext" type="button">next</button>
+  </div>
 </div>

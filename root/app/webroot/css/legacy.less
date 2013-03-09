@@ -853,3 +853,709 @@ body[lang=fr] .un-search-btn_grayL {font-size: 1.4em;}
   color: #fff;
   text-shadow:-1px -1px 0 #000000;
 }
+
+#uPlpItemsOuter { 
+	position: relative; 
+	overflow: hidden; 
+	height: 496px; 
+	width: 1110px; 
+}
+.slide {
+	width: 100%;
+	height: 496px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+}
+.slide.active {
+	/*background:#EEE;*/
+}
+.slide.prev {
+	top: -496px;
+	/*background:#900;*/
+}
+.slide.next {
+	top: 496px;
+	/*background:#369;*/
+}
+
+#uNoResult {
+	width: 900px; 
+	position:absolute; 
+	top:50%; 
+	left: 50%; 
+	text-align:center; 
+	margin: -50px auto 0 -450px; 
+	text-transform: uppercase;
+	font-size:1.8em; 
+	color:#C51F2F;
+}
+.uPlpItem {
+	float: left;
+	overflow: hidden;
+	margin: 0 18px 28px 0;
+	padding: 10px;
+	width: 352px;
+	height: 230px;
+	border: 1px solid #CCC; 
+	box-shadow: inset 0 -1px 1px #DDD; 
+	border-radius: 3px;
+}
+
+.uPlpItemTitle {
+    font-size: 12px;
+    overflow: hidden;
+    -moz-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+/*.uPlpItemTitle:after {
+    content: "…";
+}*/
+#uPlpPaginator, .uSearchPaginator ,#uStyleSizePaginator, #uReviewPaginator, #uComparePaginator { 
+	width: 92px;
+	margin: 110px 0 0 0;
+	text-align: center;
+}
+.uSearchPaginator {
+	margin: 15px 7px 0 0 !important;
+}
+#uPlpPaginator button, .uSearchPaginator button, #un_fields_controller button, .uStyleSizePaginator button,  .uReviewPaginator button, .uComparePaginator button{ 
+	width: 92px; 
+	height: 92px; 
+	background: url("../img/paginationArrowsVert.png") no-repeat top left;
+	border: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 10px 0;
+}
+
+button#uPlpNext, button.uNext, button#un_vkeyboard_next { 
+	background-position:bottom left;
+}
+
+button#uPlpNext.disabled, button.uNext.disabled, button#un_vkeyboard_next.disabled { 
+	background-position:bottom right;
+}
+
+button#uPlpPrev, button.uPrev, button#un_vkeyboard_prev { 
+	background-position:top left;
+}
+button#uPlpPrev.disabled, button.uPrev.disabled, button#un_vkeyboard_prev.disabled { 
+	background-position:top right;
+}
+
+#uPlpPageStatus {
+	position: relative;
+}
+.uPlpPageLoadingMsg {
+	visibility: hidden;
+	position: absolute;
+	top: 10px;
+	left: 0;
+	width: 100%;
+}
+#uPlpPageStatus.loading * {
+	visibility: hidden;
+}
+#uPlpPageStatus.loading .uPlpPageLoadingMsg {
+	display: inline;
+	visibility: visible; 
+}
+
+.uPlpItemLxCol {
+	float: left;
+	width: 130px; 
+}
+.uPlpItemLxCol a { /* img container */
+	display: block;
+	width: 125px;
+	height: 125px;
+	margin-bottom: 10px;
+}
+.uPlpItemRate {
+	margin-bottom: 3px;
+	margin-left: 10px;
+}
+.uPlpItemRxCol {
+	float: left;
+	width: 200px;
+	height: 220px;
+	position: relative; 
+}
+.uPlpItemRxCol * {
+	color: #666; 
+	text-decoration: none;
+}
+.uPlpItemImg { 
+	max-width: 125px;
+	max-height: 125px;
+}
+.uPlpItemName {
+	display: block;
+	width: 200px;
+	max-height: 69px;
+	font-size: 1.15em;
+	line-height: 1.25em;
+	letter-spacing: -0.02em;
+	color: #666;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+.eachElement {
+	color: #d81b1e !important; 
+}
+.uPlpItem div.price { 
+	color: #d81b1e !important; 
+	font-size: 1.15em;
+	letter-spacing: -0.02em;
+	vertical-align: top;
+	margin-bottom: 10px;
+}
+.uPlpItem div.price strong { 
+	color: #d81b1e;
+	font-weight: normal;
+	vertical-align: top;
+}
+
+.uWeRecommend {
+  background-image: url("../images/ico_werecommend.png");
+  background-repeat: no-repeat;
+  font-size: 12px;
+  font-weight: bold;
+  height: 22px;
+  padding: 2px 0;
+  text-indent: 30px;
+  margin: 7px 0;
+}
+
+.uPlpItemSize, .uPlpItemCategory, .uPlpItemRegPrice { 
+	font-size: 12px;
+}
+.uPlpItemCategory { 
+	color: #D91C1E;
+}
+.uPlpItemCategory span {
+	color: #666;
+}
+
+.uPlpItemCompareItem[data-sku="none"] { 
+	display: none
+}
+
+.uBtnOpenCompare {
+	width: 90px; 
+	height: 50px; 
+	padding-top: 16px; 
+	font-size: 0.7em; 
+	margin: 0px 15px 0px -7px; 
+	float: left;
+}
+#uPlpItems { 
+
+}
+#uNarrowByMenus {
+	height: 100px;
+	width: 100%;
+	margin:28px 0;
+	padding: 15px; 
+	background: #CCC; 
+	border-radius: 2px;
+}
+
+#uPlpTopNavBar .uTopNavBarBack { 
+	margin-left: 0;
+	width: 130px;
+}
+.uTopNavBarBackSvg, .uTopNavBarBackSvg_toPdp, .uTopNavBarBackSvg_FromMail {
+	margin: 10px;
+	cursor: pointer;
+}
+.uPlpMyVehicleTitle {
+	width: 810px;
+	max-height: 34px;
+	font-size: 1.7em;
+	overflow: hidden;
+}
+#uRemoveFilterBtn { 
+	position: absolute;
+    right: 15px; /* +10px margin */
+	height: 70px;
+	width: auto;
+	max-width: 200px;
+	padding: 0 20px;
+}
+
+#uPlpSortForm { 
+
+}
+
+.uBtnCompare {
+	height: 50px;
+	width: 90px;
+	margin:3px 10px !important;
+}
+
+#uPlpMoreFiltersContainer {
+	width: 1230px;
+	height: 700px;
+	top: 129px;
+	left: 25px;
+	background: #FFF;
+}
+.uPlpMoreFilterContainerName {
+	float: left;
+	width: 157px;
+	padding: 34px 10px 0 0;
+}
+.uPlpMoreFilterPrev, .uPlpMoreFilterNext { 
+	float: left;
+	width: 92px;
+	height: 92px; 
+	background: url("../images/paginationArrowsHorz.png") no-repeat top left;
+}
+.uPlpMoreFilterPrev { 
+	margin-right: 16px
+}
+.uPlpMoreFilterNext {
+	/*margin-left: 16px*/
+}
+
+.uPlpMoreFilterPrev.disabled { 
+	background-position:top right;
+}
+.uPlpMoreFilterNext { 
+	background-position:bottom left;
+}
+.uPlpMoreFilterNext.disabled { 
+	background-position:bottom right;
+}
+
+.uPlpMoreFilterContainer { 
+	height: 120px;
+	margin: 15px;
+	padding: 10px; 
+	background: #CCC;
+	border-radius: 3px;
+}
+.uPlpMoreFilterOptions { 
+	overflow: hidden;
+	width: 816px;
+	height: 100px;
+	float: left;
+}
+.uPlpMoreFilterOptionsInner { 
+	width: auto; 
+}
+.uPlpMoreFilterOptions .uPlpFilterOption {
+	margin: 6px 12px 6px 0;
+}
+.uPlpMoreFilterOptions .uPlpFilterOption .uPlpApplyFilterBtn { 
+	margin: 10px 20px 10px 0;
+}
+.uPlpMoreFilterOptions a { 
+	text-decoration: none
+}
+
+.uPlpFilterBtn { 
+	width: 224px;
+	height: 70px; 
+	margin: 0 15px 0 0;
+	vertical-align: top;
+	font-size: 1.15em;
+}
+.uPlpFilterOptions.notum, #uPlpMoreFiltersContainer.notum { 
+	top: 129px;
+	left: 25px; 
+	width: 1230px;
+	height: 755px;
+	border: 2px solid #CCC;
+	border-radius: 5px; 
+	background: #FFF; 
+
+}
+.uPlpFilterOptionsTitle { 
+	width: 100%; 
+	padding: 25px; 
+	background-color: #d4d4d4; 
+	background: -moz-linear-gradient(#FEFEFE, #CECECE); 
+	background: linear-gradient(#FEFEFE, #CECECE); 
+	color: #555; 
+	border-bottom: 1px solid #c8c8c8;
+	box-shadow: inset 0 -1px 3px #FFF;
+	border-radius: 5px 5px 0 0;
+}
+.uPlpFilterOptions a {
+	text-decoration: none;
+}
+.uPlpApplyFilterBtn {
+	width: 240px;
+	height: 60px;
+	padding: 10px;
+	font-size: 1.1em;
+	vertical-align: top;
+	overflow: hidden;
+}
+.uPlpFilterOption {
+	float: left; 
+	margin: 6px;
+}
+
+#uPlpToolsBar {
+	height: 100px;
+	width: 100%;
+	margin:28px 0;
+	padding: 15px; 
+	background: #CCC; 
+	border-radius: 2px;
+}
+#uPlpToolsBar form {
+	float: left;
+}
+#uPlpToolsBar button {
+	width: 390px;
+	height: 70px;
+	margin: 0 0 0 15px;
+	padding: 0 12px;
+	text-align: left;
+	font-size: 1.15em;
+}
+#uPlpSortBtn {
+}
+#uPlpCompareBtn { 
+	border: 1px solid #444;
+	color: #444;
+	font-size: 1.1em !important;
+}
+
+.uPlpItemRxCol ul.uPlpItemFeatureIcons {
+	margin: 10px 0;
+	padding: 0;
+	position: absolute;
+	width: 200px;
+	bottom:10px;
+}
+body ul.uPlpItemFeatureIcons li {
+	display: inline-block; 
+	width: 90px;
+	height: 18px;
+	padding: 0;
+	margin: 4px 10px 0 0; 
+	overflow: hidden;
+	background: url("../images/en/icons_tire_features.png") no-repeat scroll 0 0 transparent;
+} 
+body[lang="fr"] .uPlpItemFeatureIcons li {
+	background: url("../images/fr/icons_tire_features.png") no-repeat scroll 0 0 transparent;
+} 
+.uPlpItemFeatureIcons .acceptsStuds {
+	background-position: 0 0;
+}
+.uPlpItemFeatureIcons .runFlat {
+	background-position: 0 -18px;
+}
+.uPlpItemFeatureIcons .ratedLowResistance {
+	background-position: 0 -36px;
+}
+.uPlpItemFeatureIcons .mudAndSnowRated {
+	background-position: 0 -54px;
+}
+.uPlpItemFeatureIcons .snowPeakRated {
+	background-position: 0 -71px;
+}
+
+
+body[lang="fr"]  .uPlpItemFeatureIcons .acceptsStuds {
+	background-position: 0 0;
+}
+body[lang="fr"]  .uPlpItemFeatureIcons .runFlat {
+	background-position: 0 -18px;
+}
+body[lang="fr"]  .uPlpItemFeatureIcons .ratedLowResistance {
+	background-position: 0 -36px;
+}
+body[lang="fr"]  .uPlpItemFeatureIcons .mudAndSnowRated {
+	background-position: 0 -54px;
+}
+body[lang="fr"]  .uPlpItemFeatureIcons .snowPeakRated {
+	background-position: 0 -71px;
+}
+
+.uPlpItemFeatures { /* visible only for wheel items */
+	margin: 5px 0 0 0;
+	padding: 0;
+}
+.uPlpItemFeatures li {
+	font-size: 0.8em;
+    overflow: hidden;
+    max-height: 33px;
+    width: 190px;
+	list-style-position: inside;
+}
+.uPlpItemFeatures li div {
+	display: inline;
+}
+
+.uPlpFilterOptionsTitle .close_notum {
+	width: 50px;
+	height: 60px;
+	margin: -13px 0 0 0;
+	border-color: #999;
+	text-align: center;
+	font-size: 10px;
+}
+.uPlpFilterOptionsTitle .close_notum .xIcn {
+	background: url("../images/overlayClose.png") no-repeat 50% 0%;
+	background-size: 35px 45px;
+    display: inline-block;
+    width: 50px;
+    height: 40px;
+}
+
+.uPlpFilterNotumBg {
+	position: absolute; 
+	top: 0px; 
+	left: 0px;
+	z-index: 1;
+	height: 100%; 
+	width: 100%; 
+	background: rgba(0, 0, 0, 0.4); 
+}
+
+
+#uPlpHelpMeChoose.disabled { 
+	opacity: 0.3;
+}
+
+/* Help me Choose */
+#frmHelpMeChoose { 
+	padding: 30px
+}
+#frmHelpMeChoose input[type=radio], #frmHelpMeChoose input[type=checkbox] { 
+	display: none;
+}
+#btnHelpMeChooseSubmit.disabled {
+	opacity: 0.3;
+}
+#additionalWinterStuds { 
+	margin: 30px 0;
+}
+#frmHelpMeChoose #helpChooseStep2 table { 
+	border-collapse: collapse;
+    margin-top: 30px;
+    border: 0;
+}
+#frmHelpMeChoose #helpChooseStep2 table thead td, #frmHelpMeChoose #helpChooseStep2 table thead th, #frmHelpMeChoose #helpChooseStep2 table tbody td { 
+	text-align: center;
+	border: none;
+	padding: 5px 50px;
+}
+#frmHelpMeChoose #helpChooseStep2 table tbody td, #frmHelpMeChoose #helpChooseStep2 table tbody th { 
+	background: #F4F4F4;
+	padding: 2px 10px;
+	border: none;
+}
+#frmHelpMeChoose #helpChooseStep2 table tbody tr.altRow th, #frmHelpMeChoose #helpChooseStep2 table tbody tr.altRow td { 
+	background: #FFF;
+	border: none;
+} 
+
+#frmHelpMeChoose #helpChooseStep1 div.additional {
+	display:none;
+}
+
+#frmHelpMeChoose .uHelpMeButton {
+	width: 350px;
+	display: inline-table;
+	height: 110px;
+	background-color: #ffffff;
+	border: 1px solid #bcbcbc;
+	border-radius: 3px;
+	box-shadow: 0px 5px 0px #c7c7c7;
+	padding: 37px 20px 0 30px;
+	margin:25px 30px 0 0;
+	color: #565656;
+	font-size: 1.5em;
+	background: url('../images/red_arrow.png') no-repeat 95% center, -moz-linear-gradient(#fff, #e1e1e1) no-repeat;
+	background-size: 35px 35px, 100%;
+}
+
+.uHelpMeButtonCheck {
+	width: 350px;
+	display: inline-table;
+	height: 150px;
+	background-color: #ffffff;
+	border: 1px solid #bcbcbc;
+	border-radius: 3px;
+	box-shadow: 0px 5px 0px #c7c7c7;
+	padding: 15px 20px 0 20px;
+	margin:30px 30px 0 0;
+	color: #565656;
+	background:  -moz-linear-gradient(#fff, #e1e1e1) no-repeat;
+	height: 200px;
+}
+
+#frmHelpMeChoose  .uHelpMeButton.active {
+	background: url('../images/red_arrow.png') no-repeat 95% center, -moz-linear-gradient(#e1e1e1, #fff) no-repeat;
+	background-size: 35px 35px, 100%;
+	box-shadow: 0 10px 20px #B5B5B5 inset, 0px 5px 0px #c7c7c7;
+}
+
+#frmHelpMeChoose #studsDisclaimer {
+	color: #666;
+	font-size: 0.9em;
+}
+
+#frmHelpMeChoose .uHelpMeButtonDot {
+	background: url('../images/checkbox.png') no-repeat;
+	background-size: 40px 42px;
+	overflow: hidden;
+	width: 40px;
+	height: 40px;
+	text-indent: 999px;
+	display: inline-block;
+ }
+
+#frmHelpMeChoose .uHelpMeButtonDot.active {
+	background: url('../images/checkbox-selected.png') no-repeat;	
+	background-size: 40px 42px;
+}
+
+#frmHelpMeChoose .uHelpMeButtonDot.disabled {
+	background: url('../images/checkbox-unavailable.png') no-repeat;	
+	background-size: 40px 42px;
+}
+
+#frmHelpMeChoose  .uHelpMeLabel {
+  border-bottom: 2px solid #CACACA;
+  clear: both;
+  color: #E32C19;
+  font-size: 1.8em;
+  font-weight: bold;
+  padding: 15px 0;
+}
+
+#frmHelpMeChooseTable {
+	background:#fff;
+	border:1px solid #cacaca; 
+	padding:20px;
+	box-shadow: 0px 4px 0px #ccc;
+	margin-top: 20px;
+}
+
+.frmHelpMeChooseHead {
+	font-size:1.5em;
+	margin-left:30px;
+	width: 340px;
+	color:transparent;
+	padding: 15px;
+	color:#595959;
+}
+
+.frmHelpMeChooseTr {
+	background-color: #f4f4f4;
+	height: 66px;
+}
+
+.frmHelpMeChooseTr:nth-of-type(3n+1) {
+	background-color: #fff;
+}
+
+.frmHelpMeChooseHeadTxt {
+	font-size:1.5em;
+	width: 250px; 
+	color:#595959; 
+	text-align:right;
+	padding: 15px; 
+	text-align: center;
+}
+
+.frmHelpMeChooseBodyCheck {
+	width: 250px;
+	padding: 15px; 
+	text-align: center;
+}
+
+#frmHelpMeChoose .buttons {
+	position: absolute; width: 1020px; top: 790px; left: 15px;
+}
+
+/* Help me choose END */
+
+
+/* Compare */
+
+#uCompareOuter {
+	margin: 10px 25px; 
+	width: 1050px; 
+	height: 760px; 
+	overflow: hidden;
+}
+
+#uComparePaginator {
+	margin: 110px 44px 0;
+}
+
+#uCompareOuter .uCompareTainer:last-child .uCompareSimpleDiv {
+	border-bottom: 1px solid #050505;
+}
+
+.uCompareSimpleDiv {
+	width:250px; 
+	height: 35px; 
+	padding: 10px; 
+	margin: 0px 10px 0 0; 
+	text-align: left;
+	border-left: 1px solid #050505; 
+	border-right: 1px solid #050505;
+}
+
+.uCompareTainer > .uCompareSimpleDiv.Feature{
+	height: 100%;
+}
+
+.uCompareSimpleDiv.Rating {
+	border-top: 1px solid #050505; 
+	height: 100px;
+}
+
+.uCompareSimpleDiv.Feature {
+	height: 300px !important;
+}
+
+.uCompareSimpleDiv.productPrice {
+	height: 56px;
+}
+
+.uCompareSimpleDiv.productName, .uCompareSimpleDiv.Logos {
+	height: 60px; 
+}
+
+.uCompareSimpleDiv ul.productFeatures {
+	margin: 0;
+	padding: 15px;
+}
+
+.uRemoveFromCompareDiv, .uAddFromCompareDiv {
+	width:250px; 
+	height: 50px; 
+	padding: 15px 10px; 
+	background-image:-moz-linear-gradient(#797979, #343434); 
+	margin: 10px 10px 0 0; 
+	border: 1px solid #050505; 
+	text-align: center; 
+	color: #fff;
+}
+.uOtherCompareDiv {	width:250px; 
+	height: 180px; 
+	padding: 10px; 
+	margin: 0px 10px 0 0; 
+	border-left: 1px solid #050505; 
+	border-right: 1px solid #050505; 
+	text-align: center;
+}
+
+.uCompareSimpleDiv.Blank, .uOtherCompareDiv.Blank {
+	border: none !important; 
+}
