@@ -69,50 +69,6 @@ var CTW = {
     }
 };
 (function (a, c, b, f, g) {
-    $('#uNextStep').on('click', function(){
-        if(!( $(this).hasClass('disabled'))){
-            
-            v48.populate();
-            
-            if($('.searchContDiv.d_yes').next().hasClass('searchContDiv')){
-                unLoadSelect($('.searchContDiv.d_yes').next().find('div[un-select]').attr('un-select'), true);
-                var selVal = $('#searchTopBar .un-search-btn_grayL.selected').find('.uSelectedVal');
-                selVal.html($('.searchContDiv.d_yes').find('.un-search-btn_grayH.selected').text());
-                selVal.ellipsis(); // CTK-96
-                $('#searchTopBar .un-search-btn_grayL.selected').removeClass('selected').addClass('complete').next().addClass('selected');
-                $('.searchContDiv.d_yes').removeClass('d_yes').addClass('d_none').next().addClass('d_yes').removeClass('d_none');
-                $(this).addClass('disabled');
-                
-            }
-            if(!($('.searchContDiv.d_yes').next().hasClass('searchContDiv'))){
-                $('#uSubmitSearch, #uSubmitSearchDisc').show();
-                $(this).hide();
-            }
-            
-            KOtrackSearch(isVar48);
-        }
-    });
-    $('#uSubmitSearch').on('click', function(){
-        if(!( $(this).hasClass('disabled'))){
-            isVar48 = true;
-            v48.populate();
-            
-            var action = $("#bySizeSearch").attr('action');
-            var sectionWidth = $("#selSectionWidth").find(":selected").val();
-            var aspectRatio = $("#selAspectRatio").find(":selected").val();
-            var diameter = $("#selDiameter").find(":selected").val();
-            var loadindex = $("#selLoadRating").find(":selected").val();
-            var speedrating = $("#selSpeedRating").find(":selected").val();
-            var vehicleName = sectionWidth +"_"+ aspectRatio + "_" + diameter;
-            vehicleName = encodeURIComponent(vehicleName);
-            action = action + "?SecRatioDia=" + vehicleName + "&load=" + loadindex + "&speed=" + speedrating + "&sizeSelection=true&tab=1";
-            action = encodeURI(action);     
-            $("#bySizeSearch").attr('action',action);
-
-            xhrDA.sendForm( $('#vehicleSearch_submit')[0] );
-        }
-        //$('#vehicleSearch').submit();
-    });
     $('#uSubmitSearchDisc').on('click', function(){
         if(!( $(this).hasClass('disabled'))){
             
@@ -160,7 +116,8 @@ var CTW = {
             $('#uSearchDisclaimer, .opacity_bg').show();
             $('#uSubmitOptionSearch').removeClass('disabled');
         }
-    })
+    });
+    
     $('.un-search-btn_grayH').on('click', function(){
         if($(this).parents('#searchCont').hasClass('options')){
             $('input[data-val="'+$(this).attr('un-radio')+'"]').click();
@@ -176,6 +133,7 @@ var CTW = {
         $('#uNextStep').removeClass('disabled');
         $(this).addClass('selected');
      });
+     
     $('.un-search-btn_grayL').on('click', function(){
         var a = $(this);
         if(a.hasClass('complete')){
@@ -187,13 +145,14 @@ var CTW = {
             $('.searchContDiv').eq(a.index()).addClass('d_yes').removeClass('d_none').nextAll().find('div[un-select]').html('');
             $('#uNextStep').show().removeClass('disabled');
             $('#uSubmitSearch, #uSubmitSearchDisc').hide().addClass('disabled');
-        }else if(a.hasClass('options')){
+        }else /* if(a.hasClass('options')) */{
             $('#searchTopBar .un-search-btn_grayL').removeClass('selected');
             a.addClass('selected').removeClass('complete').nextAll().removeClass('complete');
             $('.searchContDiv.d_yes').removeClass('d_yes').addClass('d_none');
             $('.searchContDiv').eq(a.index()).addClass('d_yes').removeClass('d_none').nextAll().find('div[un-select]').html('');
         }
     });
+    
 
      a(function () {
         var d = a("#selector");
@@ -360,7 +319,7 @@ var CTW = {
                 jsonpCallback: "populateYearsDropdown",
                 success: function (b) {
                     for (var c = a("#selVehicleYear"), d = 0, e = b.d.length; d < e; d++) a('<option value="' + b.d[d].Attribute.replace('"', "&quot;") + '">' + b.d[d].Attribute + "</option>").appendTo(c);
-                    c.val("")
+                    c.val("");
                 }
             });
             a("#bySizeSearch").length && a("#selSectionWidth, #selDiameter, #selAspectRatio").each(function () {

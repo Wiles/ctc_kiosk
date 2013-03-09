@@ -17,4 +17,20 @@
       echo $this->element('find-body');
       echo $this->element('find-option');
     ?>
+    
+    <div id ="findFooter">
+        <table>
+            <tr>
+                <td>
+                    <div id="uFitmentData" class="big_gray" data-i18n="use_of_data" style="display:inline-block">Use of Fitment Data in Tire/Wheel Selector </div>
+                </td>
+                <td style="background-color:#C7C7C7">
+                    <div class="uuWarrantyFoot" data-i18n="warranty_foot" style="display:inline-block">Thank you for using our Tire and Wheel Selector.  Before making a purchase, please consult one of our Automotive Service Representatives to ensure the product you have selected is the best for your driving needs.</div>
+                </td>
+                <td>
+                    <div id="uNextStep" class="big_red disabled" data-i18n="continue" style="">continue</div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

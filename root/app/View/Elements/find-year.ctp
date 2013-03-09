@@ -7,10 +7,3 @@
   </div>
   <div id="year-container"></div>
 </div>
-
-
-<div home page />
-<div find pages>
-    <div find year />
-    <div find make />
-</div>
