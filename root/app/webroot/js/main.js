@@ -37,6 +37,10 @@ $(function() {
   
   $('.un-search-btn').click(function(elem) {
     if ($(this).hasClass("complete")) {
+        if ($(this).find(".uSelectedVal").html().length) {
+            $("#uNextStep").removeClass("disabled");
+        }
+        
         var ko = $(this).find('div .kk').attr('data-ko');
         xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
         xhrDA.loadPage(xhrDA.locationHashValues);
