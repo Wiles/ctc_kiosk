@@ -34,27 +34,28 @@ $(function() {
     loadYears();
 });
 
-function loadYears() {loadButtons(
-    $("#year-container"),
-    "/data/getYears",
-    {},
-    function (yearObj) {
-        // selected year
-        if (selectedYear != yearObj.Value) {
-            selectedYear = yearObj.Value;
-            $("#year-selected-value").html(selectedYear);
-            $("#make-selected-value").html("");
-            selectedMake = null;
-            $("#model-selected-value").html("");
-            selectedModel = null;
-            $("#body-selected-value").html("");
-            selectedBody = null;
-            $("#option-selected-value").html("");
-            selectedOption = null;
-            
-            loadMakes();
-        }
-    });
+function loadYears() {
+    loadButtons(
+        $("#year-container"),
+        "/data/getYears",
+        {},
+        function (yearObj) {
+            // selected year
+            if (selectedYear != yearObj.Value) {
+                selectedYear = yearObj.Value;
+                $("#year-selected-value").html(selectedYear);
+                $("#make-selected-value").html("");
+                selectedMake = null;
+                $("#model-selected-value").html("");
+                selectedModel = null;
+                $("#body-selected-value").html("");
+                selectedBody = null;
+                $("#option-selected-value").html("");
+                selectedOption = null;
+                
+                loadMakes();
+            }
+        });
 }
 
 function loadMakes() {
@@ -148,6 +149,7 @@ function loadButtons(container, url, args, onClick) {
             var div = $("<div />");
             div.addClass("un-search-btn_grayH");
             div.html(value.Value);
+            div.attr("title", value.Value);
             
             if (value.Selected == 'True') {
                 div.addClass("selected");
