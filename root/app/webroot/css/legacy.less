@@ -223,44 +223,47 @@ body[lang="fr"] #homepageCntnt #unSelector {
   color: #FFF;
   text-shadow: 1px 1px 0px #000;
   background-color: #5f5f5f;
-  background: -moz-linear-gradient(#797979, #343434);
   box-shadow: inset 0px 1px 0px #fff;
   border: 1px solid #050505;
   text-shadow: #000 -1px -1px 0;
+  
+  .gradient(#797979, #343434);
 }
 
 .uBtnLightGray {
   color: #333;
   text-shadow: 1px 1px 0px #000;
   background-color: #d7d7d7;
-  background: -moz-linear-gradient(#f3f3f3, #d7d7d7);
   box-shadow: inset 0px 1px 0px #fff;
   border: 1px solid #050505;
   text-shadow: #FFF -1px -1px 0;
+  
+  .gradient(#f3f3f3, #d7d7d7);
 }
 
 .uBtnMidGray {
   color: #fff;
   text-shadow: -1px -1px 0 #555;
   background-color: #d7d7d7;
-  background: -moz-linear-gradient(#cbcbcb, #949494);
   box-shadow: inset 0px 1px 0px #fff;
   border: 1px solid #050505;
+  
+  .gradient(#cbcbcb, #949494);
 }
 
 .uBtnRed {
   color: #fbfbf9;
   background-color: #5f5f5f;
-  background: -moz-linear-gradient(#ea1d2b, #a91f31);
   box-shadow: inset 0px 1px 0px #fff;
   border: 1px solid #111;
   text-shadow: #000 0px -1px 0;
+  
+  .gradient(#ea1d2b, #a91f31);
 }
 
 .uBtnLightGrayPdp{
   color: #626262;
   background-color: #d1d1d1;
-  background: -moz-linear-gradient(#fdfdfd, #d1d1d1);
   box-shadow: inset 0px 1px 0px #fff;
   border: 1px solid #555555;
   text-shadow: 0 -1px 0 #000, 0 1px 0 #fff;
@@ -269,7 +272,9 @@ body[lang="fr"] #homepageCntnt #unSelector {
   text-indent: 80px;
   padding: 16px;
   font-size:2em;
-  cursor: pointer;
+  
+  .gradient(#fdfdfd, #d1d1d1);
+  .button();
 }
 
 #home.big_gray {
@@ -372,9 +377,9 @@ body[lang=fr] #search_by .grey_big {
   width: 100%;
   height: 100%;
   background: #ccc;
-  background-image: -moz-linear-gradient(top, #FFFFFF 15%, #CCCCCC 92%);
   color: #e03414;
   font-size: 1.5em;
+  .gradient(#FFFFFF 15%, #CCCCCC 92%);
 }
 #appOffline h1 {
   margin: 100px auto;
@@ -533,7 +538,7 @@ body[lang=fr] #search_by .grey_big {
 }
 
 #uthere .quit {
-  background: -moz-linear-gradient(#797979, #343434);
+  .gradient(#797979, #343434);
   background-repeat: no-repeat;
   background-position: right;
   text-indent:0px;
@@ -608,8 +613,9 @@ body[lang=fr] #uFitmentData {
   width: 100%;
   padding: 0 25px;
   background-color: #d4d4d4;
-  background: -moz-linear-gradient(#FEFEFE, #CECECE);
-  background: linear-gradient(#FEFEFE, #CECECE);
+  
+  .gradient(#FEFEFE, #CECECE);
+  
   color: #b7b7b7;
   border-bottom: 1px solid #c8c8c8;
   box-shadow: inset 0 -1px 3px #FFF;
@@ -809,14 +815,13 @@ body[lang=fr] #uSearchDisclaimer #uSubmitOptionSearch {
   color: #cccccc; font-weight: normal;
   font-size: 1.6em;
   padding: 20px 0 0 20px;
-  border-radius: 2px;
   box-shadow: 0px 2px 0px #b2b2b2;
-  cursor: pointer;
   text-shadow: #8a8a8a -1px -1px 0px, #efefef 1px 1px 0px;
   text-align:left;
-  -moz-user-select: none;
-  user-select: none;
   display: inline-block;
+  
+  .rounded-corners(2px);
+  .button();
 }
   
 body[lang=fr] .un-search-btn_grayL {font-size: 1.4em;}
@@ -1180,8 +1185,7 @@ button#uPlpPrev.disabled, button.uPrev.disabled, button#un_vkeyboard_prev.disabl
 	width: 100%; 
 	padding: 25px; 
 	background-color: #d4d4d4; 
-	background: -moz-linear-gradient(#FEFEFE, #CECECE); 
-	background: linear-gradient(#FEFEFE, #CECECE); 
+	.gradient(#FEFEFE, #CECECE); 
 	color: #555; 
 	border-bottom: 1px solid #c8c8c8;
 	box-shadow: inset 0 -1px 3px #FFF;
@@ -1392,8 +1396,9 @@ body[lang="fr"]  .uPlpItemFeatureIcons .snowPeakRated {
 	padding: 15px 20px 0 20px;
 	margin:30px 30px 0 0;
 	color: #565656;
-	background:  -moz-linear-gradient(#fff, #e1e1e1) no-repeat;
 	height: 200px;
+  
+	.gradient(#fff, #e1e1e1);
 }
 
 #frmHelpMeChoose  .uHelpMeButton.active {
@@ -1541,11 +1546,12 @@ body[lang="fr"]  .uPlpItemFeatureIcons .snowPeakRated {
 	width:250px; 
 	height: 50px; 
 	padding: 15px 10px; 
-	background-image:-moz-linear-gradient(#797979, #343434); 
 	margin: 10px 10px 0 0; 
 	border: 1px solid #050505; 
 	text-align: center; 
 	color: #fff;
+  
+	.gradient(#797979, #343434); 
 }
 .uOtherCompareDiv {	width:250px; 
 	height: 180px; 

@@ -26,7 +26,7 @@
     
     <script type="text/javascript">
       <?php
-      echo "window.webroot = '" . $this->webroot . "/'" ?>
+      echo "window.webroot = '" . $this->webroot . "'" ?>
     </script>
     
     <?php
@@ -43,6 +43,7 @@
       echo '<link rel="stylesheet" type="text/css" href="'.$usablenet.'css/pdp.css" />';
       echo '<link rel="stylesheet" type="text/css" href="'.$usablenet.'css/vkb.css" />';
       
+      //echo $this->Html->link('colorbox.css');
       echo $this->Less->link('products.less');
       
       echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
@@ -64,9 +65,7 @@
       echo $this->Html->script('ct/vKeyboard.js');
       echo $this->Html->script('ct/fieldsController.js');
       echo $this->Html->script('ct/s_code_prd.js');
-      echo $this->Html->script('main.js');
-      echo $this->Html->script('find.js');
-
+      //echo $this->Html->script('jquery.colorbox.js');
       
       echo $this->Html->script('main.js');
       echo $this->Html->script('find.js');
@@ -80,6 +79,12 @@
         echo $head;
       }
     ?>
+    
+    <style type="text/css">
+      * {
+        font-size: medium;
+      }
+    </style>
   </head>
   
   <body>
