@@ -154,6 +154,32 @@ class CarProService {
         return $ret;
     }
     
+    public static function getTireAttribute($attributeType) {
+        // get response
+        $response = self::callWebService(
+            self::$carproServiceUrl,
+            'getTireSizeAttribute', 
+            array(
+                'AttributeType' => '"' . $attributeType . '"',
+                'format' => self::$format,
+                'Username' => self::$username,
+                'Password' => self::$password
+                ));
+                
+        $obj = json_decode($response, true);
+        $ret = array();
+        
+        foreach($obj["d"] as $d) {
+            array_push(
+                $ret,
+                array(
+                    'Value' => $d,
+                    'Selected' => 'False'));
+        }
+        
+        return $ret;
+    }
+    
     /**
      * CarPro web service wrapper/caller.
      */
@@ -186,10 +212,10 @@ class CarProService {
      * Cleans up CarPro's JSON.
      */
     private static function sanitizeJson($json) {
-        $j = json_decode($json, true);
+        $obj = json_decode($json, true);
         $ret = array();
         
-        foreach($j["d"] as $d) {
+        foreach($obj["d"] as $d) {
             array_push(
                 $ret,
                 array(
