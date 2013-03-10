@@ -26,7 +26,9 @@
     
     <script type="text/javascript">
       <?php
-      echo "window.webroot = '" . $this->webroot . "/'" ?>
+      echo "window.webroot = '" . $this->webroot . "/';";
+      echo "window.resultsRoute = '".$this->Html->url(array("controller" => "results", "action" => "results"))."';";
+      ?>
     </script>
     
     <?php

@@ -10,7 +10,10 @@
   <div class="options-page-content">
   <?php foreach($filters[$index]['values'] as $filter): ?>
     <div class="result-filter-option-selection">
-      <a href="<?php echo $filter['link_href'] ?>"><?php echo $filter['link_value'] ?></a>
+      <div class="uPlpFilterOption">
+        <a href="<?php echo $filter['link_href'] ?>"><button 
+          class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button"><?php echo $filter['link_value'] ?></button></a>
+      </div>
     </div>
   <?php endforeach; ?>
   </div>

@@ -66,6 +66,16 @@ class ResultsController extends AppController {
           '7.5x17',
           $sort
         );
+        //$results = CtService::getTiresByVehicle(
+        //  $lang,
+        //  $year,
+        //  $make,
+        //  $model,
+        //  $body,
+        //  $option,
+        //  $size,
+        //  $sort
+        //);
         break;
       case 'tires-size':
         
@@ -79,6 +89,7 @@ class ResultsController extends AppController {
     }
   
     $this->set('sort', $sort);
+    $this->set('titles', $results['titles']);
     $this->set('filters', $results['filter']);
     $this->set('results', $results['products']);
     $this->render();

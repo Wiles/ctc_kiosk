@@ -203,6 +203,7 @@ class CtService {
           // No search results found
           return array();
         } else {
+          $titles = self::extractPageInformation($dom);
           $filters = self::extractFilterInformation($dom);
           $products = array();
 
@@ -227,10 +228,26 @@ class CtService {
           }
 
           return array(
+            'titles' => $titles,
             'filter' => $filters,
             'products' => $products
           );
         }
+    }
+    
+    /**
+     * Extract the title of the vehicle that was searched and the search information
+     */
+    private static function extractPageInformation($dom) {
+      $vehicleTitles = $dom->getElementById('byVehicleMyVehicle')->getElementsByTagName('h5');
+      $ex = explode(':', $vehicleTitles->item(0)->nodeValue, 2);
+      $vehicleTitle = strip_tags($ex[1]);
+      
+      $searchFilterTitles = $dom->getElementById('productListing')->getElementsByTagName('h2');
+      $ex = explode(':', $searchFilterTitles->item(0)->nodeValue);
+      $searchFilterTitle = strip_tags($ex[1]);
+      
+      return array('title' => $vehicleTitle, 'filters' => $searchFilterTitle);
     }
 
     /**
