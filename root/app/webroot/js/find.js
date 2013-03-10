@@ -27,7 +27,6 @@ $(function() {
                 xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
                 xhrDA.loadPage(xhrDA.locationHashValues);
             } else {
-                // TODO: add in type of search
                 var params = {
                   'type' : selectedType,
                   'year' : selectedYear,
