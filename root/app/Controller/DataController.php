@@ -128,7 +128,7 @@ class DataController extends AppController {
      * @var model
      * @var body
      */
-     public function getOptions() {
+    public function getOptions() {
         $year = $this->getVar('year', '0');
         $make = $this->getVar('make', '');
         $model = $this->getVar('model', '');
@@ -137,7 +137,19 @@ class DataController extends AppController {
         $response = CarProService::getOptions($year, $make, $model, $body);
         
         return new CakeResponse(array('body' => json_encode($response)));
-     }
+    }
+    
+    /**
+     * Gets tire attribute data
+     *
+     * @var dataType
+     */
+    public function getTireData() {
+        $attr = $this->getVar('attributeType', '');
+        $response = CarProService::getTireAttribute($attr);
+        
+        return new CakeResponse(array('body' => json_encode($response)));
+    }
      
      /**
       * Get tire results by vehicle

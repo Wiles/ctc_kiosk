@@ -6,24 +6,25 @@
     </div>
     <div id="unSelector">
       <div class="gr_cont">
-        <div id="tires_sel">
-          <div class="start_div">
+      <div class="lucid" style="overflow:hidden;height:393px;">
+        <div id="tires_sel" style="position:relative">
+          <div class="start_div" style="position:relative;z-index:5;">
             <?php echo $this->Html->image(__('select_tire.png'), array('alt' => 'Select Tire')); ?>
             <!--<div class="start_by">START BY CHOOSING</div>
             <div class="start_tw">WHEELS</div>-->
           </div>
         </div>
-        <!-- <div style="transition: margin 0.7s ease 0s; margin-top: 500px;" id="search_by">
-          <div style="box-shadow: 0px 0px 0px transparent;" class="vec_div" tab="0">
-            <div class="search_tit" data-i18n="search_t_by"><?php echo __('Search tires by') ?></div>
-            <div class="grey_big" data-i18n="vehicle"><?php echo __('vehicle') ?></div>
-          </div>
-          <div style="box-shadow: 0px 0px 0px transparent;" class="size_div" tab="1">
-            <div class="search_tit" data-i18n="search_t_by"><?php echo __('Search tires by') ?></div>
-            <div class="grey_big" data-i18n="size"><?php echo __('Size') ?></div>
-          </div>
+        <div id="search_by" style="position:relative;top:0px;z-index:1;">
+            <div class="vec_div" tab="0">
+                <div class="search_tit" data-i18n="search_t_by">Search tires by</div>
+                <div class="grey_big" data-i18n="vehicle">vehicle</div>
+            </div>
+            <div class="size_div" tab="1">
+                <div class="search_tit" data-i18n="search_t_by">Search tires by</div>
+                <div class="grey_big" data-i18n="size">Size</div>
+            </div>
         </div>
-        -->
+      </div>
     </div>
 
     <div class="gr_cont">

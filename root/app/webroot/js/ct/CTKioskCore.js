@@ -92,19 +92,12 @@ function initHome() {
   }
   
   $('#tires_sel').click(function(){
-    var h = $(this).height();
-    $(this).animate({
-        top: '+=' + h
-    },
-    500,
-    function() {
-      $("#search_by").animate({
-        margin: '0px'
-      },
-      500,
-      function() {
-      });
-    });
+  var q = this;
+    var h = $(q).height();
+    $(q).children(":first-child").animate({
+        top: '+=' + h,
+        height: 'toggle'
+    }, 500);
   });
   
   $('#wheel_sel').bind('click', function(){
