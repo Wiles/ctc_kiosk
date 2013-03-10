@@ -66,6 +66,16 @@ class ResultsController extends AppController {
           '7.5x17',
           $sort
         );
+        //$results = CtService::getTiresByVehicle(
+        //  $lang,
+        //  $year,
+        //  $make,
+        //  $model,
+        //  $body,
+        //  $option,
+        //  $size,
+        //  $sort
+        //);
         break;
       case 'tires-size':
         
@@ -79,14 +89,20 @@ class ResultsController extends AppController {
     }
   
     $this->set('sort', $sort);
+    $this->set('titles', $results['titles']);
     $this->set('filters', $results['filter']);
     $this->set('results', $results['products']);
     $this->render();
   }
   
   public function from() {
-    $this->layout = 'empty';
+    
     $url = $this->getVar('url', '');
+    if (strstr($url, '/product/')) {
+      $this->layout = 'product';
+    } else {
+      $this->layout = 'empty';
+    }
     
     $usablenet = 'http://m.usablenet.com/mt/';
     $ctservice = 'http://tires.canadiantire.ca';
@@ -97,7 +113,7 @@ class ResultsController extends AppController {
         'method'=>"GET",
         'header'=>"Accept-language: en\r\n" .
                   "Cookie: foo=bar\r\n".
-                  "User-Agent: Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.102011-10-16 20:23:10\r\n" // i.e. An iPad 
+                  "User-Agent: Mozilla/6.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1\r\n" // i.e. Firefox on Windows
 
       )
     );
@@ -105,9 +121,27 @@ class ResultsController extends AppController {
     $context = stream_context_create($opts);
 
     $full_url = $usablenet.$ctservice.$url;
-    $html = file_get_contents($full_url, false, $context);
+    $html = htmlspecialchars_decode(file_get_contents($full_url, false, $context));
     
-    $this->set('contents', $html);
+    $matches = array();
+    preg_match('/\<HEAD\>.*?\<\/HEAD\>/', 
+      $html, $matches);
+    $head = $matches[0];
+    
+    $matches = array();
+    preg_match('/<BODY.*?>.*?<\/BODY>/s', 
+      $html, $matches);
+    $body = $matches[0];
+    
+    $head = preg_replace('/<HEAD>/', '', $head);
+    $head = preg_replace('/<\/HEAD>/', '', $head);
+    
+    $body = preg_replace('/<BODY.*?>/', '', $body);
+    $body = preg_replace('/<\/BODY>/', '', $body);
+    
+    
+    $this->set('head', $head);
+    $this->set('body', $body);
     $this->render();
   }
   

@@ -1,3 +1,4 @@
+var selectedType = 'tires-vehicle'; // 'tires-vehicle', 'tires-size', 'wheels'
 var selectedYear;
 var selectedMake;
 var selectedModel;
@@ -26,7 +27,18 @@ $(function() {
                 xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
                 xhrDA.loadPage(xhrDA.locationHashValues);
             } else {
-                // submit?
+                var params = {
+                  'type' : selectedType,
+                  'year' : selectedYear,
+                  'make' : selectedMake,
+                  'model' : selectedModel,
+                  'body' : selectedBody,
+                  'option' : selectedOption
+                };
+                
+                var querystring = $.param(params);
+                var url = window.resultsRoute + '?' + querystring;
+                window.location = url;
             }
         }
     });

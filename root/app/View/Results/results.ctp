@@ -13,6 +13,6 @@
 
 <div id="content">
     <?php 
-      echo $this->element('results',  array('filters' => $filters, 'results' => $results));
+      echo $this->element('results',  array('titles' => $titles, 'filters' => $filters, 'results' => $results));
     ?>
 </div>

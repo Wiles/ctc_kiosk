@@ -1,0 +1,110 @@
+@import "variables.less";
+@import "mixins.less";
+
+.uTopNavBar {
+  position: static;
+  height: 102px;
+  width: 100%;
+  padding: 0px 25px;
+  background-color: rgb(212, 212, 212);
+  color: rgb(183, 183, 183);
+  border-bottom: 1px solid rgb(200, 200, 200);
+  box-shadow: rgb(255, 255, 255) 0px -1px 3px inset;
+  
+  .gradient(rgb(254, 254, 254), rgb(206, 206, 206));
+}
+
+#pdpMailContent {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+#pdpDesc {
+  height: 100%;
+  width: 70%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#pdpAction {
+  height: 100%;
+  width: 25%;
+  margin: 15px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#pdpAction div.action-menu-bottom {
+  margin-top: 25px;
+}
+
+.pdpimages {
+  width: 30%;
+  display: inline-block;
+}
+
+.pdpStyleNumber {
+  width: 60%;
+  float: right;
+  display: inline-block;
+  
+  position: static;
+  height: 100%;
+  right: 0px;
+  bottom: 0px;
+  .gradient(rgb(238, 236, 237), rgb(255, 255, 255));
+}
+
+#pdpSize {
+  .rounded-corners(2px);
+  .gradient(rgb(255, 255, 255), rgb(238, 236, 237));
+}
+
+#pdpSize div, #pdpSize div span {
+  font-size: 1.2em;
+}
+
+div.pdpdescription {
+  margin-left: 40%;
+  margin-bottom: 30px;
+  display: block;
+  width: 100%;
+}
+
+div.pdpName {
+  font-size: 1.8em;
+}
+
+#pdpPrint {
+  display: none;
+}
+
+
+#pdpEmail {
+  .gradient(rgb(253, 253, 253), rgb(209, 209, 209), "../img/mail.png");
+  
+  color: rgb(98, 98, 98);
+  box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
+  border: 1px solid rgb(85, 85, 85);
+  text-shadow: 0px -1px 0px rgb(0, 0, 0), 0px 1px 0px rgb(255, 255, 255);
+  width: 220px;
+  height: 70px;
+  text-indent: 80px;
+  padding: 16px;
+  font-size: 2em;
+  
+  .button();
+}
+
+#pdpResult {
+  .gradient(rgb(253, 253, 253), rgb(209, 209, 209), "../img/results.png");
+  text-indent: 0px;
+  padding-left: 97px;
+  padding-top: 4px;
+  line-height: 30px;
+  
+  .button();
+}

@@ -15,9 +15,9 @@
         </div>
         <div class="results-top-title">
           <div class="results-vehicle-title">
-            <div>My Vehicle: <span class="uTxt666">2012 Audi A4 4 Dr Sedan Base: 7.5x17</span></div>
+            <div>My Vehicle: <span class="uTxt666"><?php echo $titles['title'] ?></span></div>
           </div>
-          <div class="uTxtX" style="color: #999;">Showing: <span class="k" style="color:#333">All Wheels that fit your vehicle</span></div>
+          <div class="uTxtX" style="color: #999;">Showing: <span class="k" style="color:#333"><?php echo $titles['filters'] ?></span></div>
         </div>
       </div>
 
