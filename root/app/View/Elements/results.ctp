@@ -23,7 +23,7 @@
 
       <div id="results-content">
         <div id="results-menu">
-          <div class="results-filter-option" id="byprice-option">
+          <div class="results-filter-option first" id="byprice-option">
             <div class="results-filter-title uTxtXLL">
               <?php $title = __('Narrow by').'&nbsp;'.__('price') ?>
               <span><?php echo $title ?></span>
@@ -76,9 +76,12 @@
                   <a href="/results/from/?url=<?php echo $result['title_href'] ?>">
                   <img src="<?php echo $result['img_url'] ?>" class="results-item-image"></a>
                   <div class="uPlpItemRate"><img src="<?php echo $result['rating_img']; ?>"></div>
-                  <div class="uPlpItemCompareItem" data-sku="1419763"><button class="uBtn uBtnCompare " type="button"><?php echo __('Compare') ?></button></div>
+                  <div class="uPlpItemCompareItem" data-sku="1419763">
+                    <button class="uBtn uBtnCompare" type="button"><?php echo __('Compare') ?></button>
+                  </div>
                 </div>
                 <div class="results-item-col-r">
+                  <a class="invisible-link" href="/results/from/?url=<?php echo $result['title_href'] ?>">
                   <div class="uPlpItemName">
                     <div><?php echo $result['title_name']; ?></div>
                   </div>
@@ -92,6 +95,7 @@
                   <ul class="results-item-features">
                     <?php echo $result['product_features'] ?>
                   </ul>
+                  </a>
                 </div>
               </div>
             <?php endforeach; ?>
@@ -108,7 +112,6 @@
               <input name="un_form_encoding" value="utf-8" type="hidden"><input name="un_form_post_list" value="" type="hidden">
             </div>
           </form>
-
               
           <div class="options-page-enclosure">
             <div class="options-page" id="sort-option-page-contents">
@@ -164,29 +167,6 @@
               <input name="un_form_post_list" value=":productCodes :com :currentURL :skuresults :vehicle :savedVehicleValue :N :rimSearch" type="hidden">
             </div>
           </form>
-        </div>
-        <div class="uPlpFilterOptions notum" id="uPlpSortByOptions">
-          <div class="uPlpFilterOptionsTitle uTxtXLL">
-            <span data-i18n="narrow" class="k">Narrow by</span><span class="close_notum uBtn uBtnGray"><span class="xIcn"></span><span data-i18n="CLOSE" class="kk">CLOSE</span></span>
-          </div>
-          <div class="uPlpFilterOption">
-            <button data-i18n="Price_up" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Price (Low-High)</button>
-          </div>
-          <div class="uPlpFilterOption">
-            <button data-i18n="Price_down" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Price (High-Low)</button>
-          </div>
-          <div class="uPlpFilterOption">
-            <button data-i18n="Brand_up" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Brand Name (A-Z)</button>
-          </div>
-          <div class="uPlpFilterOption">
-            <button data-i18n="Brand_down" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Brand Name (Z-A)</button>
-          </div>
-          <div class="uPlpFilterOption">
-            <button data-i18n="customerRating_down" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Customer Rating (High-Low)</button>
-          </div>
-          <div class="uPlpFilterOption">
-            <button data-i18n="custom" class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button">Custom Sort</button>
-          </div>
         </div>
       </div>
 

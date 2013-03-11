@@ -56,5 +56,19 @@ $(function() {
     $.colorbox.close();
   });
   
+  $('.uBtnCompare').click(function() {
+    var selected = $('.uBtnCompare.btnCompareRed');
+    if (selected.length < 4) {
+      $(this).toggleClass('btnCompareRed');
+    } else {
+      // Show the no more items dialog
+      $.colorbox({'href': '#uNoMoreItem'});
+    }
+    
+    selected = $('.uBtnCompare.btnCompareRed');
+    
+    // Check compare button to see if we can enable it
+  });
+  
   initFilter();
 });

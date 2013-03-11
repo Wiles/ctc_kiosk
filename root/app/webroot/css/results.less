@@ -38,7 +38,9 @@ div.results-content {
 }
 
 #results-menu {
-  margin-bottom: 1%;
+  background: none repeat scroll 0% 0% rgb(204, 204, 204);
+  padding-bottom: 1%;
+  padding-left: 15px;
 }
 
 div.results-filter-option {
@@ -46,7 +48,7 @@ div.results-filter-option {
   display: inline-block;
   margin: 1% 9px 0px 0px;
   vertical-align: top;
-  font-size: 0.9em;
+  font-size: 0.75em;
   color: rgb(251, 251, 249);
   box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
   border: 1px solid rgb(17, 17, 17);
@@ -63,7 +65,7 @@ div.results-filter-title {
 
 
 #results-toolbar {
-
+  background: none repeat scroll 0% 0% rgb(204, 204, 204);
 }
 
 #results-items {
@@ -202,4 +204,22 @@ span.options-page-title-close-text {
     font-size: 1.1em;
     vertical-align: top;
     overflow: hidden;
+}
+
+.invisible-link {
+  color: rgb(102, 102, 102);
+  text-decoration: none;
+}
+
+.btnCompareRed {
+  color: #fbfbf9;
+  text-shadow: 1px 1px 0px #000;
+  text-align:center;
+  box-shadow: inset 0px 1px 0px #fff;
+  border: 1px solid #050505; 
+  text-shadow: #000 0px -1px 0;
+  
+  .rounded-corners(3px);
+  .gradient(#ea1d2b, #a91f31);
+  .button();
 }
