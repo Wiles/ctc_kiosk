@@ -109,23 +109,48 @@
             </div>
           </form>
 
-          <form method="get" id="uPlpSortForm" action="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/wheels/search/?vehicle=2012_Audi_A4_4%2BDr%2BSedan_Base_7.5x17%23REGULAR%23Both&amp;showSavedVehicle=true">
-            <div>
-              <div class="d_none">
-                <input value="2012_Audi_A4_4+Dr+Sedan_Base_7.5x17#REGULAR#Both" name="vehicle" type="hidden"><input value="true" name="showSavedVehicle" type="hidden">
-                <select name="pn_ok">
-                  <option value="Price_up">Price (Low-High)</option>
-                  <option value="Price_down">Price (High-Low)</option>
-                  <option value="Brand_up">Brand Name (A-Z)</option>
-                  <option value="Brand_down">Brand Name (Z-A)</option>
-                  <option value="customerRating_down">Customer Rating (High-Low)</option>
-                  <option value="custom" selected="">Custom Sort</option>
-                </select>
-                <input value="Sort by" id="uPlpSortGo" class="un_ltt_button" type="submit">
+              
+          <div class="options-page-enclosure">
+            <div class="options-page" id="sort-option-page-contents">
+              <div class="options-page-title">
+                <span class="options-page-title-text">
+                <?php echo $title ?></span>
+                <div class="options-page-title-close">
+                  <?php echo $this->Html->image('overlayClose.png', array('class' => 'options-page-title-close-image')) ?>
+                  <span class="options-page-title-close-text" data-i18n="CLOSE" class="kk">CLOSE</span>
+                </div>
               </div>
-              <button class="uBtn uBtnGray" id="uPlpSortBtn" type="button"><img style="margin-right: 10px;" src="/mt/a/canadiantire.ca/30d/images/dropdownArrow.png"><span data-i18n="sort_results" class="k">Sort Results</span><span class="uPlpSortStatus uTxtBBB">Custom Sort</span></button><input name="un_form_encoding" value="utf-8" type="hidden">
+              <div class="options-page-content">
+              <?php
+                $values = array(
+                  'Price_up' => 'Price (Low-High)',
+                  'Price_down' => 'Price (High-Low)',
+                  'Brand_up' => 'Brand Name (A-Z)',
+                  'Brand_down' => 'Brand Name (Z-A)',
+                  'customerRating_down' => 'Customer Rating (High-Low)',
+                  'custom' => 'Custom Sort'
+                );
+              ?>
+              
+              <?php foreach($values as $key => $value): ?>
+                <div class="result-filter-option-selection">
+                  <div class="uPlpFilterOption">
+                    <a class="results-sort-option-link" onclick="return false;" href="<?php echo $key ?>">
+                      <button class="uBtn uBtnLightGray uPlpApplyFilterBtn uTxtX" type="button"><?php echo $value ?></button>
+                    </a>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+              </div>
             </div>
-          </form>
+          </div>
+          
+          <button class="uBtn uBtnGray" id="uPlpSortBtn" type="button">
+            <?php echo $this->Html->Image('dropdownArrow.png', array('style' => 'margin-right: 10px;')) ?>
+            <span data-i18n="sort_results" class="k">Sort Results</span>
+            <span class="uPlpSortStatus uTxtBBB">Custom Sort</span>
+          </button>
+          
           <form id="uCompareProds" name="uCompareProds" method="post" action="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/wheels/compare/">
             <div>
               <input name="productCodes" type="hidden"><input name="com" value="comp" type="hidden"><input name="currentURL" value="/view/content/search" type="hidden"><input name="skuresults" value="1417223|1417222|1419722|1419742|1418464|1419763|0417990|0417991|1418778|0418414|0418535|0418582|0418581|1417108|1417109|1419429|1419430|1417132|" type="hidden"><input name="vehicle" value="2012_Audi_A4_4+Dr+Sedan_Base_7.5x17#REGULAR#Both" type="hidden"><input name="savedVehicleValue" value="2012_Audi_A4_4 Dr Sedan_Base_7.5x17#REGULAR#Both" type="hidden"><input name="N" value="" type="hidden"><input name="rimSearch" value="true" type="hidden">

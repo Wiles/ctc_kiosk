@@ -103,6 +103,7 @@ class CtService {
     /**
      * Gets Tires or wheels by vehicle
      *
+     * @var type   [string] - 'tires' or 'wheels'
      * @var lang   [string] -
      * @var year   [number] -
      * @var make   [string] -
@@ -119,7 +120,7 @@ class CtService {
      *
      *      )
      */
-    private static function getByVehicle($type, $lang, $year, $make, $model, $body, $option, $size) {
+    private static function getByVehicle($type, $lang, $year, $make, $model, $body, $option, $size, $sort) {
         $params = array(
           urlencode($year),
           urlencode($make),
@@ -135,14 +136,14 @@ class CtService {
 
         if (!empty($sort)) {
           $count = 50;
-          $by = $sort['by'];
-          $narrow = $sort['narrow'];
 
-          if (!empty($by)) {
+          if (!empty($sort['by'])) {
+            $by = $sort['by'];
             $query .= '&pn_ps='.$count.'&pn_ok='.$by.'&pn_p=1';
           }
 
-          if (!empty($narrow)) {
+          if (!empty($sort['narrow'])) {
+            $narrow = $sort['narrow'];
             $query .= '&N='.$narrow;
           }
         }
@@ -244,7 +245,7 @@ class CtService {
       $vehicleTitle = strip_tags($ex[1]);
       
       $searchFilterTitles = $dom->getElementById('productListing')->getElementsByTagName('h2');
-      $ex = explode(':', $searchFilterTitles->item(0)->nodeValue);
+      $ex = explode(':', $searchFilterTitles->item(0)->nodeValue, 2);
       $searchFilterTitle = strip_tags($ex[1]);
       
       return array('title' => $vehicleTitle, 'filters' => $searchFilterTitle);
