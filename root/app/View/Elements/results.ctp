@@ -97,6 +97,7 @@
                   </ul>
                   </a>
                 </div>
+                <span style="display: none" class="results-item-product-number"><?php $i = explode(':', $result['product_number']); echo $i[1]; ?></span>
               </div>
             <?php endforeach; ?>
             <?php endif; ?>
@@ -154,17 +155,15 @@
             <span class="uPlpSortStatus uTxtBBB">Custom Sort</span>
           </button>
           
-          <form id="uCompareProds" name="uCompareProds" method="post" action="https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/wheels/compare/">
+          <form id="uCompareProds" name="uCompareProds" method="post" action="#">
             <div>
-              <input name="productCodes" type="hidden"><input name="com" value="comp" type="hidden"><input name="currentURL" value="/view/content/search" type="hidden"><input name="skuresults" value="1417223|1417222|1419722|1419742|1418464|1419763|0417990|0417991|1418778|0418414|0418535|0418582|0418581|1417108|1417109|1419429|1419430|1417132|" type="hidden"><input name="vehicle" value="2012_Audi_A4_4+Dr+Sedan_Base_7.5x17#REGULAR#Both" type="hidden"><input name="savedVehicleValue" value="2012_Audi_A4_4 Dr Sedan_Base_7.5x17#REGULAR#Both" type="hidden"><input name="N" value="" type="hidden"><input name="rimSearch" value="true" type="hidden">
               <button class="uBtn uBtnLightGray" id="uPlpCompareBtn" type="button">
                 <div class="uBtn uBtnOpenCompare disabled" data-i18n="Compare">Compare </div>
                 <span data-i18n="Compare_Items" class="uBold">Compare Items</span>
                 <br>
-                <span style="font-size:0.6em" class="k"><span data-i18n="Compare" class="k">Compare </span> 2 <span data-i18n="compare_a" class="k"> - </span>4 <span data-i18n="Compare_Items_Txt" class="k">items by tapping compare icon</span></span>
+                <span style="font-size:0.6em" class="k">
+                  <span data-i18n="Compare" class="k">Compare </span> 2 <span data-i18n="compare_a" class="k"> - </span>4 <span data-i18n="Compare_Items_Txt" class="k">items by tapping compare icon</span></span>
               </button>
-              <input name="un_form_encoding" value="utf-8" type="hidden">
-              <input name="un_form_post_list" value=":productCodes :com :currentURL :skuresults :vehicle :savedVehicleValue :N :rimSearch" type="hidden">
             </div>
           </form>
         </div>

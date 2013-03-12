@@ -26,10 +26,8 @@
     
     <script type="text/javascript">
       <?php
-      echo "window.webroot = '" . $this->webroot . "';";
-      echo "window.resultsRoute = '".$this->Html->url(array("controller" => "results", "action" => "results"))."';";
-      echo "window.compareRoute = '".$this->Html->url(array("controller" => "results", "action" => "compare"))."';";
-      echo "window.fromRoute = '".$this->Html->url(array("controller" => "results", "action" => "from"))."';";
+        echo "window.webroot = '" . $this->webroot . "';";
+        echo "window.fromRoute = '".$this->Html->url(array("controller" => "results", "action" => "from"))."';";
       ?>
     </script>
     
@@ -37,6 +35,19 @@
       echo $this->Html->meta('icon');
 
       echo $this->Less->link('ct.less');
+      
+      $usablenet = 'https://m.usablenet.com/ma/tires.canadiantire.ca/';
+      $usablenet_root = 'https://m.usablenet.com';
+      
+      //echo '<link rel="stylesheet" type="text/css" href="'.$usablenet.'css/main.css" />';
+      echo '<link rel="stylesheet" type="text/css" href="'.$usablenet.'css/plp.css" />';
+      echo '<link rel="stylesheet" type="text/css" href="'.$usablenet.'css/search.css" />';
+      echo '<link rel="stylesheet" type="text/css" href="'.$usablenet.'css/pdp.css" />';
+      echo '<link rel="stylesheet" type="text/css" href="'.$usablenet.'css/vkb.css" />';
+      
+      //echo $this->Html->link('colorbox.css');
+      echo $this->Less->link('compare.less');
+      
       echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
       
       // Commented out some source files we don't want to use
@@ -56,35 +67,25 @@
       echo $this->Html->script('ct/vKeyboard.js');
       echo $this->Html->script('ct/fieldsController.js');
       echo $this->Html->script('ct/s_code_prd.js');
+      //echo $this->Html->script('jquery.colorbox.js');
+      
       echo $this->Html->script('main.js');
       echo $this->Html->script('find.js');
-
-      if (!empty($styles)) {
-        foreach($styles as $style) {
-          echo $style;
-        }
-      }
-      
-      if (!empty($scripts)) {
-        foreach($scripts as $script) {
-          echo $script;
-        }
-      }
+      echo $this->Html->script('compare.js');
       
       echo $this->fetch('meta');
       echo $this->fetch('css');
       echo $this->fetch('script');
+      
+      if (!empty($head)) {
+        echo $head;
+      }
     ?>
   </head>
   
   <body>
-    <noscript><h1 style="margin:50px">Please enable Javascript</h1></noscript>
-      
-    <div class="content">
-      <?php echo $this->Session->flash(); ?>
-      <?php echo $this->fetch('content'); ?>
-    </div>
-
+    <?php echo $body ?>
+    
     <div id="appFooter">
         <div id="pageFooter">
           <div class="big_gray" id="home" data-i18n="home">home</div>

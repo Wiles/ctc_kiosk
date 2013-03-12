@@ -1,0 +1,31 @@
+@import "variables.less";
+@import "mixins.less";
+
+body {
+  background: #FFF;
+}
+
+.uTopNavBar {
+  position: static;
+  height: 102px;
+  width: 100%;
+  padding: 0px 25px;
+  background-color: rgb(212, 212, 212);
+  color: rgb(183, 183, 183);
+  border-bottom: 1px solid rgb(200, 200, 200);
+  box-shadow: rgb(255, 255, 255) 0px -1px 3px inset;
+  
+  .gradient(rgb(254, 254, 254), rgb(206, 206, 206));
+}
+
+.hide {
+  display: none;
+}
+
+#uComparePrint {
+  display: none;
+}
+
+.uRemoveFromCompareDiv, .uAddFromCompareDiv {
+  .button();
+}
