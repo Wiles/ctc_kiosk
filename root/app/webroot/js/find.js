@@ -34,19 +34,23 @@ $(function() {
                 xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
                 xhrDA.loadPage(xhrDA.locationHashValues);
             } else {
-                var params = {
-                  'lang' : ctk.app.lang,
-                  'type' : selectedType,
-                  'year' : selectedYear,
-                  'make' : selectedMake,
-                  'model' : selectedModel,
-                  'body' : selectedBody,
-                  'option' : selectedOption
-                };
-                
-                var querystring = $.param(params);
-                var url = window.resultsRoute + '?' + querystring;
-                window.location = url;
+                if (selectedType == 'wheels' || selectedType == 'tires-vehicle') {
+                    var params = {
+                      'lang' : ctk.app.lang,
+                      'type' : selectedType,
+                      'year' : selectedYear,
+                      'make' : selectedMake,
+                      'model' : selectedModel,
+                      'body' : selectedBody,
+                      'option' : selectedOption
+                    };
+                    
+                    var querystring = $.param(params);
+                    var url = window.resultsRoute + '?' + querystring;
+                    window.location = url;
+                } else {
+                    // submit by tire size
+                }
             }
         }
     });
