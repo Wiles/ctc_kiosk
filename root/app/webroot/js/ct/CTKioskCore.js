@@ -63,6 +63,7 @@ function setDeviceID(val) {
   uDB.set('deviceID', val);
   unLog('Device ID: ' + ctk.id + ';');
 }
+
 function setDeviceLang(val) {
   ctk.app.lang = val;
   uDB.set('lang', val);
@@ -74,6 +75,12 @@ function setDeviceLang(val) {
 function setSessionLang(val) {
   ctk.app.lang = val;
   $('body').attr('lang', val);
+
+  var ln = val;
+  $('#ct_title_img').attr('src', window.webroot + 'img/title_selector_'+ln+'.png');
+  $('#start-select-tire-img').attr('src', window.webroot + 'img/select_tire_'+ln+'.png');
+  $('#start-select-wheel-img').attr('src', window.webroot + 'img/select_wheel_'+ln+'.png');
+  
   uDB.set('lang', val);
   xhrDA.setLocationHashParam('lang', val);
   xhrDA.reloadPage();
@@ -88,9 +95,9 @@ function initHome() {
   
   if(!uDB.get('lang')){
     uDB.set('lang', 'en');
-    setSessionLang(uDB.get('lang'));
-    render_i18n_keys();
   }
+  
+  setSessionLang(uDB.get('lang'));
   
   $('#tires_sel').click(function(){
   var q = this;
@@ -236,7 +243,6 @@ function unSetSelect(ix, id){
 function setHomeScreen(ln){
   setSessionLang(ln);
   ctk.home = false;
-  $('#ct_title_img').attr('src', window.webroot + 'img/title_selector_'+ln+'.png');
   unResetSession();
 }
 

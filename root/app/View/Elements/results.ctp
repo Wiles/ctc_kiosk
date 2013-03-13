@@ -88,7 +88,6 @@
                   </div>
                   <div class="price">
                     <?php echo $result['product_price'] ?>
-                    <span class="eachElement eachRegElement">(each)</span>
                   </div>
                   <div class="uPlpItemCategory"><span class="uBold">Category</span>:
                     <?php echo $result['category_name'] ?>

@@ -35,6 +35,7 @@ $(function() {
                 xhrDA.loadPage(xhrDA.locationHashValues);
             } else {
                 var params = {
+                  'lang' : ctk.app.lang,
                   'type' : selectedType,
                   'year' : selectedYear,
                   'make' : selectedMake,

@@ -57,7 +57,7 @@ class ResultsController extends AppController {
     switch ($type) {
       case 'tires-vehicle':
         $results = CtService::getTiresByVehicle(
-          'en',
+          $lang,
           '2007',
           'Honda',
           'Ridgeline',
