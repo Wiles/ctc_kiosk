@@ -32,9 +32,22 @@ $(function() {
                     var selectedOption;
                 and
                     var selectedSize;
-                    
-                some how... i dont really know....
                 */
+                
+                var params = {
+                  'lang' : ctk.app.lang,
+                  'type' : selectedType,
+                  'year' : selectedYear,
+                  'make' : selectedMake,
+                  'model' : selectedModel,
+                  'body' : selectedBody,
+                  'option' : selectedOption,
+                  'size' : selectedSize
+                };
+
+                var querystring = $.param(params);
+                var url = window.resultsRoute + '?' + querystring;
+                window.location = url;
             } else {
                 var sel = $(".un-search-btn.un-search-btn_grayL.selected");
                 var next = sel.next();
@@ -106,6 +119,20 @@ $(function() {
                             var selectedIndex;
                             var selectedRating;
                         */
+                        
+                        var params = {
+                          'lang' : ctk.app.lang,
+                          'type' : selectedType,
+                          'width' : selectedWidth,
+                          'ratio' : selectedRatio,
+                          'diameter' : selectedDiameter,
+                          'index' : selectedIndex,
+                          'rating' : selectedRating
+                        };
+
+                        var querystring = $.param(params);
+                        var url = window.resultsRoute + '?' + querystring;
+                        window.location = url;
                     }
                 }
             }

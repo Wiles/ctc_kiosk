@@ -58,17 +58,17 @@ class CtService {
         $query = '?SecRatioDia='.implode('_', $params);
 
         if (!empty($load)) {
-          $query .= '&load='.$load;
+          $query .= '&load='.urlencode($load);
         }
 
         if (!empty($speed)) {
-          $query .= '&speed='.$speed;
+          $query .= '&speed='.urlencode($speed);
         }
 
         $query .= '&sizeSelection=true&tab=1';
 
         $url = $base_url . $query;
-
+        
         $contents = file_get_contents($url);
 
         $dom = new DOMDocument;
@@ -240,7 +240,12 @@ class CtService {
      * Extract the title of the vehicle that was searched and the search information
      */
     private static function extractPageInformation($dom) {
-      $vehicleTitles = $dom->getElementById('byVehicleMyVehicle')->getElementsByTagName('h5');
+      $titles = $dom->getElementById('byVehicleMyVehicle');
+      if (empty($titles)) {
+        $titles = $dom->getElementById('bySizeMySize');
+      }
+    
+      $vehicleTitles = $titles->getElementsByTagName('h5');
       $ex = explode(':', $vehicleTitles->item(0)->nodeValue, 2);
       $vehicleTitle = strip_tags($ex[1]);
       

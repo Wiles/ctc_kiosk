@@ -60,19 +60,8 @@ class ResultsController extends AppController {
       $sort['narrow'] = $narrow;
     }
   
-    $type = 'tires-vehicle';
     switch ($type) {
       case 'tires-vehicle':
-        //$results = CtService::getTiresByVehicle(
-        //  $lang,
-        //  '2007',
-        //  'Honda',
-        //  'Ridgeline',
-        //  '4 Dr Crew Cab Pickup, 5 Ft Bed',
-        //  'RTL',
-        //  '7.5x17#REGULAR#Both',
-        //  $sort
-        //);
         $results = CtService::getTiresByVehicle(
           $lang,
           $year,
