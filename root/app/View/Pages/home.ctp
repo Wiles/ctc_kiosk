@@ -22,6 +22,8 @@
       echo $this->element('find-diameter');
       echo $this->element('find-index');
       echo $this->element('find-rating');
+      
+      echo $this->element('tire-sizes');
     ?>
     
     <div id ="findFooter">

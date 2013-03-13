@@ -48,9 +48,30 @@ $(function() {
                         type: "GET",
                         data: params
                     }).done(function (json) {
+                        $("#tire-sizes-standard").html("");
+                        $("#tire-sizes-optional").html("");
+                        
+                        ct.changePage('page-tire-sizes');
+                        $("#vehicleInfo").html(selectedYear + ' ' + selectedMake + ' ' + selectedModel + ' ' + selectedBody + ' ' + selectedOption);
+                        
                         var obj = JSON.parse(json);
                     
                         $.each(obj, function(index, value) {
+                            var div = $("<div />");
+                            div.addClass("un-search-btn_grayH");
+                            div.html(value);
+                            div.attr("title", value);
+                            div.attr("data-value", value);
+                            div.click(function() {
+                                $("#tires-content").find(".un-search-btn_grayH.selected").removeClass("selected");
+                                $(this).addClass("selected");
+                            });
+                            
+                            if (value.indexOf("#REGULAR") !== -1) {
+                                $("#tire-sizes-standard").append(div);
+                            } else {
+                                $("#tire-sizes-optional").append(div);
+                            }
                         });
                     });
                     
@@ -74,6 +95,20 @@ $(function() {
                 }
             }
         }
+    });
+    
+    $("#tires-standard").click(function () {
+        $(this).addClass("selected");
+        $("#tires-optional").removeClass("selected");
+        $("#tire-sizes-standard").show();
+        $("#tire-sizes-optional").hide();
+    });
+    
+    $("#tires-optional").click(function () {
+        $(this).addClass("selected");
+        $("#tires-standard").removeClass("selected");
+        $("#tire-sizes-optional").show();
+        $("#tire-sizes-standard").hide();
     });
     
     loadYears();
@@ -322,6 +357,7 @@ function resizeFindPages() {
     var h = totalHeight - (footerHeight + headerHeight + margin);
     
     $(".find-page").height(h);
+    $("#tires-content").height(h - 30);
     
     var totalWidth = $("#content").width();
     var w = totalWidth - 110;
@@ -333,4 +369,13 @@ function resizeFindPages() {
     resizeStuff($("#model-container"), ".un-search-btn_grayH");
     resizeStuff($("#body-container"), ".un-search-btn_grayH");
     resizeStuff($("#option-container"), ".un-search-btn_grayH");
+    
+    resizeStuff($("#width-container"), ".un-search-btn_grayH");
+    resizeStuff($("#ratio-container"), ".un-search-btn_grayH");
+    resizeStuff($("#diameter-container"), ".un-search-btn_grayH");
+    resizeStuff($("#index-container"), ".un-search-btn_grayH");
+    resizeStuff($("#rating-container"), ".un-search-btn_grayH");
+    
+    resizeStuff($("#tire-sizes-standard"), ".un-search-btn_grayH");
+    resizeStuff($("#tire-sizes-optional"), ".un-search-btn_grayH");
 }
