@@ -21,11 +21,12 @@
         </div>
       </div>
 
+      <?php $narrow_by = '<span data-i18n="narrow_by">Narrow by</span>'; ?>
       <div id="results-content">
         <div id="results-menu">
           <div class="results-filter-option first" id="byprice-option">
             <div class="results-filter-title uTxtXLL">
-              <?php $title = __('Narrow by').'&nbsp;'.__('price') ?>
+              <?php $title = $narrow_by.'&nbsp;'.__('price') ?>
               <span><?php echo $title ?></span>
             </div>
             <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'byprice-options-page', 'index' => 1)); ?>
@@ -33,7 +34,7 @@
 
           <div class="results-filter-option" id="bybrand-option">
             <div class="results-filter-title uTxtXLL">
-              <?php $title = __('Narrow by').'&nbsp;'.__('brand') ?>
+              <?php $title = $narrow_by.'&nbsp;'.__('brand') ?>
               <span><?php echo $title ?></span>
             </div>
             <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'bybrand-options-page', 'index' => 2)); ?>
@@ -41,7 +42,7 @@
           
           <div class="results-filter-option" id="bysubcategory-option">
             <div class="results-filter-title uTxtXLL">
-              <?php $title = __('Narrow by').'&nbsp;'.__('sub category') ?>
+              <?php $title = $narrow_by.'&nbsp;'.__('sub category') ?>
               <span><?php echo $title ?></span>
             </div>
             <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'bysubcategory-options-page', 'index' => 3)); ?>
@@ -49,7 +50,7 @@
 
           <div class="results-filter-option" id="byfinish-option">
             <div class="results-filter-title uTxtXLL">
-              <?php $title = __('Narrow by').'&nbsp;'.__('finish') ?>
+              <?php $title = $narrow_by.'&nbsp;'.__('finish') ?>
               <span><?php echo $title ?></span>
             </div>
             <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'byfinish-options-page', 'index' => 6)); ?>
@@ -57,7 +58,7 @@
 
           <div class="results-filter-option" id="bycolour-option">
             <div class="results-filter-title uTxtXLL">
-              <?php $title = __('Narrow by').'&nbsp;'.__('colour') ?>
+              <?php $title = $narrow_by.'&nbsp;'.__('colour') ?>
               <span><?php echo $title ?></span>
             </div>
           <?php echo $this->element('resultsFilterOptionPage', array('title' => $title, 'tag' => 'bycolour-options-page', 'index' => 7)); ?>

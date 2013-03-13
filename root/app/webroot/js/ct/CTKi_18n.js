@@ -285,6 +285,22 @@ var u_i18n = {
     'en' : 'Year',
     'fr' : 'Ann&eacute;e'
   },
+  'Find_Make' : {
+    'en' : 'Make',
+    'fr' : 'Marque'
+  },
+  'Find_Model' : {
+    'en' : 'Model',
+    'fr' : 'Mod&egrave;le'
+  },
+  'Find_Submodel' : {
+    'en' : 'Submodel',
+    'fr' : 'Sous-Mod&egrave;le'
+  },
+  'Find_Option' : {
+    'en' : 'Option',
+    'fr' : 'Option'
+  },
   'Vehicle_Make' : {
     'en' : 'Vehicle Make',
     'fr' : 'V&eacute;hicule Marque'

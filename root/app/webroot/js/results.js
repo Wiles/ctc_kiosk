@@ -76,7 +76,8 @@ $(function() {
   $($('#uPlpCompareBtn .uBtnOpenCompare')[0]).click(function() {
     var disabled = $(this).hasClass('disabled');
     if (!disabled) {
-      var comparePage = 'https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/wheels/compare/';
+      var lang = ctk.app.lang;
+      var comparePage = 'https://m.usablenet.com/mt/http://tires.canadiantire.ca/' + lang + '/wheels/compare/';
       var route = window.compareRoute;
       
       var productCodes = [];

@@ -3,17 +3,17 @@
 <div class="unSearchWrap">
   <div class="searchTopBar">
     <div id="header-page-find-year" class="un-search-btn un-search-btn_grayL first <?php if (isset($yearStatus)) echo $yearStatus ?>">
-      <div>1.&nbsp;<span data-ko="year" class="kk">Year</span>
+      <div>1.&nbsp;<span data-ko="year" data-i18n="Year" class="kk">Year</span>
       </div>
       <div id="year-selected-value" class="uSelectedVal"></div>
     </div>
     <div id="header-page-find-make" class="un-search-btn un-search-btn_grayL <?php if (isset($makeStatus)) echo $makeStatus ?>">
-      <div>2.&nbsp;<span data-ko="make" class="kk">Make</span>
+      <div>2.&nbsp;<span data-ko="make" data-i18n="Find_Make" class="kk">Make</span>
       </div>
       <div id="make-selected-value" class="uSelectedVal"></div>
     </div>
     <div id="header-page-find-model" class="un-search-btn un-search-btn_grayL <?php if (isset($modelStatus)) echo $modelStatus ?>">
-      <div>3.&nbsp;<span data-ko="model" class="kk">Model</span>
+      <div>3.&nbsp;<span data-ko="model" data-i18n="Find_Model" class="kk">Model</span>
       </div>
       <div id="model-selected-value" class="uSelectedVal"></div>
     </div>

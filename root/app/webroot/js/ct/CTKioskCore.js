@@ -74,6 +74,7 @@ function setDeviceLang(val) {
 function setSessionLang(val) {
   ctk.app.lang = val;
   $('body').attr('lang', val);
+  uDB.set('lang', val);
   xhrDA.setLocationHashParam('lang', val);
   xhrDA.reloadPage();
   render_i18n_keys();
@@ -398,7 +399,8 @@ function setEnvironment() {
 
 function uDevOpenPdp(){
   var uSType = 'vehicle';
-  xhrDA.loadPage('/mt/http://'+ctk.siteDomain+'/en/tires/winter-tires/product/0087914P/pirelli-winter-carving-/');
+  var lang = ctk.app.lang;
+  xhrDA.loadPage('/mt/http://'+ctk.siteDomain+'/' + lang + '/tires/winter-tires/product/0087914P/pirelli-winter-carving-/');
 }
 
 function uOpenHelp(){
