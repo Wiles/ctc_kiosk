@@ -1,9 +1,16 @@
 var selectedType = 'tires-vehicle'; // 'tires-vehicle', 'tires-size', 'wheels'
+
 var selectedYear;
 var selectedMake;
 var selectedModel;
 var selectedBody;
 var selectedOption;
+
+var selectedWidth;
+var selectedRatio;
+var selectedDiameter;
+var selectedIndex;
+var selectedRating;
 
 $(function() {
     $(window).resize(resizeFindPages);
@@ -44,6 +51,7 @@ $(function() {
     });
     
     loadYears();
+    loadWidths();
 });
 
 function loadYears() {
@@ -55,7 +63,7 @@ function loadYears() {
             // selected year
             if (selectedYear != yearObj.Value) {
                 selectedYear = yearObj.Value;
-                $("#year-selected-value").html(selectedYear);
+                $("#year-selected-value").html(yearObj.Text);
                 $("#make-selected-value").html("");
                 selectedMake = null;
                 $("#model-selected-value").html("");
@@ -78,7 +86,7 @@ function loadMakes() {
         function (makeObj) {
             // selectedMake
             selectedMake = makeObj.Value;
-            $("#make-selected-value").html(selectedMake);
+            $("#make-selected-value").html(makeObj.Text);
             $("#model-selected-value").html("");
             selectedModel = null;
             $("#body-selected-value").html("");
@@ -101,7 +109,7 @@ loadButtons(
     function (modelObj) {
         // selected model
         selectedModel = modelObj.Value;
-        $("#model-selected-value").html(selectedModel);
+        $("#model-selected-value").html(modelObj.Text);
             $("#body-selected-value").html("");
             selectedBody = null;
             $("#option-selected-value").html("");
@@ -123,7 +131,7 @@ function loadBodies() {
         function (bodyObj) {
             // selected body
             selectedBody = bodyObj.Value;
-            $("#body-selected-value").html(selectedBody);
+            $("#body-selected-value").html(bodyObj.Text);
             $("#option-selected-value").html("");
             selectedOption = null;
             
@@ -144,7 +152,75 @@ function loadOptions() {
         function (optionObj) {
             // selected option
             selectedOption = optionObj.Value;
-            $("#option-selected-value").html(selectedOption);
+            $("#option-selected-value").html(optionObj.Text);
+        });
+}
+
+function loadWidths() {
+    loadButtons(
+        $("#width-container"),
+        "/data/getTireData",
+        { attributeType : "sw" },
+        function (widthObj) {
+            // selected width
+            selectedWidth = widthObj.Value;
+            $("#width-selected-value").html(widthObj.Text);
+            
+            loadRatios();
+        });
+}
+
+function loadRatios() {
+    loadButtons(
+        $("#ratio-container"),
+        "/data/getTireData",
+        { attributeType : "ar" },
+        function (ratioObj) {
+            // selected ratio
+            selectedRatio = ratioObj.Value;
+            $("#ratio-selected-value").html(ratioObj.Text);
+            
+            loadDiameters();
+        });
+}
+
+function loadDiameters() {
+    loadButtons(
+        $("#diameter-container"),
+        "/data/getTireData",
+        { attributeType : "rd" },
+        function (diameterObj) {
+            // selected diameter
+            selectedDiameter = diameterObj.Value;
+            $("#diameter-selected-value").html(diameterObj.Text);
+            
+            loadIndexes();
+        });
+}
+
+function loadIndexes() {
+    loadButtons(
+        $("#index-container"),
+        "/data/getTireData",
+        { attributeType : "li" },
+        function (indexObj) {
+            // selected index
+            selectedIndex = indexObj.Value;
+            $("#index-selected-value").html(indexObj.Text);
+            
+            loadRatings();
+        });
+}
+
+function loadRatings() {
+    loadButtons(
+        $("#rating-container"),
+        "/data/getTireData",
+        { attributeType : "sr" },
+        function (ratingObj) {
+            // selected rating
+            selectedIndex = ratingObj.Value;
+            $("#rating-selected-value").html(ratingObj.Text);
         });
 }
 
@@ -160,8 +236,8 @@ function loadButtons(container, url, args, onClick) {
         $.each(obj, function(index, value) {
             var div = $("<div />");
             div.addClass("un-search-btn_grayH");
-            div.html(value.Value);
-            div.attr("title", value.Value);
+            div.html(value.Text);
+            div.attr("title", value.Text);
             
             if (value.Selected == 'True') {
                 div.addClass("selected");

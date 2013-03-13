@@ -2,7 +2,6 @@
   $this->set('title_for_layout', 'Canadian Tire');
 ?>
 
-<div class="header" style="display:none;">
   <?php echo $this->element('z-find-header', array('yearStatus' => 'selected')); ?>
 </div>
 <div id="content">
@@ -16,6 +15,12 @@
       echo $this->element('find-model');
       echo $this->element('find-body');
       echo $this->element('find-option');
+      
+      echo $this->element('find-width');
+      echo $this->element('find-ratio');
+      echo $this->element('find-diameter');
+      echo $this->element('find-index');
+      echo $this->element('find-rating');
     ?>
     
     <div id ="findFooter">

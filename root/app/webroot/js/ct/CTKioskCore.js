@@ -107,6 +107,7 @@ function initHome() {
     omniSType = ':Wheel';
     
     clearFindPages();
+    selectedType = 'wheels';
     
     xhrDA.loadPage({
       'lang' : ctk.app.lang,
@@ -121,11 +122,14 @@ function initHome() {
     uSType = 'Tires';
     omniSType = ':Tire';
     
-    $(this).css('box-shadow','inset 0px 10px 25px #b5b5b5');
-    function anim2(){
-      xhrDA.loadPage('/mt/http://'+ctk.siteDomain+'/'+ctk.app.lang+'/tires/?tab=0&un_search=searchByVehicle');
-    };
-    setTimeout(anim2,300);
+    clearFindPages();
+    selectedType = 'tires-vehicle';
+    
+    xhrDA.loadPage({
+      'lang' : ctk.app.lang,
+      'currentPage' : 'find-year',
+      'find-type' : 'tires'
+    });    
   });
 
   $('.size_div').bind('click', function(){
@@ -134,11 +138,14 @@ function initHome() {
     uSType = 'Tires';
     omniSType = ':Tire';
     
-    $(this).css('box-shadow','inset 0px 10px 25px #b5b5b5');
-    function anim2(){
-      xhrDA.loadPage('/mt/http://'+ctk.siteDomain+'/'+ctk.app.lang+'/tires/?tab=1&un_search=searchByType');
-    };
-    setTimeout(anim2,300);
+    clearFindPages();
+    selectedType = 'tires-size';
+    
+    xhrDA.loadPage({
+      'lang' : ctk.app.lang,
+      'currentPage' : 'find-width',
+      'find-type' : 'tires'
+    });   
   });
   
   $('.uTopNavBarBackSvg').on('click', function(){
