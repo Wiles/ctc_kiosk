@@ -28,6 +28,9 @@ $(function() {
       console.log(e);
     }
   }
+  
+  $(window).resize(resizeResults);
+  resizeResults();
 
   $("#byprice-option").colorbox({inline:true, width:"50%", href:'#byprice-options-page'});
   $("#bybrand-option").colorbox({inline:true, width:"50%", href:'#bybrand-options-page'});
@@ -97,3 +100,12 @@ $(function() {
   
   initFilter();
 });
+
+function resizeResults() {
+    var totalWidth = $('#results-items').width();
+    
+    var count = Math.floor(totalWidth / 450);
+    var w = Math.floor(totalWidth / count) - 50;
+    
+    $(".results-item").width(w);
+}
