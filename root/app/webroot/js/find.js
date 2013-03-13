@@ -12,6 +12,8 @@ var selectedDiameter;
 var selectedIndex;
 var selectedRating;
 
+var selectedSize;
+
 $(function() {
     $(window).resize(resizeFindPages);
     
@@ -20,78 +22,91 @@ $(function() {
     
     $('#uNextStep').click(function(){
         if(!( $(this).hasClass('disabled'))){
-            var sel = $(".un-search-btn.un-search-btn_grayL.selected");
-            var next = sel.next();
-            if (next.length) {
-                sel.removeClass("selected").addClass("complete");
-                next.addClass("selected");
-                
-                if (!next.find(".uSelectedVal").html().length) {
-                    $(this).addClass('disabled');
-                }
-                
-                var ko = next.find('div .kk').attr('data-ko');
-                xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
-                xhrDA.loadPage(xhrDA.locationHashValues);
+        
+            if ($("#page-tire-sizes").is(":visible")) {
+                /* submit using 
+                    var selectedYear;
+                    var selectedMake;
+                    var selectedModel;
+                    var selectedBody;
+                    var selectedOption;
+                and
+                    var selectedSize;
+                    
+                some how... i dont really know....
+                */
             } else {
-                if (selectedType == 'wheels' || selectedType == 'tires-vehicle') {
-                    var params = {
-                        'selVehicleBody' : selectedBody,
-                        'selVehicleMake' : selectedMake,
-                        'selVehicleModel' : selectedModel,
-                        'selVehicleOption' : selectedOption,
-                        'selVehicleYear' : selectedYear
-                    };
+                var sel = $(".un-search-btn.un-search-btn_grayL.selected");
+                var next = sel.next();
+                if (next.length) {
+                    sel.removeClass("selected").addClass("complete");
+                    next.addClass("selected");
                     
-                    $.ajax({
-                        url: '/data/getWheelSizes',
-                        type: "GET",
-                        data: params
-                    }).done(function (json) {
-                        $("#tire-sizes-standard").html("");
-                        $("#tire-sizes-optional").html("");
-                        
-                        ct.changePage('page-tire-sizes');
-                        $("#vehicleInfo").html(selectedYear + ' ' + selectedMake + ' ' + selectedModel + ' ' + selectedBody + ' ' + selectedOption);
-                        
-                        var obj = JSON.parse(json);
+                    if (!next.find(".uSelectedVal").html().length) {
+                        $(this).addClass('disabled');
+                    }
                     
-                        $.each(obj, function(index, value) {
-                            var div = $("<div />");
-                            div.addClass("un-search-btn_grayH");
-                            div.html(value);
-                            div.attr("title", value);
-                            div.attr("data-value", value);
-                            div.click(function() {
-                                $("#tires-content").find(".un-search-btn_grayH.selected").removeClass("selected");
-                                $(this).addClass("selected");
+                    var ko = next.find('div .kk').attr('data-ko');
+                    xhrDA.setLocationHashParam('currentPage', 'find-' + ko);
+                    xhrDA.loadPage(xhrDA.locationHashValues);
+                } else {
+                    if (selectedType == 'wheels' || selectedType == 'tires-vehicle') {
+                        var params = {
+                            'selVehicleBody' : selectedBody,
+                            'selVehicleMake' : selectedMake,
+                            'selVehicleModel' : selectedModel,
+                            'selVehicleOption' : selectedOption,
+                            'selVehicleYear' : selectedYear
+                        };
+                        
+                        $.ajax({
+                            url: '/data/getWheelSizes',
+                            type: "GET",
+                            data: params
+                        }).done(function (json) {
+                            $('#uNextStep').addClass('disabled');
+                            $("#tire-sizes-standard").html("");
+                            $("#tire-sizes-optional").html("");
+                            
+                            ct.changePage('page-tire-sizes');
+                            $("#vehicleInfo").html(selectedYear + ' ' + selectedMake + ' ' + selectedModel + ' ' + selectedBody + ' ' + selectedOption);
+                            
+                            var obj = JSON.parse(json);
+                        
+                            $.each(obj, function(index, value) {
+                                var div = $("<div />");
+                                var txt = value.replace("#REGULAR#", " ").replace("#PLUS#", " ").replace("#MINUS#", " ").replace("Both", "");
+                                div.addClass("un-search-btn_grayH");
+                                div.html(txt);
+                                div.attr("title", txt);
+                                div.attr("data-value", value);
+                                div.click(function() {
+                                    $("#tires-content").find(".un-search-btn_grayH.selected").removeClass("selected");
+                                    $(this).addClass("selected");
+                                    
+                                    $('#uNextStep').removeClass('disabled');
+                                    selectedSize = $(this).attr("data-value");
+                                });
+                                
+                                if (value.indexOf("#REGULAR") !== -1) {
+                                    $("#tire-sizes-standard").append(div);
+                                } else {
+                                    $("#tire-sizes-optional").append(div);
+                                }
                             });
                             
-                            if (value.indexOf("#REGULAR") !== -1) {
-                                $("#tire-sizes-standard").append(div);
-                            } else {
-                                $("#tire-sizes-optional").append(div);
-                            }
+                            resizeStuff($("#tire-sizes-standard"), ".un-search-btn_grayH");
+                            resizeStuff($("#tire-sizes-optional"), ".un-search-btn_grayH");
                         });
-                    });
-                    
-                    /*
-                    var params = {
-                      'lang' : ctk.app.lang,
-                      'type' : selectedType,
-                      'year' : selectedYear,
-                      'make' : selectedMake,
-                      'model' : selectedModel,
-                      'body' : selectedBody,
-                      'option' : selectedOption
-                    };
-                    
-                    var querystring = $.param(params);
-                    var url = window.resultsRoute + '?' + querystring;
-                    window.location = url;
-                    */
-                } else {
-                    // submit by tire size
+                    } else {
+                        /* submit by tire size using
+                            var selectedWidth;
+                            var selectedRatio;
+                            var selectedDiameter;
+                            var selectedIndex;
+                            var selectedRating;
+                        */
+                    }
                 }
             }
         }
