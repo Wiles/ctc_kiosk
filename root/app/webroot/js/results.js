@@ -68,6 +68,30 @@ $(function() {
     selected = $('.uBtnCompare.btnCompareRed');
     
     // Check compare button to see if we can enable it
+    if (selected.length >= 2) {
+      $($('#uPlpCompareBtn .uBtnOpenCompare')[0]).toggleClass('disabled');
+    }
+  });
+  
+  $($('#uPlpCompareBtn .uBtnOpenCompare')[0]).click(function() {
+    var disabled = $(this).hasClass('disabled');
+    if (!disabled) {
+      var comparePage = 'https://m.usablenet.com/mt/http://tires.canadiantire.ca/en/wheels/compare/';
+      var route = window.compareRoute;
+      
+      var productCodes = [];
+      $.each($('.uBtnCompare.btnCompareRed'), function(index, link) {
+        var result = $(link).parent().parent().parent();
+        var productCode = $($(result[0]).find('.results-item-product-number')[0]).text();
+        productCodes.push(productCode);
+      });
+      
+      var codes = productCodes.join('|');
+      var url = route + '?url=' + comparePage + '&productCodes=' + codes;
+      window.location = url;
+    } else {
+      return false;
+    }
   });
   
   initFilter();
