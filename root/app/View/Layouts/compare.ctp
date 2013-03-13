@@ -27,6 +27,7 @@
     <script type="text/javascript">
       <?php
         echo "window.webroot = '" . $this->webroot . "';";
+        echo "window.homeRoute = '".$this->Html->url(array("controller" => "pages", "action" => "home"))."#currentPage=home';";
         echo "window.fromRoute = '".$this->Html->url(array("controller" => "results", "action" => "from"))."';";
       ?>
     </script>
