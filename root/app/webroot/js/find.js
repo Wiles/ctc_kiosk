@@ -36,6 +36,26 @@ $(function() {
             } else {
                 if (selectedType == 'wheels' || selectedType == 'tires-vehicle') {
                     var params = {
+                        'selVehicleBody' : selectedBody,
+                        'selVehicleMake' : selectedMake,
+                        'selVehicleModel' : selectedModel,
+                        'selVehicleOption' : selectedOption,
+                        'selVehicleYear' : selectedYear
+                    };
+                    
+                    $.ajax({
+                        url: '/data/getWheelSizes',
+                        type: "GET",
+                        data: params
+                    }).done(function (json) {
+                        var obj = JSON.parse(json);
+                    
+                        $.each(obj, function(index, value) {
+                        });
+                    });
+                    
+                    /*
+                    var params = {
                       'lang' : ctk.app.lang,
                       'type' : selectedType,
                       'year' : selectedYear,
@@ -48,6 +68,7 @@ $(function() {
                     var querystring = $.param(params);
                     var url = window.resultsRoute + '?' + querystring;
                     window.location = url;
+                    */
                 } else {
                     // submit by tire size
                 }
