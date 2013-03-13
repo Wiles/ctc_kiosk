@@ -7,6 +7,7 @@
 </div>
 <div id="content">
     <?php 
+      echo $this->element('config');
       echo $this->element('home');
       echo $this->element('start');
     ?>

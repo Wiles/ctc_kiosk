@@ -1,6 +1,14 @@
-var ct = new function() {  
+var ct = new function() {
+
+  this.page_events = {};
+  
   this.initValues = function(values) {
     
+  }.bind(this);
+  
+  this.onPageChange = function(name, fun) {
+    // TODO: add, rather than overwrite
+    this.page_events[name] = fun;
   }.bind(this);
 
   this.changePage = function(page) {
@@ -13,11 +21,18 @@ var ct = new function() {
     $("#header-" + page).prevAll().addClass("complete");
     $("#header-" + page).nextAll().removeClass("complete").addClass("disabled");
     
+    // Handle start/home/find pages
     if (page === 'page-start' || page === 'page-home') {
       this.showHeader(false);
     } else {
       this.showHeader(true);
       resizeFindPages();
+    }
+    
+    // Handle on page change event
+    var event = this.page_events[page];
+    if (event) {
+      event();
     }
     
   }.bind(this);

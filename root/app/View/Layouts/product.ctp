@@ -89,6 +89,11 @@
   
   <body>
     <?php echo $body ?>
+    <div id="containerKB" style="visibility:hidden">
+      <div id="kb_top_shadow"></div>
+      <div id="un_keyboard"></div>
+      <div class="un_clear"></div>
+    </div>
   </body>
 
 </html>

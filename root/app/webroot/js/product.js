@@ -13,12 +13,25 @@ var ct_product = new function() {
         $('#pdpDesc > div, #svgelem').hide();
         $('.'+$(this).attr('data-show')+' , #backToPdp').show();
         $('#pdpActionArrow').show().css('top', ($(this).index() * 90)+'px');
-        if($(this).attr('id')=='pdpReviews')
+        if($(this).attr('id')=='pdpReviews') {
             new VScroll($('#uReviewOuter')[0], 220, $('#uReviewPaginator')[0]);
-         
+        }
         KOtrackPDPtabs(this);
       }
     };
+    
+    this.backButtonClick = function() {
+      if ($('#pdpActionArrow').is(':visible')) {
+        $('#pdpDesc > div').hide();
+        $('#svgelem').show();
+        $('.'+$(this).attr('data-show')+' , #backToPdp').hide();
+        $('#pdpActionArrow').hide().css('top', '0px');
+        $('.pdpdescription').show();
+        $('.uGeneral').show();
+      } else {
+        xhrDA.back();
+      }
+    }
     
     /**
      * Handle email button clicked
@@ -28,7 +41,8 @@ var ct_product = new function() {
       $('#pdpMailContent').show();
       $('#pdpDesc > div, #pdpActionArrow').hide();
       $('#svgelem').show();
-      $('#pdpContent, .uTopNavBarBackSvg_toPdp').hide();
+      $('#pdpContent').hide();
+      //, .uTopNavBarBackSvg_toPdp
       KOtrackPDPemail();
       help_src = 'email';
       $('#help_b').removeClass('disabled');
@@ -42,7 +56,8 @@ var ct_product = new function() {
       $('#pdpMailContent').hide();
       $('#pdpDesc > div').show();
       $('#svgelem').hide();
-      $('#pdpContent, .uTopNavBarBackSvg_toPdp').show();
+      $('#pdpContent').show();
+      //, .uTopNavBarBackSvg_toPdp
     };
     
     /**
@@ -86,6 +101,8 @@ var ct_product = new function() {
 
 $(function() {
   $('div.pdpdescription').prependTo($('#pdpDesc'));
+  
+  $('#backToPdp').click(ct_product.backButtonClick);
   
   $('.uFloatR').removeClass('uFloatR');
   $('.uFloatL').removeClass('uFloatL');
