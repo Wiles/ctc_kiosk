@@ -137,7 +137,7 @@ var CTW = {
     $('.un-search-btn_grayL').on('click', function(){
         var a = $(this);
         if(a.hasClass('complete')){
-            $('#searchTopBar .un-search-btn_grayL').removeClass('selected');
+            $('.searchTopBar .un-search-btn_grayL').removeClass('selected');
             a.addClass('selected').removeClass('complete').nextAll().removeClass('complete');
             a.find('.uSelectedVal').html('');
             a.nextAll().find('.uSelectedVal').html('');
@@ -146,7 +146,7 @@ var CTW = {
             $('#uNextStep').show().removeClass('disabled');
             $('#uSubmitSearch, #uSubmitSearchDisc').hide().addClass('disabled');
         }else /* if(a.hasClass('options')) */{
-            $('#searchTopBar .un-search-btn_grayL').removeClass('selected');
+            $('.searchTopBar .un-search-btn_grayL').removeClass('selected');
             a.addClass('selected').removeClass('complete').nextAll().removeClass('complete');
             $('.searchContDiv.d_yes').removeClass('d_yes').addClass('d_none');
             $('.searchContDiv').eq(a.index()).addClass('d_yes').removeClass('d_none').nextAll().find('div[un-select]').html('');

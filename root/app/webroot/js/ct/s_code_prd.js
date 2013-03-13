@@ -726,9 +726,9 @@ function KOsetProp1() {
 function KOback(link) {
     KOlinkCode(link.parentNode, 'Kiosk_Footer_Back');
     
-    if($('#searchTopBar').length) { // search flow
+    if($('.searchTopBar').length) { // search flow
         v48.setActiveSearchFlow(true);
-        v48.clearDependencies($('#searchTopBar .selected span[data-ko]').data('ko') || 'size', true);
+        v48.clearDependencies($('.searchTopBar .selected span[data-ko]').data('ko') || 'size', true);
     }
 }
 
@@ -793,7 +793,7 @@ var V48 = function() {
             /*console.log('cleared '+JSON.stringify(_v48tmpl));*/
         },
         populate : function() {
-            var key = $('#searchTopBar .selected span[data-ko]').data('ko') || 'size';
+            var key = $('.searchTopBar .selected span[data-ko]').data('ko') || 'size';
             if(_v48tmpl[key]) {
                 var txt = $('.searchContDiv.d_yes .selected').text().trim().replace(/'/g,'').replace(/"/g,'');
                 if(txt.toLowerCase() == 'dont know' || txt.toLowerCase() == 'ne sais pas')
@@ -814,7 +814,7 @@ var v48 = new V48();
 
 function KOtrackSearch(isVar48) {
     var searchBy = (v48.getProp('TR2') == 'Vehicle') ? 'Vehicle' : 'Size';
-    var key = $('#searchTopBar .selected span[data-ko]').data('ko') || 'size';
+    var key = $('.searchTopBar .selected span[data-ko]').data('ko') || 'size';
     var iseVar48Fun = isVar48 ? function() { s.eVar48 = v48.build() } : '';
     KOload(KOmap.searchTmpl + uSType +' by ' + searchBy + ' - ' + KOmap.search[searchBy][key] , iseVar48Fun);
 }

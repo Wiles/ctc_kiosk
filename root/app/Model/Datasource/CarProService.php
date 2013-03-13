@@ -155,26 +155,77 @@ class CarProService {
     }
     
     public static function getTireAttribute($attributeType) {
-        // get response
-        $response = self::callWebService(
-            self::$carproServiceUrl,
-            'getTireSizeAttribute', 
-            array(
-                'AttributeType' => '"' . $attributeType . '"',
-                'format' => self::$format,
-                'Username' => self::$username,
-                'Password' => self::$password
-                ));
-                
-        $obj = json_decode($response, true);
         $ret = array();
         
-        foreach($obj["d"] as $d) {
+        // load index
+        if ($attributeType == 'li') {
             array_push(
                 $ret,
                 array(
-                    'Value' => $d,
+                    'Text' => 'Don\'t know',
+                    'Value' => '',
                     'Selected' => 'False'));
+                    
+            for ($i = 63; $i <= 130; $i++) {
+                array_push(
+                    $ret,
+                    array(
+                        'Text' => $i,
+                        'Value' => $i,
+                        'Selected' => 'False'));
+            }
+            
+            $letters = array("B", "C", "D", "E", "F");
+            foreach ($letters as $letter) {
+                array_push(
+                    $ret,
+                    array(
+                        'Text' => $letter,
+                        'Value' => $letter,
+                        'Selected' => 'False'));
+            }
+        }
+        // speed rating
+        else if ($attributeType == 'sr') {
+            array_push(
+                $ret,
+                array(
+                    'Text' => 'Don\'t know',
+                    'Value' => '',
+                    'Selected' => 'False'));
+            
+            $letters = array("H", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "Y", "Z");
+            foreach ($letters as $letter) {
+                array_push(
+                    $ret,
+                    array(
+                        'Text' => $letter,
+                        'Value' => $letter,
+                        'Selected' => 'False'));
+            }
+        }
+        else {
+            // get response
+            $response = self::callWebService(
+                self::$carproServiceUrl,
+                'getTireSizeAttribute', 
+                array(
+                    'AttributeType' => '"' . $attributeType . '"',
+                    'format' => self::$format,
+                    'Username' => self::$username,
+                    'Password' => self::$password
+                    ));
+                    
+            $obj = json_decode($response, true);
+            
+            foreach($obj["d"] as $d) {
+                array_push(
+                    $ret,
+                    array(
+                        'Text' => $d,
+                        'Value' => $d,
+                        'Selected' => 'False'));
+            }
         }
         
         return $ret;
@@ -219,6 +270,7 @@ class CarProService {
             array_push(
                 $ret,
                 array(
+                    'Text' => $d["Attribute"],
                     'Value' => $d["Attribute"],
                     'Selected' => $d["Selected"]));
         }
