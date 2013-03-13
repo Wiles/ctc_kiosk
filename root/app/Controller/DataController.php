@@ -226,4 +226,60 @@ class DataController extends AppController {
         $response = CtService::getWheelsByVehicle($lang, $year, $make, $model, $body, $option, $size);
         return new CakeResponse(array('body' => json_encode($response)));
      }
+     
+    public function getWheelSizes() {
+        $body = $this->getVar('selVehicleBody', '');
+        $make = $this->getVar('selVehicleMake', '');
+        $model = $this->getVar('selVehicleModel', '');
+        $option = $this->getVar('selVehicleOption', '');
+        $year = $this->getVar('selVehicleYear', '');
+        
+        $arguments = array(
+            'selVehicleBody' => $body,
+            'selVehicleMake' => $make,
+            'selVehicleModel' => $model,
+            'selVehicleOption' => $option,
+            'selVehicleYear' => $year,
+            'currentURL' => '/view/content/ctWheelsLandingPage',
+            'searchBySize' => 'true',
+            'un_form_encoding' => 'utf-8'
+        );
+        
+        $args = '';
+        $bool = false;
+        
+        // build query string
+        foreach($arguments as $key => $value) {
+            if ($bool) {
+                $args .= '&';
+            }
+            
+            $bool = true;
+            
+            $args .= $key . '=' . str_replace(' ', '%20', $value) .'';
+        }
+        
+        $url = 'http://tires.canadiantire.ca/view/CtRimsSelectionResponseController?' . $args;
+        $response = file_get_contents((string)$url);
+        
+        $txt = preg_replace('(id="radSize1")', '', $response);
+        
+        $DOM = new DOMDocument;
+        $DOM->loadHTML($txt);
+        
+        $items = $DOM->getElementsByTagName('input');
+        
+        $ret = array();
+        
+        for ($i = 0; $i < $items->length; $i++) {
+            $elem = $items->item($i);
+            if ($elem->getAttribute('type') == 'radio') {
+                array_push(
+                    $ret,
+                    $elem->getAttribute('value'));
+            }
+        }
+        
+        return new CakeResponse(array('body' => json_encode($ret)));
+    }
 }

@@ -44,7 +44,13 @@ var ct = new function() {
       $("#findFooter").hide();
       
       $(".start_div").show().css("top", "0px");
-    } else {
+    } else if (page === 'page-tire-sizes') {
+        $('div.header.tireHeader').hide();
+        $('div.header.vehicleHeader').hide();
+        
+        $("#findFooter").show();
+        resizeFindPages();
+    }else {
       var r = $.inArray(page, this.vehiclePages);
       if (r == -1) {
         $('div.header.tireHeader').show();
@@ -74,12 +80,6 @@ var ct = new function() {
   
   this.isHeaderVisible = function() {
     return $('div.header').css('display') != 'none';
-  }.bind(this);
-
-  this.showHeader = function(show) {
-    if (show) {
-    } else {
-    }
   }.bind(this);
 
   this.getQueryParam = function(uri, name) {
