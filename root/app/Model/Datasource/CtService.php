@@ -132,7 +132,7 @@ class CtService {
 
         $base_url = self::$ctServiceUrl . '/' . $lang . '/' . $type . '/search/';
 
-        $query = '?vehicle='.implode('_', $params).'#REGULAR#Both&showSavedVehicle=true&un_form_encoding=utf-8';
+        $query = '?vehicle='.implode('_', $params).'&showSavedVehicle=true&un_form_encoding=utf-8';
 
         if (!empty($sort)) {
           $count = 50;

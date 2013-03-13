@@ -40,6 +40,13 @@ class ResultsController extends AppController {
     $option = $this->getVar('option', '');
     $size   = $this->getVar('size', '');
     
+    $width      = $this->getVar('width', '');
+    $ratio      = $this->getVar('ratio', '');
+    $diameter   = $this->getVar('diameter', '');
+    $index      = $this->getVar('index', '');
+    $rating     = $this->getVar('rating', '');
+
+    
     $filter = $this->getVar('filter', '');
     $narrow = $this->getVar('narrow', '');
     
@@ -56,32 +63,49 @@ class ResultsController extends AppController {
     $type = 'tires-vehicle';
     switch ($type) {
       case 'tires-vehicle':
-        $results = CtService::getTiresByVehicle(
-          $lang,
-          '2007',
-          'Honda',
-          'Ridgeline',
-          '4 Dr Crew Cab Pickup, 5 Ft Bed',
-          'RTL',
-          '7.5x17',
-          $sort
-        );
         //$results = CtService::getTiresByVehicle(
         //  $lang,
-        //  $year,
-        //  $make,
-        //  $model,
-        //  $body,
-        //  $option,
-        //  $size,
+        //  '2007',
+        //  'Honda',
+        //  'Ridgeline',
+        //  '4 Dr Crew Cab Pickup, 5 Ft Bed',
+        //  'RTL',
+        //  '7.5x17#REGULAR#Both',
         //  $sort
         //);
+        $results = CtService::getTiresByVehicle(
+          $lang,
+          $year,
+          $make,
+          $model,
+          $body,
+          $option,
+          $size,
+          $sort
+        );
         break;
       case 'tires-size':
-        
+        $results = CtService::getTiresBySize(
+          $lang,
+          $width,
+          $ratio,
+          $diameter,
+          $index,
+          $rating,
+          $sort
+        );
         break;
       case 'wheels':
-        
+        $results = CtService::getWheelsByVehicle(
+          $lang,
+          $year,
+          $make,
+          $model,
+          $body,
+          $option,
+          $size,
+          $sort
+        );
         break;
       default:
         // Error

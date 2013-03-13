@@ -27,7 +27,7 @@ $(function() {
   });
   
   $('#home').click(function(){
-    xhrDA.loadPage({'currentPage': 'home'});
+    window.location = window.homeRoute;
   });
   
   $('#header-back').click(function() {
